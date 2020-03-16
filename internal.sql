@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 16, 2020 at 10:11 AM
+-- Generation Time: Mar 16, 2020 at 10:28 AM
 -- Server version: 10.1.29-MariaDB
 -- PHP Version: 7.1.12
 
@@ -211,6 +211,26 @@ INSERT INTO `internhips` (`id`, `uid`, `type`, `title`, `description`, `location
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `internhip_apply`
+--
+
+CREATE TABLE `internhip_apply` (
+  `id` int(11) NOT NULL,
+  `uid` text NOT NULL,
+  `student_uid` text NOT NULL,
+  `internship_uid` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `internhip_apply`
+--
+
+INSERT INTO `internhip_apply` (`id`, `uid`, `student_uid`, `internship_uid`) VALUES
+(1, 'APPLY_15843505905e6f457ebde96', 'STUDENT_JDHJKSH786', 'INTERNSHIP_15843440765e6f2c0cefd7f');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `posted_internship`
 --
 
@@ -249,6 +269,7 @@ INSERT INTO `posted_internship` (`id`, `url`, `title`, `content`, `city`, `count
 
 CREATE TABLE `student_register` (
   `id` int(11) NOT NULL,
+  `uid` text NOT NULL,
   `first_name` varchar(20) NOT NULL,
   `last_name` varchar(20) NOT NULL,
   `email` varchar(20) NOT NULL,
@@ -263,12 +284,12 @@ CREATE TABLE `student_register` (
 -- Dumping data for table `student_register`
 --
 
-INSERT INTO `student_register` (`id`, `first_name`, `last_name`, `email`, `contact`, `languages`, `technical`, `skills`, `password`) VALUES
-(1, 'Akash', 'Pandey', 'akash@gmail.com', '7060133531', 'php,python', 'php,java', 'Communication Skills (Verbal & Writing),Presentation Skills', 'ad8c932963c7af0ecacb204eeab1dc94'),
-(2, 'hkj', 'jhk', 'hjk', 'hjk', 'hjkh', 'php', 'Communication Skills (Verbal & Writing)', 'sa'),
-(3, 'ghg', 'gjh', 'ghjg', 'ghjg', 'j', 'ghjg', 'Communication Skills (Verbal & Writing)', 'ds'),
-(4, 'ghg', 'gjh', 'ghjg', 'ghjg', 'j', 'ghjg', 'Communication Skills (Verbal & Writing)', 'ds'),
-(5, 'ghg', 'gjh', 'ghjg', 'ghjg', 'j', 'ghjg', 'Communication Skills (Verbal & Writing)', 'ds');
+INSERT INTO `student_register` (`id`, `uid`, `first_name`, `last_name`, `email`, `contact`, `languages`, `technical`, `skills`, `password`) VALUES
+(1, 'STUDENT_JDHJKSH786', 'Akash', 'Pandey', 'akash@gmail.com', '7060133531', 'php,python', 'php,java', 'Communication Skills (Verbal & Writing),Presentation Skills', 'ad8c932963c7af0ecacb204eeab1dc94'),
+(2, '', 'hkj', 'jhk', 'hjk', 'hjk', 'hjkh', 'php', 'Communication Skills (Verbal & Writing)', 'sa'),
+(3, '', 'ghg', 'gjh', 'ghjg', 'ghjg', 'j', 'ghjg', 'Communication Skills (Verbal & Writing)', 'ds'),
+(4, '', 'ghg', 'gjh', 'ghjg', 'ghjg', 'j', 'ghjg', 'Communication Skills (Verbal & Writing)', 'ds'),
+(5, '', 'ghg', 'gjh', 'ghjg', 'ghjg', 'j', 'ghjg', 'Communication Skills (Verbal & Writing)', 'ds');
 
 -- --------------------------------------------------------
 
@@ -3793,6 +3814,12 @@ ALTER TABLE `internhips`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `internhip_apply`
+--
+ALTER TABLE `internhip_apply`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `posted_internship`
 --
 ALTER TABLE `posted_internship`
@@ -4155,6 +4182,12 @@ ALTER TABLE `college`
 --
 ALTER TABLE `internhips`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `internhip_apply`
+--
+ALTER TABLE `internhip_apply`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `student_register`
