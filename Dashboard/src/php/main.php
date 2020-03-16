@@ -14,7 +14,7 @@ if (isset($_POST['internship_post'])) {
     $country = mysqli_real_escape_string($conn, $_POST['country']);
     $company = mysqli_real_escape_string($conn, $_POST['company']);
     $stipend = mysqli_real_escape_string($conn, $_POST['stipend']);
-    $start = mysqli_real_escape_string($conn, $_POST['start']);
+    $start = mysqli_real_escape_string($conn, $_POST['startdate']);
     $end = mysqli_real_escape_string($conn, $_POST['end']);
     $contract = mysqli_real_escape_string($conn, $_POST['contract']);
     $whoCanApply = mysqli_real_escape_string($conn, $_POST['whoCanApply']);

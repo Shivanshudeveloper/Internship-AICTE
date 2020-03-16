@@ -74,8 +74,8 @@
                                                     Technical: '.$row['technical'].'
                                                     
                                                     </p>
-                                                    <a href="#" class="btn btn-sm btn-outline-primary">Call for Interview</a>
-                                                    <a href="#" class="btn btn-sm btn-outline-info">Hold</a>
+                                                    <a href="./callforInterview.php?stuId='.$row['uid'].'&internshipId='.$uid.'" class="btn btn-sm btn-outline-primary">Call for Interview</a>
+                                                    <a href="./holdInterview.php?stuId='.$row['uid'].'&internshipId='.$uid.'" class="btn btn-sm btn-outline-info">Hold</a>
                                                     <a href="#" class="btn btn-sm btn-outline-success">Message</a>
                                                 </div>
                                             </div>
