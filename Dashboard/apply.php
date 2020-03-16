@@ -53,7 +53,7 @@
             $company_id = "12345678";
             if ($resultChk < 1) {
                 $applyId = "APPLY_".time().uniqid();
-                $sql = "INSERT INTO internhip_apply (uid, company_id, student_uid, internship_uid) VALUES ('$applyId', '$company_id', 'STUDENT_JDHJKSH786', '$uid');";
+                $sql = "INSERT INTO internhip_apply (uid, company_id, student_uid, internship_uid, status) VALUES ('$applyId', '$company_id', 'STUDENT_JDHJKSH786', '$uid', 'No');";
                 mysqli_query($conn, $sql);
             }
             
