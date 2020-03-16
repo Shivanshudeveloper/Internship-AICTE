@@ -7,7 +7,7 @@
                 <h1 class="mb-2 bread">Login</h1>
                 <p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home <i
                                 class="ion-ios-arrow-forward"></i></a></span> <span>Login <i
-                            class="ion-ios-arrow-forward"></i></span> <span> Student login <i
+                            class="ion-ios-arrow-forward"></i></span> <span> Login <i
                             class="ion-ios-arrow-forward"></i></span> 
                 </p>
             </div>
@@ -24,8 +24,7 @@
                         <input type="email" name="email" id="email" class="form-control mb-4" placeholder="E-mail">
                         <input type="password" name="password" id="password" class="form-control mb-4"
                             placeholder="Password">
-                        <input type="submit" name="login" id="login" value="login" class="btn btn-info btn-block"
-                            type="button">
+                        <input type="submit" name="login" id="login" class="btn btn-info btn-block">
 
                     </form>
                 </div>

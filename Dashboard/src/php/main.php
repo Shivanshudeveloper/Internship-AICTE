@@ -4,7 +4,6 @@ include './dbh.php';
 
 if (isset($_POST['internship_post'])) {
     $type = mysqli_real_escape_string($conn, $_POST['type']);
-
     $title = mysqli_real_escape_string($conn, $_POST['title']);
     $description = mysqli_real_escape_string($conn, $_POST['description']);
     $locations = mysqli_real_escape_string($conn, $_POST['locations']);

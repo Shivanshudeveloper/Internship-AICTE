@@ -12,7 +12,6 @@ $dbusername = " ";
 $dbpassword = " ";
 $id=" ";
 $password=md5($password);
-echo $password;
 
 if ($username && $password) {
     $query   = ("SELECT * FROM student_register WHERE email='$username'");
@@ -32,7 +31,7 @@ if ($username && $password) {
             $_SESSION['login']=1;
             $_SESSION['id']=$id;
             $_SESSION['loggedIn']=1;
-            header("location: ../../index_students.php"); //another file to send request to the next page if values are correct.
+            header("location: ../../../Dashboard/index.php"); //another file to send request to the next page if values are correct.
         } 
         else{
              header("location: ../../login.php?error=WrongPassword");
@@ -95,10 +94,6 @@ else{
     header("location: ../../login.php?error=PlseEnterUsernameorPassword");
     }
 }
-else
-{
-    header("location: ../../login.php?error=Error");
-}
 
 if(isset($_POST['login_dm']))
 {
@@ -130,7 +125,7 @@ if ($username && $password) {
             $_SESSION['login']=1;
             $_SESSION['level']=2;
             $_SESSION['id']=$id;
-            header("location: ../../index_corporate.php"); //another file to send request to the next page if values are correct.
+            header("location: ../../../Dashboard/index.php"); //another file to send request to the next page if values are correct.
             exit();
         } 
         else{
