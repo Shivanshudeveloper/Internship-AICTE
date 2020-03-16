@@ -1,28 +1,27 @@
 <?php
-
+session_start();
 
 // Include the database file
 include 'dbh.php';
 if(isset($_POST['login']))
 {
-session_start();
+
 $username = $_POST['email'];
 $password = $_POST['password'];
 $dbusername = " ";
 $dbpassword = " ";
+$id=" ";
 $password=md5($password);
 echo $password;
 
 if ($username && $password) {
-    mysqli_select_db($conn, "internal") or die ("Could'nt find database");
-    
     $query   = ("SELECT * FROM student_register WHERE email='$username'");
     $result  = mysqli_query($conn, $query);
     $numrows = mysqli_num_rows($result);
 
-    if ($numrows != 0) {
+    if ($numrows>0) {
         while ($row = mysqli_fetch_assoc($result)) 
-        {
+   {
             $dbusername = $row['email'];
             $dbpassword = $row['password'];
             $id=$row['uid'];
@@ -32,9 +31,8 @@ if ($username && $password) {
             $_SESSION['email'] = $username;
             $_SESSION['login']=1;
             $_SESSION['id']=$id;
-            $_SESSION['level']=2;
+            $_SESSION['loggedIn']=1;
             header("location: ../../index_students.php"); //another file to send request to the next page if values are correct.
-            exit();
         } 
         else{
              header("location: ../../login.php?error=WrongPassword");
@@ -55,17 +53,15 @@ else
 
 if(isset($_POST['login_c']))
 {
-session_start();
 $username = $_POST['email'];
 $password = $_POST['password'];
 $dbusername = " ";
 $dbpassword = " ";
+$id=" ";
 $password=md5($password);
 
 if ($username && $password) {
-    mysqli_select_db($conn, "internal") or die ("Could'nt find database");
-    
-    $query   = ("SELECT * FROM corporate_register WHERE email='$username'");
+     $query   = ("SELECT * FROM corporate_register WHERE email='$username'");
     $result  = mysqli_query($conn, $query);
     $numrows = mysqli_num_rows($result);
 
@@ -101,7 +97,7 @@ else{
 }
 else
 {
-    echo"Error";
+    header("location: ../../login.php?error=Error");
 }
 
 if(isset($_POST['login_dm']))
