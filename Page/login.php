@@ -24,7 +24,7 @@
                         <input type="email" name="email" id="email" class="form-control mb-4" placeholder="E-mail">
                         <input type="password" name="password" id="password" class="form-control mb-4"
                             placeholder="Password">
-                        <input type="submit" name="login" id="login" class="btn btn-info btn-block">
+                        <input type="submit" name="login" id="login" value="login" class="btn btn-info btn-block">
 
                     </form>
                 </div>
