@@ -24,6 +24,11 @@
         
 
       <!-- Default box -->
+        <div class="alert alert-success mt-2 mb-2" role="alert">
+            <b>Successfully applied for internship</b>
+        </div>
+
+        
       <div class="card">
         <div class="card-header">
           <h3 class="card-title">Interviews</h3>
@@ -36,9 +41,24 @@
           </div>
         </div>
 
+        
+
         <?php
             include './src/php/dbh.php';
-            $sql = "SELECT * FROM internhips;";
+            $uid = $_GET['uid'];
+
+            $sql = "SELECT * FROM internhip_apply WHERE student_uid = 'STUDENT_JDHJKSH786' AND  internship_uid = '$uid';";
+            $result = mysqli_query($conn, $sql);
+            $resultChk = mysqli_num_rows($result);
+            if ($resultChk < 1) {
+                $applyId = "APPLY_".time().uniqid();
+                $sql = "INSERT INTO internhip_apply (uid, student_uid, internship_uid) VALUES ('$applyId', 'STUDENT_JDHJKSH786', '$uid');";
+                mysqli_query($conn, $sql);
+            }
+            
+            
+            
+            $sql = "SELECT * FROM internhips WHERE uid = '$uid';";
             $result = mysqli_query($conn, $sql);
             $resultChk = mysqli_num_rows($result);
             if ($resultChk < 1) {
@@ -53,14 +73,6 @@
                         <div class="card-body mt-2">
                             <div class="card">
                             <div class="card-body">
-                                <span class="float-right">
-                                    <p>
-                                        <a target="_blank" href="https://www.google.com/maps/@28.535427,77.155449,16z" class="btn ml-2 btn-sm btn-outline-success">
-                                            Google Maps
-                                        </a>
-                                    </p>
-                
-                                </span>
                                 <h3 class="card-title">'.$row['title'].'</h3>
                                 <br>
                                 <h5 class="mt-2">
@@ -83,8 +95,6 @@
                                 <p class="card-text mt-2">
                                     '.$row['description'].'
                                 </p>
-                                <a href="./apply.php?uid='.$row['uid'].'" class="btn btn-primary">Apply</a>
-                                <a href="#" class="btn btn-danger">Reject</a>
                             </div>
                             </div>
                         </div>
