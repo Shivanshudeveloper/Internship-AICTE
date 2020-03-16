@@ -78,20 +78,20 @@ if ($username && $password) {
             $_SESSION['login']=1;
             $_SESSION['level']=2;
             $_SESSION['id']=$id;
-            header("location: ../../index_corporate.php"); //another file to send request to the next page if values are correct.
+            header("location: ../../../Dashboard/index.php"); //another file to send request to the next page if values are correct.
             exit();
         } 
         else{
             
-            header("location: ../../login.php?error=WrongPassword");
+            header("location: ../../login_corporate.php?error=WrongPassword");
             }
         }
         else {
-            header("location: ../../login.php?error=UserNotExist");
+            header("location: ../../login_corporate.php?error=UserNotExist");
             }
 }
 else{
-    header("location: ../../login.php?error=PlseEnterUsernameorPassword");
+    header("location: ../../login_corporate.php?error=PlseEnterUsernameorPassword");
     }
 }
 

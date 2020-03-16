@@ -1,13 +1,21 @@
+
+
+
+
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <!------ Include the above in your HEAD tag ---------->
 
-<?php include 'includes/header_corporate.inc.php';?>
+<?php include 'includes/header_corporate.inc.php';
+
+
+
+?>
 <html>
 <head>
 
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" type="text/css" rel="stylesheet"
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" type="text/css" rel="stylesheet">
 
 </head>
 <style>
@@ -199,6 +207,7 @@ img{ max-width:100%;}
                   <h5>Microsoft<span class="chat_date">Dec 25</span></h5>
                   <p>Test, which is a new approach to have all solutions 
                     astrology under one roof.</p>
+                    <button>hold</button>
                 </div>
               </div>
             </div>
@@ -209,6 +218,7 @@ img{ max-width:100%;}
                   <h5>Dell<span class="chat_date">Dec 25</span></h5>
                   <p>Test, which is a new approach to have all solutions 
                     astrology under one roof.</p>
+                    <button>hold</button>
                 </div>
               </div>
             </div>
@@ -219,13 +229,14 @@ img{ max-width:100%;}
                   <h5>Apple<span class="chat_date">Dec 25</span></h5>
                   <p>Test, which is a new approach to have all solutions 
                     astrology under one roof.</p>
+                    <button>hold</button>
                 </div>
               </div>
             </div>
           </div>
         </div>
         <div class="mesgs">
-          <div class="msg_history">
+          <div class="msg_history" id="message-area">
             <div class="incoming_msg">
               <div class="incoming_msg_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
               <div class="received_msg">
@@ -267,8 +278,8 @@ img{ max-width:100%;}
           </div>
           <div class="type_msg">
             <div class="input_msg_write">
-              <input type="text" class="write_msg" placeholder="Type a message" />
-              <button class="msg_send_btn" type="button"><i class="fa fa-paper-plane-o" aria-hidden="true"></i></button>
+              <input type="text" class="write_msg" id="msg" name="msg" placeholder="Type a message" />
+              <button class="msg_send_btn" onclick="sendMsg()"type="button"><i class="fa fa-paper-plane-o" aria-hidden="true"></i></button>
             </div>
             <!-- <div class="row">
               <div class="col">
@@ -280,11 +291,63 @@ img{ max-width:100%;}
               </div>
             </div> -->
            </div>
-           <button class="btn btn-sm btn-info" type="button"><i class="fa fa-camera-retro fa-lg" aria-hidden="true"></i></button>
-           <button class="btn btn-sm btn-info" type="button"><i class="fa fa-file" aria-hidden="true"></i></button>
+           <input type="file" id="file" name="file" style="display:none">
+           <button  class="btn btn-sm btn-info"id="id5" onclick="new1()" type="button"><i class="fa fa-camera-retro fa-lg" aria-hidden="true"></i></button>
+           <button class="btn btn-sm btn-info"  onclick="new1()" type="button"><i class="fa fa-file" aria-hidden="true"></i></button>
+        </div>
         </div>
 
       </div> 
     </div></div>
+    <script>
+const sendMsg = () => {
+    var message = document.getElementById("msg").value;  
+    console.log(message)
+        date = new Date()
+    var pageURL = window.location.href;
+        url = new URL(pageURL);
+        projectId = 'student';
+        userId = 'student';
+        userName = 'student';
+    if (!message) {
+        console.log("No Message Found")
+    } else {
+        $.post("./src/php/main.php", {
+            company_id:"student",
+            userId: userId,
+            user: userName,
+            message: message,
+            date: date,
+            messageSend: true
+        }).then(() => {
+            console.log("Inserted!")
+        })
+    }
+   clearTextArea() 
+}
+
+const clearTextArea = () => {
+    document.getElementById("message").value = ""
+    console.log("Cleared")
+}
+
+var pageURL = window.location.href;
+    url = new URL(pageURL);
+    projectId = url.searchParams.get("projectId");
+    userName = url.searchParams.get("userName");
+    userId = url.searchParams.get("userId");
+setInterval(() => {
+  $("#message-area").load("./src/php/main.php", {
+    projectId: projectId,
+    userId: userId,
+    userName: userName,
+    loadData: true
+  })
+}, 500)
+
+function new1() {
+    $( "#file" ).click();
+};
+</script>
     </body>
     </html>
