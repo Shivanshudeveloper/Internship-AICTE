@@ -29,6 +29,7 @@ if (isset($_POST['internship_post'])) {
     $languages = mysqli_real_escape_string($conn, $_POST['languages']);
     $interview = mysqli_real_escape_string($conn, $_POST['interview']);
 
+    $internshipId = "INTERNSHIP_".time().uniqid();
 
     $attributes = '';
 
@@ -38,12 +39,12 @@ if (isset($_POST['internship_post'])) {
             $attributes = $attributes.$selected.',';
         }
     }
-    $attributes = rtrim($attributes, "");
+    $attributes = rtrim($attributes, ",");
 
 
-    $sql = "INSERT INTO internhips (type, title, description, locations, numberInternRequiried, keywords, email, phone, country, company, stipend, start, end, contract, whoCanApply, domain, eligibility, perks, certificaion, hours, languages, interview, attributes) VALUES ('$type','$title', '$description', '$locations', '$numberInternRequiried', '$keywords', '$email', '$phone', '$country', '$company', '$stipend', '$start', '$end', '$contract', '$whoCanApply', '$domain', '$eligibility', '$perks', '$certificaion', '$hours', '$languages', '$interview', '$attributes');";
+    $sql = "INSERT INTO internhips (uid, type, title, description, locations, numberInternRequiried, keywords, email, phone, country, company, stipend, start, end, contract, whoCanApply, domain, eligibility, perks, certificaion, hours, languages, interview, attributes) VALUES ('$internshipId' ,'$type','$title', '$description', '$locations', '$numberInternRequiried', '$keywords', '$email', '$phone', '$country', '$company', '$stipend', '$start', '$end', '$contract', '$whoCanApply', '$domain', '$eligibility', '$perks', '$certificaion', '$hours', '$languages', '$interview', '$attributes');";
     mysqli_query($conn, $sql);
-    header("Location: ../../post_internship.php?post=success");
+    header('Location: ../../automatch.php?uid='.$internshipId);
 
 
 }
