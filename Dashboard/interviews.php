@@ -35,185 +35,72 @@
               <i class="fas fa-times"></i></button>
           </div>
         </div>
+
+        <?php 
+            include './src/php/dbh.php';
+            $uid = $_GET['uid'];
+
+            $sql = "SELECT * FROM internhips WHERE uid = '$uid';";
+            $result = mysqli_query($conn, $sql);
+            while ($row = mysqli_fetch_assoc($result)) {
+                $title = $row['title'];
+                $start = $row['start'];
+                $email = $row['email'];
+                $phone = $row['phone'];
+                $description = $row['description'];
+
+
+                $sql = "SELECT * FROM internhip_apply WHERE internship_uid = '$uid';";
+                $result = mysqli_query($conn, $sql);
+                $resultChk = mysqli_num_rows($result);
+                if ($resultChk < 1) {
+                    echo '
+                        <center> No Result Found </center>
+                    ';
+                } else {
+                    while ($row = mysqli_fetch_assoc($result)) {
+                        $studentId = $row['student_uid'];
+                        $sql = "SELECT * FROM student_register WHERE uid = '$studentId';";
+                        $result = mysqli_query($conn, $sql);
+                        if ($row = mysqli_fetch_assoc($result)) {
+                            echo '
+                                <div class="card-body mt-2">
+                                    <div class="card">
+                                    <div class="card-body">
+                                        <h5 class="card-title">'.$row['first_name'].' '.$row['last_name'].'</h5>
+                                        <br>
+                                        <h5 class="mt-2">'.$title.'</h5>
+                                        <h6 class="mt-2">'.$start.'</h6>
+                                        <h6 class="mt-2">Email: '.$email.'</h6>
+                                        <h6 class="mt-2">Address: Microsoft Corporation One Microsoft Way Redmond, WA 98052-6399 USA</h6>
+                                        <h6 class="mt-2">Phone No: '.$phone.'</h6>
+                        
+                        
+                                        <p class="card-text mt-2">
+                                            '.$description.'
+                                        </p>
+                                        <a href="./offerletter.php" data-toggle="modal" data-target="#exampleModal" class="btn btn-primary">Accept for Interview</a>
+                                        <a href="#" class="btn btn-info">Hold</a>
+                                        <a href="#" class="btn btn-danger">Reject</a>
+                                    </div>
+                                    </div>
+                                </div>
+                            ';
+                        }
+                    }
+                }
+            }
+
+            
+
+
+
+        ?>
         
-        <div class="card-body mt-2">
-            <div class="card">
-            <div class="card-body">
-                <span class="float-right">
-                    <p>
-                        Monday at
-                        <span class="ml-2">Time: 10:00 PM</span> 
 
-                        <a target="_blank" href="https://www.google.com/maps/@28.535427,77.155449,16z" class="btn ml-2 btn-sm btn-outline-success">
-                            Google Maps
-                        </a>
-                    </p>
+        
 
-                </span>
-                
-                <h5 class="card-title">Test User 1</h5>
-                <br>
-                <h5 class="mt-2">Big Data</h5>
-                <h6 class="mt-2">Interview Timing: 10:00 AM</h6>
-                <h6 class="mt-2">
-                    <a href="#!" rel="noopener noreferrer">
-                        Download Documents
-                    </a>    
-                </h6>
-                <h6 class="mt-2">Email: test@test.com</h6>
-                <h6 class="mt-2">Address: Microsoft Corporation One Microsoft Way Redmond, WA 98052-6399 USA</h6>
-                <h6 class="mt-2">Phone No: +91 8273 783 882</h6>
-                
-                
-                
-                <p class="mt-2 card-text">
-                    Microsoft Corporation is an American multinational technology company with headquarters in Redmond, Washington. It develops, manufactures, licenses, supports, and sells computer software, consumer electronics, personal computers, and related services.
-                </p>
-                <a href="./offerletter.php" data-toggle="modal" data-target="#exampleModal" class="btn btn-primary">Accept for Interview</a>
-                <a href="#" class="btn btn-info">Hold</a>
-                <a href="#" class="btn btn-danger">Reject</a>
-
-                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Interview</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <label for="textarea">Call for Interview update</label>
-                            <textarea name="" class="form-control" id="" cols="30" rows="10"></textarea>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-primary">Accept</button>
-                            <button type="button" class="btn btn-outline-danger">Reject</button>
-                        </div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-            </div>
-        </div>
-
-        <div class="card-body mt-2">
-            <div class="card">
-            <div class="card-body">
-                <span class="float-right">
-                    <p>
-                        Monday at
-                        <span class="ml-2">Time: 10:00 PM</span> 
-
-                        <a target="_blank" href="https://www.google.com/maps/@28.535427,77.155449,16z" class="btn ml-2 btn-sm btn-outline-success">
-                            Google Maps
-                        </a>
-                    </p>
-
-                </span>
-                <h5 class="card-title">Test User 2</h5>
-                <br>
-                <h5 class="mt-2">Big Data</h5>
-                <h6 class="mt-2">Interview Timing: 10:00 AM</h6>
-                <h6 class="mt-2">
-                    <a href="#!" rel="noopener noreferrer">
-                        Download Documents
-                    </a>    
-                </h6>
-                <h6 class="mt-2">Email: test@test.com</h6>
-                <h6 class="mt-2">Address: Microsoft Corporation One Microsoft Way Redmond, WA 98052-6399 USA</h6>
-                <h6 class="mt-2">Phone No: +91 8273 783 882</h6>
-
-
-                <p class="card-text mt-2">
-                    Microsoft Corporation is an American multinational technology company with headquarters in Redmond, Washington. It develops, manufactures, licenses, supports, and sells computer software, consumer electronics, personal computers, and related services.
-                </p>
-                <a href="./offerletter.php" data-toggle="modal" data-target="#exampleModal" class="btn btn-primary">Accept for Interview</a>
-                <a href="#" class="btn btn-info">Hold</a>
-                <a href="#" class="btn btn-danger">Reject</a>
-            </div>
-            </div>
-        </div>
-
-        <div class="card-body mt-2">
-            <div class="card">
-            <div class="card-body">
-                <span class="float-right">
-                    <p>
-                        Monday at
-                        <span class="ml-2">Time: 10:00 PM</span> 
-
-                        <a target="_blank" href="https://www.google.com/maps/@28.535427,77.155449,16z" class="btn ml-2 btn-sm btn-outline-success">
-                            Google Maps
-                        </a>
-                    </p>
-                </span>
-                <h5 class="card-title">Test User 3</h5>
-                <br>
-                <h5 class="mt-2">Big Data</h5>
-
-                <h6 class="mt-2">Interview Timing: 10:00 AM</h6>
-                <h6 class="mt-2">
-                    <a href="#!" rel="noopener noreferrer">
-                        Download Documents
-                    </a>    
-                </h6>
-                <h6 class="mt-2">Email: test@test.com</h6>
-                <h6 class="mt-2">Address: Microsoft Corporation One Microsoft Way Redmond, WA 98052-6399 USA</h6>
-                <h6 class="mt-2">Phone No: +91 8273 783 882</h6>
-
-
-                <h6 class="card-title">Big Data</h6>
-                <p class="card-text">
-                    Microsoft Corporation is an American multinational technology company with headquarters in Redmond, Washington. It develops, manufactures, licenses, supports, and sells computer software, consumer electronics, personal computers, and related services.
-                </p>
-                <a href="./offerletter.php" data-toggle="modal" data-target="#exampleModal" class="btn btn-primary">Accept for Interview</a>
-                <a href="#" class="btn btn-info">Hold</a>
-                <a href="#" class="btn btn-danger">Reject</a>
-            </div>
-            </div>
-        </div>
-
-        <div class="card-body mt-2">
-            <div class="card">
-            <div class="card-body">
-                <span class="float-right">
-                    <p>
-                        Monday at
-                        <span class="ml-2">Time: 10:00 PM</span> 
-
-                        <a target="_blank" href="https://www.google.com/maps/@28.535427,77.155449,16z" class="btn ml-2 btn-sm btn-outline-success">
-                            Google Maps
-                        </a>
-                    </p>
-                </span>
-
-                <h5 class="card-title">Test User 4</h5>
-                <br>
-                <h5 class="mt-2">Big Data</h5>
-
-                <h6 class="mt-2">Interview Timing: 10:00 AM</h6>
-                <h6 class="mt-2">
-                    <a href="#!" rel="noopener noreferrer">
-                        Download Documents
-                    </a>    
-                </h6>
-                <h6 class="mt-2">Email: test@test.com</h6>
-                <h6 class="mt-2">Address: Microsoft Corporation One Microsoft Way Redmond, WA 98052-6399 USA</h6>
-                <h6 class="mt-2">Phone No: +91 8273 783 882</h6> 
-
-
-                <h6 class="card-title">Big Data</h6>
-                <p class="card-text">
-                    Microsoft Corporation is an American multinational technology company with headquarters in Redmond, Washington. It develops, manufactures, licenses, supports, and sells computer software, consumer electronics, personal computers, and related services.
-                </p>
-                <a href="#" data-toggle="modal" data-target="#exampleModal" class="btn btn-primary">Accept for Interview</a>
-                <a href="#" class="btn btn-info">Hold</a>
-                <a href="#" class="btn btn-danger">Reject</a>
-            </div>
-            </div>
-        </div>
+        
 
 
       </div>
