@@ -35,94 +35,64 @@
 
   </head>
   <body class="newBgRptr">
-	  <div class="bg-top navbar-light headerNewDiv">
-    	<div class="container" style="margin-top: 0px; margin-bottom: 5px;">
+	  <div class="bg-top navbar-light topBgNewDiv">
+    	<div class="container">
     		<div class="row no-gutters d-flex align-items-center align-items-stretch">
     			<div class="col-md-4 d-flex align-items-center py-4">
-    				<a class="navbar-brand" href="index.php">
+    				<a class="navbar-brand" href="index_corporate.php">
                         <img class="img img-fluid w-100" src="./images/All_India_Council_for_Technical_Education_logo.png" alt="AICTE">
 					</a>
 					<br>
                 </div>
-                <div class="container mt-3 newThreeStripDiv">
-                <div class="row mt-4">
+                <div class="container mt-3">
+                <div class="row mt-4 fourBtnDivNew">
                     <div class="col">
-                        <a href="./post_internship.php" class="btn py-2 px-3 btn-primary d-flex align-items-center justify-content-center">
-							<i class="fas fa-user-plus"></i>	
+                        <a href="./logout.php" class="btn py-2 px-3 btn-primary d-flex align-items-center justify-content-center">
+							<i class="fas fa-sign-in-alt"></i>	
+							<span class="ml-2">Logout</span>
+					    </a>
+                    </div>
+					<div class="col">
+                        <a href="./applied.php" class="btn py-2 px-3 btn-primary d-flex align-items-center justify-content-center">
+							<i class="fas fa-sign-in-alt"></i>	
 							<span class="ml-2">Post Internship</span>
 					    </a>
                     </div>
 
 					<div class="col">
                         <a href="./applied.php" class="btn py-2 px-3 btn-primary d-flex align-items-center justify-content-center">
-							<i class="fas fa-user-plus"></i>	
-							<span class="ml-2">Applied Students</span>
-					    </a>
-                    </div>
-
-                    <div class="col">
-                        <a href="./login_type.php" class="btn py-2 px-3 btn-primary d-flex align-items-center justify-content-center">
 							<i class="fas fa-sign-in-alt"></i>	
-							<span class="ml-2">Logout</span>
+							<span class="ml-2">View All Posted Internships</span>
+					    </a>
+                    </div>
+					
+					<div class="col">
+                        <a href="./post_internship.php" class="btn py-2 px-3 btn-primary d-flex align-items-center justify-content-center">
+							<i class="fas fa-sign-in-alt"></i>	
+							<span class="ml-2">Messaging</span>
 					    </a>
                     </div>
                 </div>
                 </div>
                 
                 
-	    		<!-- <div class="col-lg-8 d-block mt-4">
-
-		    		<div class="row d-flex">
-					    <div class="col-md topper d-flex align-items-center justify-content-end">
-					    	
-					    		
-					    	
-					    </div>
-						<div class="col-md topper d-flex align-items-center justify-content-end">
-					    	
-					    		<a href="./login.php" class="btn py-2 px-3 btn-primary d-flex align-items-center justify-content-center">
-					    			<span>Login Now</span>
-					    		</a>
-					    	
-
-					    </div>
-				    </div>
-			    </div> -->
 		    </div>
 		  </div>
     </div>
 
-    <nav class="navbar navbar-expand-lg ftco-navbar-light" id="ftco-navbar">
+    <nav style="background-color: #ffffff !important" class="navbar navbar-expand-lg ftco-navbar-light" id="ftco-navbar">
 	    <div style="background-color: #000080 !important" class="container d-flex align-items-center px-4">
-				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+				<button class="navbar-toggler text-light" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
 				AICTE helps Student find work they love & Organization find best intern on pan India basis
 	      </button>
-	      <!-- <form action="./fetch1.php" class="searchform order-lg-last" method ="post">
-          <div class="form-group d-flex">
-            <input type="text" class="form-control pl-3" placeholder="Search">
-            <button  type="submit" id="search" name="search" placeholder="" class="form-control search"><span class="ion-ios-search"></span></button>
-          </div>
-        </form> -->
 	      <div class="collapse navbar-collapse" style="background-color: #000080 !important" id="ftco-nav">
 	        <ul class="navbar-nav mr-auto">
 	        	<li class="nav-item active">
 				<center>
 				<a href="index.php" class="text-light nav-link pl-0">AICTE HELPS STUDENT FIND WORK THEY LOVE & ORGANIZATIONS FIND BEST INTERNS ON PAN INDIA BASIS</a></li>
 				</center>	
-	        	<!-- <li class="nav-item"><a href="about.html" class="nav-link">About</a></li> -->
-				<!-- <li class="nav-item"><a href="courses.html" class="nav-link">Courses</a></li> -->
-				<!-- <li class="nav-item"><a href="./fetch1.php" class="nav-link">Search</a></li> -->
-	        	<!-- <li class="nav-item"><a target="_blank" href="http://mhrd.gov.in/" class="nav-link">MHRD</a></li> -->
-	        	<!-- <li class="nav-item"><a target="_blank" href="http://www.aicte-india.org" class="nav-link">AICTE</a></li> -->
-	          <!-- <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li> -->
-			  <li class="nav-item">
+			  <li class="nav-item"> 
 				  <a>
-			    <!-- <form action="fetch1.php"class="searchform order-lg-last">
-                    <div class="form-group d-flex">
-                        <input type="text" name="search" id="search" class="form-control pl-3" placeholder="Search">
-                        <button type="submit" placeholder="" class="form-control search"><span class="ion-ios-search"></span></button>
-                    </div>
-			    </form> -->
 			</a>
 			</li>
 	        </ul>

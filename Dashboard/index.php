@@ -1,4 +1,12 @@
-<?php include './includes/header.inc.php' ?>
+<?php
+session_start();
+if(!isset($_SESSION))
+{
+  header("location:Page/login.php");
+}
+else
+include './includes/header.inc.php' 
+?>
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">

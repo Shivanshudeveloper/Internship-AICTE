@@ -1,13 +1,12 @@
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<!------ Include the above in your HEAD tag ---------->
 
-<?php include 'includes/header_corporate.inc.php';?>
+<!------ Include the above in your HEAD tag ---------->
+<?php 
+session_start();
+include 'includes/header_corporate.inc.php';?>
 <html>
 <head>
 
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" type="text/css" rel="stylesheet"
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" type="text/css" rel="stylesheet">
 
 </head>
 <style>
@@ -162,169 +161,98 @@ img{ max-width:100%;}
 </style>
 <body>
 <div class="container">
-<h3 class=" text-center">Messaging</h3>
-<button type="button" class="btn btn-primary">create Thread</button>
-
+<h3 class=" text-center">Messaging</h3> 
 <div class="messaging">
       <div class="inbox_msg">
         <div class="inbox_people">
           <div class="headind_srch">
             <div class="recent_heading">
               <h4>Recent</h4>
-            </div>
-            <div class="srch_bar">
-              <div class="stylish-input-group">
-                <input type="text" class="search-bar"  placeholder="Search" >
-                <span class="input-group-addon">
-                <button type="button"> <i class="fa fa-search" aria-hidden="true"></i> </button>
-                </span> </div>
-                </div>
+            </div>	
                 <div class="dropdown">
-  <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Job Tittle
-  <span class="caret"></span></button>
-  <ul class="dropdown-menu">
-    <li><a href="#">HTML</a></li>
-    <li><a href="#">CSS</a></li>
-    <li><a href="#">JavaScript</a></li>
-  </ul>
+				<form method="POST">
+  <select class="form-control" name="id1" id="id1">
+  <option value="Python Programmer">Python Programmer</option>
+  <option value="C++">C++</option>
+  <option value="JAVA">JAVA</option>x
+  </select>
 </div>
-
+<br>
+<div class="dropdown">
+  <select class="form-control"  name="id2" id="id2">
+  <option value="Applied">Applied</option>
+  <option value="Hold">Hold</option>
+  <option value="Rejected">Rejected</option>
+  <option value="Rejected">Automatched</option>
+  </select>
+</div>
+<button name="submit_search" class="btn btn-primary mt-2" type="submit">Search</button>
+</form>
           </div>
           
           <div class="inbox_chat">
-            <div class="chat_list active_chat">
-              <div class="chat_people">
-                <div class="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
-                <div class="chat_ib">
-                  <h5>Sunil Rajput <span class="chat_date">Dec 25</span></h5>
-                  <p>Test, which is a new approach to have all solutions 
-                    astrology under one roof.</p>
-                </div>
-              </div>
-            </div>
-            <div class="chat_list">
-              <div class="chat_people">
-                <div class="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
-                <div class="chat_ib">
-                  <h5>Sunil Rajput <span class="chat_date">Dec 25</span></h5>
-                  <p>Test, which is a new approach to have all solutions 
-                    astrology under one roof.</p>
-                </div>
-              </div>
-            </div>
-            <div class="chat_list">
-              <div class="chat_people">
-                <div class="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
-                <div class="chat_ib">
-                  <h5>Sunil Rajput <span class="chat_date">Dec 25</span></h5>
-                  <p>Test, which is a new approach to have all solutions 
-                    astrology under one roof.</p>
-                </div>
-              </div>
-            </div>
-            <div class="chat_list">
-              <div class="chat_people">
-                <div class="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
-                <div class="chat_ib">
-                  <h5>Sunil Rajput <span class="chat_date">Dec 25</span></h5>
-                  <p>Test, which is a new approach to have all solutions 
-                    astrology under one roof.</p>
-                </div>
-              </div>
-            </div>
-            <div class="chat_list">
-              <div class="chat_people">
-                <div class="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
-                <div class="chat_ib">
-                  <h5>Sunil Rajput <span class="chat_date">Dec 25</span></h5>
-                  <p>Test, which is a new approach to have all solutions 
-                    astrology under one roof.</p>
-                </div>
-              </div>
-            </div>
-            <div class="chat_list">
-              <div class="chat_people">
-                <div class="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
-                <div class="chat_ib">
-                  <h5>Sunil Rajput <span class="chat_date">Dec 25</span></h5>
-                  <p>Test, which is a new approach to have all solutions 
-                    astrology under one roof.</p>
-                </div>
-              </div>
-            </div>
-            <div class="chat_list">
-              <div class="chat_people">
-                <div class="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
-                <div class="chat_ib">
-                  <h5>Sunil Rajput <span class="chat_date">Dec 25</span></h5>
-                  <p>Test, which is a new approach to have all solutions 
-                    astrology under one roof.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="mesgs">
-          <div class="msg_history">
-            <div class="incoming_msg">
-              <div class="incoming_msg_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
-              <div class="received_msg">
-                <div class="received_withd_msg">
-                  <p>Test which is a new approach to have all
-                    solutions</p>
-                  <span class="time_date"> 11:01 AM    |    June 9</span></div>
-              </div>
-            </div>
-            <div class="outgoing_msg">
-              <div class="sent_msg">
-                <p>Test which is a new approach to have all
-                  solutions</p>
-                <span class="time_date"> 11:01 AM    |    June 9</span> </div>
-            </div>
-            <div class="incoming_msg">
-              <div class="incoming_msg_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
-              <div class="received_msg">
-                <div class="received_withd_msg">
-                  <p>Test, which is a new approach to have</p>
-                  <span class="time_date"> 11:01 AM    |    Yesterday</span></div>
-              </div>
-            </div>
-            <div class="outgoing_msg">
-              <div class="sent_msg">
-                <p>Apollo University, Delhi, India Test</p>
-                <span class="time_date"> 11:01 AM    |    Today</span> </div>
-            </div>
-            <div class="incoming_msg">
-              <div class="incoming_msg_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
-              <div class="received_msg">
-                <div class="received_withd_msg">
-                  <p>We work directly with our designers and suppliers,
-                    and sell direct to you, which means quality, exclusive
-                    products, at a price anyone can afford.</p>
-                  <span class="time_date"> 11:01 AM    |    Today</span></div>
-              </div>
-            </div>
-          </div>
-          <div class="type_msg">
-            <div class="input_msg_write">
-              <input type="text" class="write_msg" placeholder="Type a message" />
-              <button class="msg_send_btn" type="button"><i class="fa fa-paper-plane-o" aria-hidden="true"></i></button>
-            </div>
-            <div class="row">
-              <div class="col">
-                <a href="#!">Job Title</a>
-                <a href="#!">Location</a>
-                <button class="btn btn-sm btn-primary">Hold</button>
-                <button class="btn btn-sm btn-primary">Reject</button>
-                <button class="btn btn-sm btn-primary">Call for Interview</button>
-              </div>
-            </div>
-           </div>
-           <button class="btn btn-sm btn-info" type="button"><i class="fa fa-camera-retro fa-lg" aria-hidden="true"></i></button>
-           <button class="btn btn-sm btn-info" type="button"><i class="fa fa-file" aria-hidden="true"></i></button>
-        </div>
+            <?php
+if(isset($_POST['submit_search']))
+{
+			include './src/php/dbh.php';
 
-      </div> 
-    </div></div>
+				$sql="SELECT * FROM student_register";
+				$res = mysqli_query($conn,$sql);
+				if($res)
+				{
+					while($row=mysqli_fetch_assoc($res))
+					{
+			echo '
+      		<div class="chat_list">
+              <div class="chat_people">
+                <div class="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
+                <div class="chat_ib">
+                 
+                  <a href="student_select.php?uid='.$row['uid'].'company_id='.$_SESSION['id'].'&user='.$_SESSION['user'].'">
+                  '.$row['first_name'].'
+                  </a>
+                  <span class="chat_date">Dec 25</span>
+                  
+                  <p>Test, which is a new approach to have all solutions 
+                    astrology under one roof.</p>
+                   
+                </div>
+              </div>
+			</div>
+			';
+			}
+		}
+	}
+	else
+	{
+    include './src/php/dbh.php';
+		$sql="SELECT * FROM student_register";
+		$res = mysqli_query($conn,$sql);
+		if($res)
+		{
+			while($row=mysqli_fetch_assoc($res))
+			{
+	echo '
+  <div class="chat_list">
+	  <div class="chat_people">
+		<div class="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
+    <div class="chat_ib">
+    <a href="student_select.php?uid='.$row['uid'].'&company_id='.$_SESSION['id'].'&user='.$_SESSION['user'].'">
+    '.$row['first_name'].'
+    </a>
+		  <p>Test, which is a new approach to have all solutions 
+			astrology under one roof.</p>
+		</div>
+	  </div>
+	</div>
+	';
+	}
+}
+
+	}
+			?>
+          </div>
+        </div>
+    </div>
     </body>
     </html>

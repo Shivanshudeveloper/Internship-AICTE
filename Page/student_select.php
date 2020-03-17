@@ -1,20 +1,10 @@
-<?php
-    session_start(); 
-    if(!isset($_SESSION['id']))
-    {
-        header("location:login.php?tak=PlseLogin");
-    }
-    else
-    {
-  include 'includes/header_student.inc.php';      
-$uid=$_SESSION['id'];
-    }
-?>
-
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <!------ Include the above in your HEAD tag ---------->
+
+<?php 
+if(!isset($_SESSION['loggedIn']))
+
+include 'includes/header_corporate.inc.php';?>
+
 <html>
 
 <head>
@@ -23,8 +13,6 @@ $uid=$_SESSION['id'];
         rel="stylesheet">
 
 </head>
-
-
 <style>
 .container {
     max-width: 100%;
@@ -260,7 +248,6 @@ img {
 <body>
     <div class="container">
         <h3 class=" text-center">Messaging</h3>
-        <!-- <button type="button" class="btn btn-primary">create Thread</button> -->
 
         <div class="messaging">
             <div class="inbox_msg">
@@ -269,112 +256,114 @@ img {
                         <div class="recent_heading">
                             <h4>Recent</h4>
                         </div>
-                        <div class="srch_bar">
-                            <div class="stylish-input-group">
-                                <input type="text" class="search-bar" placeholder="Search">
-                                <span class="input-group-addon">
-                                    <button type="button"> <i class="fa fa-search" aria-hidden="true"></i> </button>
-                                </span> </div>
-                        </div>
+                        <br>
                     </div>
-                    <div class="dropdown">
-                        <form method="POST">
-                            <select class="form-control" name="id1" id="id1">
-                                <option value="Hold">Hold</option>
-                                <option value="Reject">Reject</option>
-                                <option value="Accept">Accept</option>
-                            </select>
-                    </div>
-
 
                     <div class="inbox_chat">
                         <?php
-                    include './src/php/dbh.php';
-                    $sql = "select * from corporate_register";
-                    $res= mysqli_query($conn,$sql);
-                if($res)
-                {
-                    while($row=mysqli_fetch_assoc($res))
-                    {
-                    echo'
-                        <div class="chat_list">
-                            <div class="chat_people">
-                                <div class="chat_img"> <img
-                                        src="https://agsol.com/wp-content/uploads/2018/09/new-microsoft-logo-SIZED-SQUARE.jpg"
-                                        alt="sunil">
-                                </div>
-                                <div class="chat_ib">
-                                    <h5>
-                                        <a href="user_select.php?company_id='.$row['uid'].'&uid='.$_SESSION['id'].'&user='.$_SESSION['user'].'">
-                                            '.$row['organization'].'
-                                        </a>
-                                        <span class="chat_date"></span></h5>
-                                    <p>Test, which is a new approach to have all solutions
-                                        astrology under one roof.</p>
-                                    <button>hold</button>
-                                </div>
-                            </div>
-                        </div>';
-                    }
-                }
-                        ?>
+            include './src/php/dbh.php';
+            
+            $id=$_GET['uid'];
+        $sql="SELECT * FROM student_register where uid='$id'"; 
+        $res = mysqli_query($conn,$sql);
+		if($res)
+		{
+			while($row=mysqli_fetch_assoc($res))
+			{
+	    echo '
+
+	<div class="chat_list">
+	  <div class="chat_people">
+		<div class="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
+		<div class="chat_ib">
+		  <h5>'.$row['first_name'].'<span class="chat_date">Dec 25</span></h5>
+		  <p>Test, which is a new approach to have all solutions 
+			astrology under one roof.</p>
+		</div>
+	  </div>
+	</div>
+	';
+	}
+}
+			?>
                     </div>
                 </div>
+                <div class="mesgs">
+                    <div class="msg_history" id="message-area">
+                    </div>
+                    <div class="type_msg">
+                        <div class="input_msg_write">
+                            <input type="text" class="write_msg" id="msg" name="msg" placeholder="Type a message" />
+                            <button class="msg_send_btn" type="button"><i class="fa fa-paper-plane-o" aria-hidden="true"
+                                    name="submit" id="submit" onclick="sendMsg()"></i></button>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <a href="#!">Job Title</a>
+                                <a href="#!">Location</a>
+                                <button class="btn btn-sm btn-primary">Hold</button>
+                                <button class="btn btn-sm btn-primary">Reject</button>
+                                <button class="btn btn-sm btn-primary">Call for Interview</button>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="btn btn-sm btn-info" type="button"><i class="fa fa-camera-retro fa-lg"
+                            aria-hidden="true"></i></button>
+                    <button class="btn btn-sm btn-info" type="button"><i class="fa fa-file"
+                            aria-hidden="true"></i></button>
+                </div>
+                </form>
+            </div>
         </div>
     </div>
-    </div>
-
-
-    <script>
-    function new1()
-    {
-        $("#file").click();
-    }
-    const sendMsg = () => {
-        var message = $("#message").val();
-        date = new Date();
-        var pageURL = window.location.href;
-        url = new URL(pageURL);
-        company_id = url.searchParams.get("company_id");
-        uid = url.searchParams.get("uid");
-        userName = url.searchParams.get("user");
-        console.log(userName)
-        if (!message) {
-            console.log("No Message Found")
-        } else {
-            $.post("./src/php/main.php", {
-                user: userName,
-                message: message,
-                company_id: company_id,
-                uid: uid,
-                date: date,
-                messageSend: true
-            }).then(() => {
-                console.log("Inserted!")
-            })
-        }
-        clearTextArea()
-    }
-
-    const clearTextArea = () => {
-        document.getElementById("message").value = ""
-        console.log("Cleared")
-    }
-
-    var pageURL = window.location.href;
-    url = new URL(pageURL);
-    company_id = url.searchParams.get("company_id");
-    userName = url.searchParams.get("user");
-    userId = url.searchParams.get("uid");
-    setInterval(() => {
-        $("#message-area").load("./src/php/main.php", {
-            company_id: company_id,
-            userId: userId,
-            userName: userName,
-            loadData: true
-        })
-    }, 1000)
-    </script>
 </body>
 
 </html>
+<script>
+const sendMsg = () => {
+    var message = $("#msg").val();
+    date = new Date();
+    var pageURL = window.location.href;
+    url = new URL(pageURL);
+    student_id = url.searchParams.get("uid");
+    uid = url.searchParams.get("company_id");
+    userName = url.searchParams.get("user");
+    console.log(userName)
+    if (!message) {
+        console.log("No Message Found")
+    } else {
+        $.post("./src/php/main.php", {
+            user: userName,
+            message: message,
+            student_id: student_id,
+            uid: uid,
+            date: date,
+            messageSendByCompany: true
+        }).then(() => {
+            console.log("Inserted!")
+        })
+    }
+    //clearTextArea()
+}
+
+const clearTextArea = () => {
+    document.getElementById("msg").value = " "
+    console.log("Cleared")
+}
+
+var pageURL = window.location.href;
+url = new URL(pageURL);
+student_id = url.searchParams.get("uid");
+userName = url.searchParams.get("user");
+console.log(userName);
+userId = url.searchParams.get("company_id");
+setInterval(() => {
+    $("#message-area").load("./src/php/main.php", {
+        student_id: student_id,
+        userId: userId,
+        userName: userName,
+        loadDataStudent: true
+    })
+
+}, 1000)
+</script>

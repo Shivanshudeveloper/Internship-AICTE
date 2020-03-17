@@ -65,7 +65,11 @@ if (isset($_POST['industryProblem_btn'])) {
     $certificate = mysqli_real_escape_string($conn, $_POST['certificate']);
     $level = mysqli_real_escape_string($conn, $_POST['level']);
 
+<<<<<<< HEAD
+    
+=======
     $uid = "PROBLEM_STATEMENT_".time().uniqid();
+>>>>>>> ffc377c3da50b4d93b79eb760f5288e90671f948
 
     
     $company_uid = "12345678";
@@ -75,6 +79,63 @@ if (isset($_POST['industryProblem_btn'])) {
     header('Location: ../../solutions.php');
 }
 
+<<<<<<< HEAD
+if (isset($_POST['messageSend'])) {
+    $uid=mysqli_real_escape_string($conn,$_POST['userId']);
+    $user = mysqli_real_escape_string($conn, $_POST['user']);
+    $message = mysqli_real_escape_string($conn, $_POST['message']);
+    $company_id = mysqli_real_escape_string($conn, $_POST['company_id']);
+    $uid = mysqli_real_escape_string($conn, $_POST['uid']);
+    $date = mysqli_real_escape_string($conn, $_POST['date']);
+    $msg_from=mysqli_real_escape_string($conn,$_POST['']);
+    $msg_from_name="";
+    $sql = "INSERT INTO `message`(`id`,`company_id`, `uid`, `msg_from`, `msg_from_name`, `msg`, `msg_date`) VALUES ('$company_id', '$uid', '$user','$msg_from','$msg_from_name', '$message', '$date');";
+$res=mysqli_query($conn,$sql);
+}
+
+if(isset($_POST['loadData']))
+{
+$sql1="SELECT * FROM message";
+$res1=mysqli_query($conn,$sql1);
+while($row=mysqli_fetch_assoc($res1))
+{
+echo '
+<div class="incoming_msg">
+
+<div class="incoming_msg_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> 
+</div>
+'.$row['uid'].'
+<div class="received_msg">
+  <div class="received_withd_msg">
+    <p>'.$row['msg'].'</p>
+    <span class="time_date"> 11:01 AM    |    Today</span></div>
+</div>
+</div>
+';
+}
+}
+
+if(isset($_POST['loadData_company']))
+{
+$sql1="SELECT `msg` FROM message";
+$res1=mysqli_query($conn,$sql1);
+while($row=mysqli_fetch_assoc($res1))
+{
+echo '
+<div class="incoming_msg">
+<div class="incoming_msg_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
+<div class="received_msg">
+  <div class="received_withd_msg">
+    <p>'.$row['msg'].'</p>
+    <span class="time_date"> 11:01 AM    |    Today</span></div>
+</div>
+</div>
+';
+}
+}
+
+?>
+=======
 if (isset($_POST['solutionSubmit_btn'])) {
     $problemUid = mysqli_real_escape_string($conn, $_GET['p_uid']);
 
@@ -89,3 +150,4 @@ if (isset($_POST['solutionSubmit_btn'])) {
     mysqli_query($conn, $sql);
     header('Location: ../../solutions.php');
 }
+>>>>>>> ffc377c3da50b4d93b79eb760f5288e90671f948
