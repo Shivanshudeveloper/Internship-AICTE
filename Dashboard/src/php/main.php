@@ -65,11 +65,7 @@ if (isset($_POST['industryProblem_btn'])) {
     $certificate = mysqli_real_escape_string($conn, $_POST['certificate']);
     $level = mysqli_real_escape_string($conn, $_POST['level']);
 
-<<<<<<< HEAD
     
-=======
-    $uid = "PROBLEM_STATEMENT_".time().uniqid();
->>>>>>> ffc377c3da50b4d93b79eb760f5288e90671f948
 
     
     $company_uid = "12345678";
@@ -79,7 +75,6 @@ if (isset($_POST['industryProblem_btn'])) {
     header('Location: ../../solutions.php');
 }
 
-<<<<<<< HEAD
 if (isset($_POST['messageSend'])) {
     $uid=mysqli_real_escape_string($conn,$_POST['userId']);
     $user = mysqli_real_escape_string($conn, $_POST['user']);
@@ -90,7 +85,7 @@ if (isset($_POST['messageSend'])) {
     $msg_from=mysqli_real_escape_string($conn,$_POST['']);
     $msg_from_name="";
     $sql = "INSERT INTO `message`(`id`,`company_id`, `uid`, `msg_from`, `msg_from_name`, `msg`, `msg_date`) VALUES ('$company_id', '$uid', '$user','$msg_from','$msg_from_name', '$message', '$date');";
-$res=mysqli_query($conn,$sql);
+    $res=mysqli_query($conn,$sql);
 }
 
 if(isset($_POST['loadData']))
@@ -135,19 +130,3 @@ echo '
 }
 
 ?>
-=======
-if (isset($_POST['solutionSubmit_btn'])) {
-    $problemUid = mysqli_real_escape_string($conn, $_GET['p_uid']);
-
-    $student = mysqli_real_escape_string($conn, $_POST['student']);
-    $qualification = mysqli_real_escape_string($conn, $_POST['qualification']);
-    $skills = mysqli_real_escape_string($conn, $_POST['skills']);
-    $solutions = mysqli_real_escape_string($conn, $_POST['solutions']);
-
-    $uid = "SOLUTIONS_".time().uniqid();
-
-    $sql = "INSERT INTO solutions (uid ,problem_uid ,student, qualification, skills, solutions) VALUES ('$uid' ,'$problemUid', '$student', '$qualification', '$skills', '$solutions');";
-    mysqli_query($conn, $sql);
-    header('Location: ../../solutions.php');
-}
->>>>>>> ffc377c3da50b4d93b79eb760f5288e90671f948

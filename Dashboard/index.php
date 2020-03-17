@@ -52,7 +52,7 @@ include './includes/header.inc.php'
             <!-- small box -->
             <div class="small-box bg-success">
               <div class="inner">
-                <h3>253</h3>
+                <h3>254</h3>
 
                 <p>Total Internships</p>
               </div>
