@@ -61,7 +61,9 @@
                                     </p>
                 
                                 </span>
-                                <h3 class="card-title">'.$row['title'].'</h3>
+                                <h1 class="card-title">Company Name: '.$row['company'].'</h1>
+                                <br />
+                                <h3 class="card-title">Title: '.$row['title'].'</h3>
                                 <br>
                                 <h5 class="mt-2">
                                 <span class="badge badge-info">
@@ -69,6 +71,7 @@
                                 </span>
                                 </h5>
                                 <h6 class="mt-2">Domain: '.$row['domain'].'</h6>
+                                <h6 class="mt-2 font-weight-bold text-success">Stipend: Rs. '.$row['stipend'].'</h6>
                                 <h6 class="mt-2">Working Hours: '.$row['hours'].'</h6>
 
                                 <h6 class="mt-2">Starting From: '.$row['start'].'</h6>
@@ -83,7 +86,7 @@
                                 <p class="card-text mt-2">
                                     '.$row['description'].'
                                 </p>
-                                <a href="./apply.php?uid='.$row['uid'].'" class="btn btn-primary">Apply</a>
+                                <a href="./apply.php?uid='.$row['uid'].'" class="btn btn-primary">Accept</a>
                                 <a href="#" class="btn btn-danger">Reject</a>
                             </div>
                             </div>

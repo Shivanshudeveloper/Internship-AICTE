@@ -311,20 +311,20 @@
 
                   <div class="form-group">
                     <label for="exampleInputEmail1">Spoken Languages Requiried</label>
-                    <input type="number" class="form-control" id="languages" name="languages">
+                    <input type="text" class="form-control" id="languages" name="languages">
                   </div>
 
                   <div class="row">
                       <div class="col">
                         <div class="form-group">
                             <label for="exampleInputEmail1">Starting from</label>
-                            <input type="date" class="form-control" id="start" name="start">
+                            <input type="date" class="form-control" id="startdate" name="startdate">
                         </div>
                       </div>
                       <div class="col">
                         <div class="form-group">
                             <label for="exampleInputEmail1">End At</label>
-                            <input type="type" class="form-control" id="end" name="end" >
+                            <input type="date" class="form-control" id="end" name="end" >
                         </div>
                       </div>
                   </div>

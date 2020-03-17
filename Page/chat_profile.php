@@ -1,6 +1,8 @@
 
 <!------ Include the above in your HEAD tag ---------->
-<?php include 'includes/header_corporate.inc.php';?>
+<?php 
+session_start();
+include 'includes/header_corporate.inc.php';?>
 <html>
 <head>
 
@@ -159,9 +161,7 @@ img{ max-width:100%;}
 </style>
 <body>
 <div class="container">
-<h3 class=" text-center">Messaging</h3>
-<button type="button" class="btn btn-primary">create Thread</button>
-
+<h3 class=" text-center">Messaging</h3> 
 <div class="messaging">
       <div class="inbox_msg">
         <div class="inbox_people">
@@ -192,13 +192,11 @@ img{ max-width:100%;}
           
           <div class="inbox_chat">
             <?php
+if(isset($_POST['submit_search']))
+{
 			include './src/php/dbh.php';
 
-			if (isset($_POST['submit_search'])) {
-				$val1 = $_POST['id1'];
-				$val2 = $_POST['id2'];
-
-				$sql="SELECT * FROM student_register WHERE category='$val1' and status='$val2'";
+				$sql="SELECT * FROM student_register";
 				$res = mysqli_query($conn,$sql);
 				if($res)
 				{
@@ -209,11 +207,15 @@ img{ max-width:100%;}
               <div class="chat_people">
                 <div class="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
                 <div class="chat_ib">
-                <a href="student_select.php">
-                  <h5>'.$row['first_name'].'<span class="chat_date">Dec 25</span></h5>
+                 
+                  <a href="student_select.php?uid='.$row['uid'].'company_id='.$_SESSION['id'].'&user='.$_SESSION['user'].'">
+                  '.$row['first_name'].'
+                  </a>
+                  <span class="chat_date">Dec 25</span>
+                  
                   <p>Test, which is a new approach to have all solutions 
                     astrology under one roof.</p>
-                    </a>
+                   
                 </div>
               </div>
 			</div>
@@ -223,6 +225,7 @@ img{ max-width:100%;}
 	}
 	else
 	{
+    include './src/php/dbh.php';
 		$sql="SELECT * FROM student_register";
 		$res = mysqli_query($conn,$sql);
 		if($res)
@@ -234,7 +237,9 @@ img{ max-width:100%;}
 	  <div class="chat_people">
 		<div class="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
     <div class="chat_ib">
-      <h5>'.$row['first_name'].'<span class="chat_date">Dec 25</span></h5>
+    <a href="student_select.php?uid='.$row['uid'].'&company_id='.$_SESSION['id'].'&user='.$_SESSION['user'].'">
+    '.$row['first_name'].'
+    </a>
 		  <p>Test, which is a new approach to have all solutions 
 			astrology under one roof.</p>
 		</div>
@@ -248,76 +253,6 @@ img{ max-width:100%;}
 			?>
           </div>
         </div>
-       <div class="mesgs">
-          <div class="msg_history"id="message-area">
-		  			</div> 
-          <div class="type_msg">
-            <div class="input_msg_write">
-			 <input type="text" class="write_msg" id="msg" name="msg" placeholder="Type a message" />
-              <button class="msg_send_btn" type="button"><i class="fa fa-paper-plane-o" aria-hidden="true"name="submit" id="submit" onclick="sendMsg()" ></i></button>
-			  </div>
-            <div class="row">
-              <div class="col">
-                <a href="#!">Job Title</a>
-                <a href="#!">Location</a>
-                <button class="btn btn-sm btn-primary">Hold</button>
-                <button class="btn btn-sm btn-primary">Reject</button>
-                <button class="btn btn-sm btn-primary">Call for Interview</button>
-              </div>
-            </div>
-           </div>
-           <button class="btn btn-sm btn-info" type="button"><i class="fa fa-camera-retro fa-lg" aria-hidden="true"></i></button>
-           <button class="btn btn-sm btn-info" type="button"><i class="fa fa-file" aria-hidden="true"></i></button>
-        </div>
-		</form>
-      </div> 
-    </div></div>
+    </div>
     </body>
     </html>
-
-	<script>
-const sendMsg = () => {
-    var message = document.getElementById("msg").value;  
-    console.log(message)
-        date = new Date()
-    var pageURL = window.location.href;
-        url = new URL(pageURL);
-        projectId = 'company';
-        userId = 'company';
-        userName = 'company';
-    if (!message) {
-        console.log("No Message Found")
-    } else {
-        $.post("./src/php/main.php", {
-            company_id:"company",
-            userId: userId,
-            user: userName,
-            message: message,
-            date: date,
-            messageSend: true
-        }).then(() => {
-            console.log("Inserted!")
-        })
-    }
-   // clearTextArea() 
-}
-
-const clearTextArea = () => {
-    document.getElementById("message").value = ""
-    console.log("Cleared")
-}
-
-var pageURL = window.location.href;
-    url = new URL(pageURL);
-    projectId = url.searchParams.get("projectId");
-    userName = url.searchParams.get("userName");
-    userId = url.searchParams.get("userId");
-setInterval(() => {
-  $("#message-area").load("./src/php/main.php", {
-    projectId: projectId,
-    userId: userId,
-    userName: userName,
-    loadData: true
-  })
-}, 1000)
-</script>

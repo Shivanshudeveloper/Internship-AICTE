@@ -290,16 +290,15 @@ img {
 
 
                     <div class="inbox_chat">
-                    <?php 
-                     include './src/php/dbh.php';
-                     $id=$_GET['company_id'];
-                     $sql = "select * from corporate_register where uid='$id'";
-                     $res= mysqli_query($conn,$sql);
-                 if($res)
-                 {
-                     while($row=mysqli_fetch_assoc($res))
-                     {
-                        echo'
+                        <?php
+                    include './src/php/dbh.php';
+                    $sql = "select * from corporate_register";
+                    $res= mysqli_query($conn,$sql);
+                if($res)
+                {
+                    while($row=mysqli_fetch_assoc($res))
+                    {
+                    echo'
                         <div class="chat_list">
                             <div class="chat_people">
                                 <div class="chat_img"> <img
@@ -308,9 +307,9 @@ img {
                                 </div>
                                 <div class="chat_ib">
                                     <h5>
-                                        
+                                        <a href="user_select.php?company_id='.$row['uid'].'&uid='.$_SESSION['id'].'&user='.$_SESSION['user'].'">
                                             '.$row['organization'].'
-
+                                        </a>
                                         <span class="chat_date"></span></h5>
                                     <p>Test, which is a new approach to have all solutions
                                         astrology under one roof.</p>
@@ -318,13 +317,9 @@ img {
                                 </div>
                             </div>
                         </div>';
-                     }
+                    }
                 }
-                else
-                {
-                    echo "Error";
-                }
-                        ?>  
+                        ?>
                     </div>
                 </div>
                 <div class="mesgs">
@@ -396,18 +391,13 @@ img {
     </div>
     </div>
     <script>
-  /*  function sendMsg()
-   {
-       alert("clicked");
-   } */
-    const sendMsg = () => {
+  const sendMsg = () => {
         var message = $("#message").val();
         date = new Date();
-        console(message);
         var pageURL = window.location.href;
         url = new URL(pageURL);
         company_id = url.searchParams.get("company_id");
-        uid = url.searchParams.get("uid");
+        userId = url.searchParams.get("uid");
         userName = url.searchParams.get("user");
         console.log(userName)
         if (!message) {
@@ -417,18 +407,18 @@ img {
                 user: userName,
                 message: message,
                 company_id: company_id,
-                uid: uid,
+                userId: userId,
                 date: date,
-                messageSend: true
+                messageSendByStudent: true
             }).then(() => {
                 console.log("Inserted!")
             })
         }
-        clearTextArea()
-    }
+       // clearTextArea()
+    } 
 
     const clearTextArea = () => {
-        document.getElementById("message").value = ""
+        document.getElementById("message").value = " "
         console.log("Cleared")
     }
 
@@ -436,10 +426,9 @@ img {
     url = new URL(pageURL);
     company_id = url.searchParams.get("company_id");
     userName = url.searchParams.get("user");
-    console.log(userName);
     userId = url.searchParams.get("uid");
     setInterval(() => {
-        $("#message-area").load("./src/php/main.php", {
+$("#message-area").load("./src/php/main.php", {
             company_id: company_id,
             userId: userId,
             userName: userName,

@@ -26,7 +26,7 @@
       <!-- Default box -->
       <div class="card">
         <div class="card-header">
-          <h3 class="card-title">Interviews</h3>
+          <h3 class="card-title">Accepted</h3>
 
           <div class="card-tools">
             <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
@@ -38,7 +38,9 @@
 
         <?php 
             include './src/php/dbh.php';
-            $uid = $_GET['uid'];
+            $stuId = $_GET['stuId'];
+            $uid = $_GET['internshipId'];
+
 
             $sql = "SELECT * FROM internhips WHERE uid = '$uid';";
             $result = mysqli_query($conn, $sql);
@@ -50,7 +52,13 @@
                 $description = $row['description'];
 
 
+                $sql = "UPDATE internhip_apply SET status = 'Interview Accepted' WHERE student_uid = '$stuId' AND internship_uid = '$uid';";
+                mysqli_query($conn, $sql);
+
+
                 $sql = "SELECT * FROM internhip_apply WHERE internship_uid = '$uid';";
+                $result = mysqli_query($conn, $sql);
+                
                 $result = mysqli_query($conn, $sql);
                 $resultChk = mysqli_num_rows($result);
                 if ($resultChk < 1) {
@@ -59,9 +67,6 @@
                     ';
                 } else {
                     while ($row = mysqli_fetch_assoc($result)) {
-                        $status = $row['status'];
-
-
                         $studentId = $row['student_uid'];
                         $sql = "SELECT * FROM student_register WHERE uid = '$studentId';";
                         $result = mysqli_query($conn, $sql);
@@ -82,49 +87,20 @@
                                         <p class="card-text mt-2">
                                             '.$description.'
                                         </p>
-                                        ';
-                                        if ($status == "Interview Accepted") {
-                                            echo '
-                                                <div class="alert alert-info m-2" role="alert">
-                                                    '.$status.'
-                                                </div>
-                                                <a href="./holdInterview.php?stuId='.$studentId.'&internshipId='.$uid.'" class="btn ml-2 btn-warning">Put On Hold</a>
+
+                                        <div class="alert alert-success m-2" role="alert">
+                                            Accepted for Interview
+                                        </div>
 
 
-                                                </div>
-                                                </div>
-                                            </div>
-                                            
-                                            ';
-                                            
-                                        } elseif ($status == "Internship On Hold") {
-                                            echo '
-                                                <div class="alert alert-info m-2" role="alert">
-                                                    '.$status.'
-                                                </div>
-                                                <a href="./acceptInterview.php?stuId='.$studentId.'&internshipId='.$uid.'" class="btn ml-2 btn-success">Accept Interview</a>
-
-
-                                                </div>
-                                                </div>
-                                            </div>';
-                                        } else {
-                                            echo '
-                                                    <a href="./acceptInterview.php?stuId='.$studentId.'&internshipId='.$uid.'"  class="btn btn-primary">Accept for Interview</a>
-                                                    <a href="./holdInterview.php?stuId='.$studentId.'&internshipId='.$uid.'" class="btn btn-info">Hold</a>
-                                                    <a href="#" class="btn btn-danger">Reject</a>
-                                                </div>
-                                                </div>
-                                            </div>
-                                            ';
-                                        }
-                                        
-                                        
+                                    </div>
+                                    </div>
+                                </div>
+                            ';
                         }
                     }
                 }
             }
-
             
 
 

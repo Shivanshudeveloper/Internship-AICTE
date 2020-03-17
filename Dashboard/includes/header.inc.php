@@ -174,14 +174,14 @@
             </a>
           </li>
 
-          <li class="nav-item">
+          <!-- <li class="nav-item">
             <a href="./interviews.php" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>
                 Interviews
               </p>
             </a>
-          </li>
+          </li> -->
 
           <li class="nav-item">
             <a href="./interview_management.php" class="nav-link">

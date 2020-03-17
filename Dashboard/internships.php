@@ -45,129 +45,56 @@
                       <th style="width: 10px">#</th>
                       <th>Title</th>
                       <th>Start Date</th>
-                      <th>Applications</th>
                       <th>Assign Role</th>
                       <th>Workspace</th>
                       <th>Actions</th>
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td>1.</td>
-                      <td>
-                          <a href="#!">
-                              Internship 1
-                          </a>
-                      </td>
-                      <td>
-                        <div class="">
-                          2/03/2020
-                        </div>
-                      </td>
-                      <td><span class="">2 Applications</span></td>
-                      <td>
-                          <button class="btn btn-sm btn-info">
-                              Assign Role
-                          </button>
-                      </td>
-                      <td>
-                          <a href="./workspace.php" class="btn btn-sm btn-success">
-                              Go to Workspace
-                          </a>
-                      </td>
-                      <td>
-                          <button class="btn btn-sm btn-danger">
-                              Delete
-                          </button>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>1.</td>
-                      <td>
-                          <a href="#!">
-                              Internship 2
-                          </a>
-                      </td>
-                      <td>
-                        <div class="">
-                          2/03/2020
-                        </div>
-                      </td>
-                      <td><span class="">2 Applications</span></td>
-                      <td>
-                          <button class="btn btn-sm btn-info">
-                              Assign Role
-                          </button>
-                      </td>
-                      <td>
-                          <a href="./workspace.php" class="btn btn-sm btn-success">
-                              Go to Workspace
-                          </a>
-                      </td>
-                      <td>
-                          <button class="btn btn-sm btn-danger">
-                              Delete
-                          </button>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>3.</td>
-                      <td>
-                          <a href="#!">
-                              Internship 1
-                          </a>
-                      </td>
-                      <td>
-                        <div class="">
-                          2/03/2020
-                        </div>
-                      </td>
-                      <td><span class="">2 Applications</span></td>
-                      <td>
-                          <button class="btn btn-sm btn-info">
-                              Assign Role
-                          </button>
-                      </td>
-                      <td>
-                          <a href="./workspace.php" class="btn btn-sm btn-success">
-                              Go to Workspace
-                          </a>
-                      </td>
-                      <td>
-                          <button class="btn btn-sm btn-danger">
-                              Delete
-                          </button>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>4.</td>
-                      <td>
-                          <a href="#!">
-                              Internship 1
-                          </a>
-                      </td>
-                      <td>
-                        <div class="">
-                          2/03/2020
-                        </div>
-                      </td>
-                      <td>2 Applications</td>
-                      <td>
-                          <button class="btn btn-sm btn-info">
-                              Assign Role
-                          </button>
-                      </td>
-                      <td>
-                          <a href="./workspace.php" class="btn btn-sm btn-success">
-                              Go to Workspace
-                          </a>
-                      </td>
-                      <td>
-                          <button class="btn btn-sm btn-danger">
-                              Delete
-                          </button>
-                      </td>
-                    </tr>
+                    <?php 
+                      include './src/php/dbh.php';
+
+                      $sql = "SELECT * FROM internhips WHERE company_id = '12345678';";
+                      $result = mysqli_query($conn, $sql);
+                      while ($row = mysqli_fetch_assoc($result)) {
+                        echo '
+                        <tr>
+                          <td>'.$row['id'].'</td>
+                          <td>
+                              <a href="./interviews.php?uid='.$row['uid'].'">
+                              '.$row['title'].'
+                              </a>
+                          </td>
+                          <td>
+                            <div class="">
+                            '.$row['start'].'
+                            </div>
+                          </td>
+                          <td>
+                              <button class="btn btn-sm btn-info">
+                                  Assign Role
+                              </button>
+                          </td>
+                          <td>
+                              <a href="./workspace.php" class="btn btn-sm btn-success">
+                                  Go to Workspace
+                              </a>
+                          </td>
+                          <td>
+                              <button class="btn btn-sm btn-danger">
+                                  Delete
+                              </button>
+                          </td>
+                        </tr>
+                        
+                        ';
+                      }
+                    
+                    ?>
+
+
+                    
+                    
                   </tbody>
                 </table>
               </div>

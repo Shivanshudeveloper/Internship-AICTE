@@ -79,7 +79,6 @@ if ($username && $password) {
         if($username == $dbusername && $password == $dbpassword) 
         {
             $_SESSION['email'] = $username;
-            $_SESSION['login']=1;
             $_SESSION['id']=$id;
             $_SESSION['user']=$user;
             $_SESSION['loggedIn']=1;
@@ -239,9 +238,10 @@ $expiration_date=mysqli_real_escape_string($conn,$_POST['expiration_date']);
     header("Location:../../post_internship.php?task=unsuccessful");
 }
 }
-if (isset($_POST['loadData'])) {
+if (isset($_POST['loadUserStudent'])) {
     $projectId = mysqli_real_escape_string($conn, $_POST['company_id']);
-    $sql = "SELECT * FROM message ;";
+    $userId = mysqli_real_escape_string($conn, $_POST['userId']);
+    $sql = "SELECT * FROM message where msg_from ='$userId' and msg_to='$projectId';";
     $result = mysqli_query($conn, $sql);
     $resultChk = mysqli_num_rows($result);
     if ($resultChk < 1) {
@@ -274,7 +274,8 @@ if (isset($_POST['loadData'])) {
 
 if (isset($_POST['loadDataCompany'])) {
     $projectId = mysqli_real_escape_string($conn, $_POST['company_id']);
-    $sql = "SELECT * FROM message where company_id ='$projectId';";
+    $userId=    mysqli_real_escape_string($conn, $_POST['userId']);
+    $sql = "SELECT * FROM message where msg_from ='$projectId' and msg_to='$userId';";
     $result = mysqli_query($conn, $sql);
     $resultChk = mysqli_num_rows($result);
     if ($resultChk < 1) {
@@ -304,9 +305,11 @@ if (isset($_POST['loadDataCompany'])) {
     }
 }
 
+
 if (isset($_POST['loadDataStudent'])) {
-    $projectId = mysqli_real_escape_string($conn, $_POST['company_id']);
-    $sql = "SELECT * FROM message ;";
+    $projectId = mysqli_real_escape_string($conn, $_POST['student_id']);
+    $userId = mysqli_real_escape_string($conn, $_POST['userId']);
+    $sql = "SELECT * FROM message where msg_from='$userId' or msg_to='$projectId' ;";
     $result = mysqli_query($conn, $sql);
     $resultChk = mysqli_num_rows($result);
     if ($resultChk < 1) {
@@ -337,20 +340,58 @@ if (isset($_POST['loadDataStudent'])) {
     }
 }
 
+if (isset($_POST['loadUserCompany'])) {
+    $projectId = mysqli_real_escape_string($conn, $_POST['student_id']);
+    $userId = mysqli_real_escape_string($conn, $_POST['userId']);
+    $sql = "SELECT * FROM message where msg_from='$userId' or msg_to='$projectId' ;";
+    $result = mysqli_query($conn, $sql);
+    $resultChk = mysqli_num_rows($result);
+    if ($resultChk < 1) {
+        echo '
+        <span class="">
+            <p class="h4 text-center" style="margin-top: 15%;">No Message Yet</p>
+            <!-- <img src="https://media1.giphy.com/media/eonIj5bw871io/source.gif" class="img-fluid w-50" alt="No Message" srcset=""> -->
+        </span>
+        ';
+    } else {
+        while ($row = mysqli_fetch_assoc($result)) {
+            echo '
+            <div class="incoming_msg">
+            <div class="incoming_msg_img"> <img src="https://ptetutorials.com/images/user-profile.png"
+                    alt="sunil"> 
+                    </div>
+                    '.$row['msg_from_name'].'
+            <div class="received_msg">
+                <div class="received_withd_msg">
+                    <p>'.$row['msg'].'</p>
+                    <span class="time_date"> 11:01 AM | Today</span>
+                </div>
+            </div>
+        </div>
+    </div>
+            ';
+        }
+    }
+}
 
 // @POST Request for sending Message
-if (isset($_POST['messageSend'])) {
+if (isset($_POST['messageSendByCompany'])) {
+    $user = mysqli_real_escape_string($conn, $_POST['user']);
+    $message = mysqli_real_escape_string($conn, $_POST['message']);
+    $projectId = mysqli_real_escape_string($conn, $_POST['student_id']);
+    $userId = mysqli_real_escape_string($conn, $_POST['uid']);
+    $date = mysqli_real_escape_string($conn, $_POST['date']);
+    $sql = "INSERT INTO message (msg_to, msg_from, msg_from_name, msg, msg_date) VALUES ('$projectId', '$userId', '$user', '$message','$date');";
+$res = mysqli_query($conn, $sql);
+}
+
+if (isset($_POST['messageSendByStudent'])) {
     $user = mysqli_real_escape_string($conn, $_POST['user']);
     $message = mysqli_real_escape_string($conn, $_POST['message']);
     $projectId = mysqli_real_escape_string($conn, $_POST['company_id']);
-    $userId = mysqli_real_escape_string($conn, $_POST['uid']);
+    $userId = mysqli_real_escape_string($conn, $_POST['userId']);
     $date = mysqli_real_escape_string($conn, $_POST['date']);
-    $sql = "INSERT INTO message (company_id, msg_from, msg_from_name, msg, msg_date) VALUES ('$projectId', '$userId', '$user', '$message', '$date');";
+    $sql = "INSERT INTO message (msg_to, msg_from, msg_from_name, msg, msg_date) VALUES ('$projectId', '$userId', '$user', '$message','$date');";
 $res = mysqli_query($conn, $sql);
-if($res)
-{
-    echo"Sucessful";
-}
-
 }
 ?>
