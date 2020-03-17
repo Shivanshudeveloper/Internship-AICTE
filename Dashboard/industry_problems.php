@@ -16,18 +16,18 @@
     <div class="card card-4">
     <div class="card-body">
     <h2 class="title">Industries Problem</h2>
-    <form method="POST">
+    <form action="./src/php/main.php" method="POST">
     <div class="row row-space">
     <div class="col-sm-6 col-xs-12">
     <div class="input-group">
     <label class="label">Problem Statement</label>
-    <input class="input--style-4" type="text" name="Problem">
+    <input class="input--style-4" type="text" name="problem">
     </div>
     </div>
     <div class="col-sm-6 col-xs-12 desTextAre">
     <div class="input-group">
     <label class="label">Description</label>
-    <textarea class="textareaSec input--style-4 "></textarea>
+    <textarea name="description" class="textareaSec input--style-4 "></textarea>
 
     </div>
     </div>
@@ -37,7 +37,7 @@
     <div class="input-group">
     <label class="label">Location</label>
     <div class="rs-select2 js-select-simple select--no-search">
-    <select name="subject">
+    <select name="location">
     <option disabled="disabled" selected="selected">Choose Location</option>
     <option>Location 1</option>
     <option>Location 2</option>
@@ -51,7 +51,7 @@
     <div class="input-group">
     <label class="label">Can Research Paper Submission</label>
     <div class="rs-select2 js-select-simple select--no-search">
-    <select name="subject">
+    <select name="research">
     <option disabled="disabled" selected="selected">Choose Subject</option>
     <option>YES</option>
     <option>No</option>
@@ -66,7 +66,7 @@
     <div class="input-group">
     <label class="label">Category of The Problem</label>
     <div class="rs-select2 js-select-simple select--no-search">
-    <select name="subject">
+    <select name="category">
     <option disabled="disabled" selected="selected">Choose Category</option>
     <option>Category 1</option>
     <option>Category 2</option>
@@ -79,7 +79,7 @@
     <div class="input-group">
     <label class="label">Who Can Solve (Individual/Team)</label>
     <div class="rs-select2 js-select-simple select--no-search">
-    <select name="subject">
+    <select name="solveby">
     <option disabled="disabled" selected="selected">Choose Who Can Solve</option>
     <option>Individual</option>
     <option>Team</option>
@@ -94,7 +94,7 @@
     <div class="input-group">
     <label class="label">Student or Researcher</label>
     <div class="rs-select2 js-select-simple select--no-search">
-    <select name="subject">
+    <select name="studentResearcher">
     <option disabled="disabled" selected="selected">Choose option</option>
     <option>Subject 1</option>
     <option>Subject 2</option>
@@ -108,7 +108,7 @@
     <div class="input-group">
     <label class="label">Student Stream</label>
     <div class="rs-select2 js-select-simple select--no-search">
-    <select name="subject">
+    <select name="studentStream">
     <option disabled="disabled" selected="selected">Choose option</option>
     <option>Subject 1</option>
     <option>Subject 2</option>
@@ -123,13 +123,13 @@
     <div class="col-sm-6 col-xs-12">
     <div class="input-group">
     <label class="label">Student Expertise</label>
-    <textarea class="textareaSec input--style-4 "></textarea>
+    <textarea name="studentExpertise" class="textareaSec input--style-4 "></textarea>
     </div>
     </div>
     <div class="col-sm-6 col-xs-12">
     <div class="input-group">
     <label class="label">Work/Research Reference Links</label>
-    <input class="input--style-4" type="text" name="Problem">
+    <input class="input--style-4" type="text" name="workResearch">
     </div>
     </div>
     </div>
@@ -145,11 +145,11 @@
     <label class="label">Stipned if any</label>
     <div class="p-t-10">
     <label class="radio-container m-r-45">Yes
-    <input type="radio" checked="checked" name="yes">
+    <input type="radio" name="stipend" checked="checked" name="yes">
     <span class="checkmark"></span>
     </label>
     <label class="radio-container">No
-    <input type="radio" name="yes">
+    <input type="radio" name="stipend">
     <span class="checkmark"></span>
     </label>
     </div>
@@ -189,7 +189,7 @@
     <div class="input-group">
     <label class="label">Level</label>
     <div class="rs-select2 js-select-simple select--no-search">
-    <select name="subject">
+    <select name="level">
     <option disabled="disabled" selected="selected">Choose option</option>
     <option>6 month</option>
     <option>1 year</option>
@@ -202,7 +202,7 @@
     <div class="col-sm-6 col-xs-12">
     <div class="input-group">
     <label>&nbsp;</label>
-    <input type=button onClick="location.href='solutions.php'" value='Submit' class="btn btn--radius-2 btn--blue">
+    <input type="submit" name="industryProblem_btn" value='Submit' class="btn btn--radius-2 btn--blue">
     </div>
     </div>
     </div>

@@ -18,47 +18,40 @@
             <div class="row row-space solutionsDivLst">
             <div class="col-xs-12">
                 <div class="list-group">
-            <a href="solutions-details.php" class="list-group-item list-group-item-action flex-column align-items-start">
-                <div class="d-flex w-100 justify-content-between listItemDiv">
-                <h5 class="mb-1">Problem Solutions 1</h5>
-                <small class="list-group-item-success solBtn">10 Student Submited Solutions</small><small class="list-group-item-warning viewBtn">20 Student Viewd</small>
-                </div>
-            </a>
-            <a href="solutions-details.php" class="list-group-item list-group-item-action flex-column align-items-start">
-                <div class="d-flex w-100 justify-content-between listItemDiv">
-                <h5 class="mb-1">Problem Solutions 2</h5>
-                <small class="list-group-item-success solBtn">12 Student Submited Solutions</small>
-                <small class="list-group-item-warning viewBtn">10 Student Viewd</small> 
-                </div>
-            </a>
-            <a href="solutions-details.php" class="list-group-item list-group-item-action flex-column align-items-start">
-                <div class="d-flex w-100 justify-content-between listItemDiv">
-                <h5 class="mb-1">Problem Solutions 3</h5>
-                <small class="list-group-item-success solBtn">15 Student Submited Solutions</small>
-                <small class="list-group-item-warning viewBtn">30 Student Viewd</small> 
-                </div>
-            </a>
-            <a href="solutions-details.php" class="list-group-item list-group-item-action flex-column align-items-start">
-                <div class="d-flex w-100 justify-content-between listItemDiv">
-                <h5 class="mb-1">Problem Solutions 1</h5>
-                <small class="list-group-item-success solBtn">10 Student Submited Solutions</small>
-                <small class="list-group-item-warning viewBtn">20 Student Viewd</small> 
-                </div>
-            </a>
-            <a href="solutions-details.php" class="list-group-item list-group-item-action flex-column align-items-start">
-                <div class="d-flex w-100 justify-content-between listItemDiv">
-                <h5 class="mb-1">Problem Solutions 2</h5>
-                <small class="list-group-item-success solBtn">12 Student Submited Solutions</small>
-                <small class="list-group-item-warning viewBtn">10 Student Viewd</small> 
-                </div>
-            </a>
-            <a href="solutions-details.php" class="list-group-item list-group-item-action flex-column align-items-start">
-                <div class="d-flex w-100 justify-content-between listItemDiv">
-                <h5 class="mb-1">Problem Solutions 3</h5>
-                <small class="list-group-item-success solBtn">15 Student Submited Solutions</small>
-                <small class="list-group-item-warning viewBtn">30 Student Viewd</small> 
-                </div>
-            </a>
+
+                <?php 
+                    include './src/php/dbh.php';
+                    $sql = "SELECT * FROM problem_statements";
+                    $result = mysqli_query($conn, $sql);
+                    $resultChk = mysqli_num_rows($result);
+                    if ($resultChk < 1) {
+                        echo '
+                            <center>
+                                <h2>
+                                    No Result Found !
+                                </h2>
+                            </center>
+                        ';
+                    } else {
+                        while ($row = mysqli_fetch_assoc($result)) {
+                            echo '
+                            <a href="solutions-details.php?uid='.$row['uid'].'" class="list-group-item list-group-item-action flex-column align-items-start">
+                                <div class="d-flex w-100 justify-content-between listItemDiv">
+                                <h5 class="mb-1">'.$row['problem'].'</h5>
+                                <small class="list-group-item-success solBtn">12 Student Submited Solutions</small>
+                                <small class="list-group-item-warning viewBtn">10 Student Viewd</small> 
+                                </div>
+                            </a>
+                            ';
+                        }
+                    }
+                ?>
+            
+            
+            
+            
+            
+            
             </div>
             </div>
             </div>
