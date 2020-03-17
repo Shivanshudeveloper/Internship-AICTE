@@ -24,9 +24,7 @@
         
 
       <!-- Default box -->
-        <div class="alert alert-success mt-2 mb-2" role="alert">
-            <b>Successfully applied for internship</b>
-        </div>
+        
 
         
       <div class="card">
@@ -55,55 +53,93 @@
                 $applyId = "APPLY_".time().uniqid();
                 $sql = "INSERT INTO internhip_apply (uid, company_id, student_uid, internship_uid, status) VALUES ('$applyId', '$company_id', 'STUDENT_JDHJKSH786', '$uid', 'No');";
                 mysqli_query($conn, $sql);
-            }
-            
-            
-            
-            $sql = "SELECT * FROM internhips WHERE uid = '$uid';";
-            $result = mysqli_query($conn, $sql);
-            $resultChk = mysqli_num_rows($result);
-            if ($resultChk < 1) {
-                echo '
-                    <center>
-                        <h2>No Result Found</h2>
-                    </center>
-                ';
-            } else {
-                while ($row = mysqli_fetch_assoc($result)) {
-                    echo '
-                        <div class="card-body mt-2">
-                            <div class="card">
-                            <div class="card-body">
-                                <h3 class="card-title">'.$row['title'].'</h3>
-                                <br>
-                                <h5 class="mt-2">
-                                <span class="badge badge-info">
-                                '.$row['keywords'].'
-                                </span>
-                                </h5>
-                                <h6 class="mt-2">Domain: '.$row['domain'].'</h6>
-                                <h6 class="mt-2">Working Hours: '.$row['hours'].'</h6>
 
-                                <h6 class="mt-2">Starting From: '.$row['start'].'</h6>
-                                <h6 class="mt-2">End At: ' .$row['end'].'</h6>
-                                <h6 class="mt-2">Email: ' .$row['email'].'</h6>
-                                <h6 class="mt-2">Address: Microsoft Corporation One Microsoft Way Redmond, WA 98052-6399 USA</h6>
-                                <h6 class="mt-2">Phone No: '.$row['phone'].'</h6>
-                                <br/> 
-                                <h6 class="mt-2">Skill Set: '.$row['attributes'].'</h6>
-                
-                
-                                <p class="card-text mt-2">
-                                    '.$row['description'].'
-                                </p>
+                $sql = "SELECT * FROM internhips WHERE uid = '$uid';";
+                $result = mysqli_query($conn, $sql);
+                $resultChk = mysqli_num_rows($result);
+                while ($row = mysqli_fetch_assoc($result)) {
+                        echo '
+                            <div class="alert alert-success m-2" role="alert">
+                                <b>Successfully applied for internship</b>
                             </div>
+                            <div class="card-body mt-2">
+                                <div class="card">
+                                <div class="card-body">
+                                    <h3 class="card-title">'.$row['title'].'</h3>
+                                    <br>
+                                    <h5 class="mt-2">
+                                    <span class="badge badge-info">
+                                    '.$row['keywords'].'
+                                    </span>
+                                    </h5>
+                                    <h6 class="mt-2">Domain: '.$row['domain'].'</h6>
+                                    <h6 class="mt-2">Working Hours: '.$row['hours'].'</h6>
+
+                                    <h6 class="mt-2">Starting From: '.$row['start'].'</h6>
+                                    <h6 class="mt-2">End At: ' .$row['end'].'</h6>
+                                    <h6 class="mt-2">Email: ' .$row['email'].'</h6>
+                                    <h6 class="mt-2">Address: Microsoft Corporation One Microsoft Way Redmond, WA 98052-6399 USA</h6>
+                                    <h6 class="mt-2">Phone No: '.$row['phone'].'</h6>
+                                    <br/> 
+                                    <h6 class="mt-2">Skill Set: '.$row['attributes'].'</h6>
+                    
+                    
+                                    <p class="card-text mt-2">
+                                        '.$row['description'].'
+                                    </p>
+                                </div>
+                                </div>
                             </div>
+                            
+                            ';
+                    }
+                    
+                
+            } else {
+              $sql = "SELECT * FROM internhips WHERE uid = '$uid';";
+              $result = mysqli_query($conn, $sql);
+              $resultChk = mysqli_num_rows($result);
+              while ($row = mysqli_fetch_assoc($result)) {
+                echo '
+                    <div class="alert alert-info m-2" role="alert">
+                        <b>Already Applied for this Internship</b>
+                    </div>
+                    <div class="card-body mt-2">
+                        <div class="card">
+                        <div class="card-body">
+                            <h3 class="card-title">'.$row['title'].'</h3>
+                            <br>
+                            <h5 class="mt-2">
+                            <span class="badge badge-info">
+                            '.$row['keywords'].'
+                            </span>
+                            </h5>
+                            <h6 class="mt-2">Domain: '.$row['domain'].'</h6>
+                            <h6 class="mt-2">Working Hours: '.$row['hours'].'</h6>
+
+                            <h6 class="mt-2">Starting From: '.$row['start'].'</h6>
+                            <h6 class="mt-2">End At: ' .$row['end'].'</h6>
+                            <h6 class="mt-2">Email: ' .$row['email'].'</h6>
+                            <h6 class="mt-2">Address: Microsoft Corporation One Microsoft Way Redmond, WA 98052-6399 USA</h6>
+                            <h6 class="mt-2">Phone No: '.$row['phone'].'</h6>
+                            <br/> 
+                            <h6 class="mt-2">Skill Set: '.$row['attributes'].'</h6>
+            
+            
+                            <p class="card-text mt-2">
+                                '.$row['description'].'
+                            </p>
                         </div>
-                        
-                        ';
-                }
-                
+                        </div>
+                    </div>
+                    
+                    ';
             }
+            }
+            
+            
+            
+            
 
             
         

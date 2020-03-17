@@ -163,6 +163,15 @@
               </p>
             </a>
           </li>
+
+          <li class="nav-item">
+            <a href="./interview_student.php" class="nav-link">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+                Internships for Student
+              </p>
+            </a>
+          </li>
           
 
           <li class="nav-item">
