@@ -2,15 +2,14 @@
     session_start(); 
     if(!isset($_SESSION['id']))
     {
-        header("location:login.php?tak=PlseLogin");
+        header("location:login.php?task=PlseLogin");
     }
     else
     {
-  include 'includes/header_student.inc.php';      
+        include 'includes/header_student.inc.php';
 $uid=$_SESSION['id'];
     }
 ?>
-
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -273,30 +272,34 @@ img {
                             <div class="stylish-input-group">
                                 <input type="text" class="search-bar" placeholder="Search">
                                 <span class="input-group-addon">
-                                    <button type="button"> <i class="fa fa-search" aria-hidden="true"></i> </button>
+                                    <button type="button" onclick="sendMsg()"> <i class="fa fa-search" aria-hidden="true"></i> </button>
                                 </span> </div>
                         </div>
                     </div>
-                    <div class="dropdown">
-                        <form method="POST">
-                            <select class="form-control" name="id1" id="id1">
-                                <option value="Hold">Hold</option>
-                                <option value="Reject">Reject</option>
-                                <option value="Accept">Accept</option>
-                            </select>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col">
+                                <select name="status" id="status">
+                                    <option value="Hold">Hold</option>
+                                    <option value="Reject">Reject</option>
+                                    <option value="Applied">Applied</option>
+                                </select>
+                            </div>
+                        </div>
                     </div>
 
 
                     <div class="inbox_chat">
-                        <?php
-                    include './src/php/dbh.php';
-                    $sql = "select * from corporate_register";
-                    $res= mysqli_query($conn,$sql);
-                if($res)
-                {
-                    while($row=mysqli_fetch_assoc($res))
-                    {
-                    echo'
+                    <?php 
+                     include './src/php/dbh.php';
+                     $id=$_GET['company_id'];
+                     $sql = "select * from corporate_register where uid='$id'";
+                     $res= mysqli_query($conn,$sql);
+                 if($res)
+                 {
+                     while($row=mysqli_fetch_assoc($res))
+                     {
+                        echo'
                         <div class="chat_list">
                             <div class="chat_people">
                                 <div class="chat_img"> <img
@@ -305,9 +308,9 @@ img {
                                 </div>
                                 <div class="chat_ib">
                                     <h5>
-                                        <a href="user_select.php?company_id='.$row['uid'].'&uid='.$_SESSION['id'].'&user='.$_SESSION['user'].'">
+                                        
                                             '.$row['organization'].'
-                                        </a>
+
                                         <span class="chat_date"></span></h5>
                                     <p>Test, which is a new approach to have all solutions
                                         astrology under one roof.</p>
@@ -315,9 +318,13 @@ img {
                                 </div>
                             </div>
                         </div>';
-                    }
+                     }
                 }
-                        ?>
+                else
+                {
+                    echo "Error";
+                }
+                        ?>  
                     </div>
                 </div>
                 <div class="mesgs">
@@ -372,12 +379,9 @@ img {
 
                     <div class="type_msg">
                         <div class="input_msg_write">
-                            <form action="">
-                                <input type="text" class="write_msg" id="message" name="message"
-                                    placeholder="Type a message" />
-                                <button class="msg_send_btn" onclick="sendMsg()" type="button"><i
-                                        class="fa fa-paper-plane-o" aria-hidden="true"></i></button>
-                            </form>
+                            <input type="text" class="write_msg" id="message" name="message" placeholder="Type a message" />
+                            <button class="msg_send_btn" onclick=" sendMsg()" type="button"><i
+                                    class="fa fa-paper-plane-o" aria-hidden="true"></i></button>
                         </div>
                     </div>
                     <input type="file" id="file" name="file" style="display:none">
@@ -391,16 +395,15 @@ img {
         </div>
     </div>
     </div>
-
-
     <script>
-    function new1()
-    {
-        $("#message").val();
-    }
+  /*  function sendMsg()
+   {
+       alert("clicked");
+   } */
     const sendMsg = () => {
         var message = $("#message").val();
         date = new Date();
+        console(message);
         var pageURL = window.location.href;
         url = new URL(pageURL);
         company_id = url.searchParams.get("company_id");
@@ -433,15 +436,16 @@ img {
     url = new URL(pageURL);
     company_id = url.searchParams.get("company_id");
     userName = url.searchParams.get("user");
+    console.log(userName);
     userId = url.searchParams.get("uid");
     setInterval(() => {
         $("#message-area").load("./src/php/main.php", {
             company_id: company_id,
             userId: userId,
             userName: userName,
-            loadData: true
+            loadDataCompany: true
         })
-    }, 1000)
+    }, 1000) 
     </script>
 </body>
 

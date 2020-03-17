@@ -1,6 +1,11 @@
 
 <!------ Include the above in your HEAD tag ---------->
-<?php include 'includes/header_corporate.inc.php';?>
+
+<?php 
+if(!isset())
+
+include 'includes/header_corporate.inc.php';?>
+
 <html>
 <head>
 
@@ -174,7 +179,7 @@ img{ max-width:100%;}
   <select class="form-control" name="id1" id="id1">
   <option value="Python Programmer">Python Programmer</option>
   <option value="C++">C++</option>
-  <option value="JAVA">JAVA</option>x
+  <option value="JAVA">JAVA</option>
   </select>
 </div>
 <br>
@@ -205,15 +210,14 @@ img{ max-width:100%;}
 					while($row=mysqli_fetch_assoc($res))
 					{
 			echo '
-      		<div class="chat_list">
+
+			<div class="chat_list">
               <div class="chat_people">
                 <div class="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
                 <div class="chat_ib">
-                <a href="student_select.php">
                   <h5>'.$row['first_name'].'<span class="chat_date">Dec 25</span></h5>
                   <p>Test, which is a new approach to have all solutions 
                     astrology under one roof.</p>
-                    </a>
                 </div>
               </div>
 			</div>
@@ -223,18 +227,19 @@ img{ max-width:100%;}
 	}
 	else
 	{
-		$sql="SELECT * FROM student_register";
+		$sql="SELECT * FROM student_register where id='$id'";
 		$res = mysqli_query($conn,$sql);
 		if($res)
 		{
 			while($row=mysqli_fetch_assoc($res))
 			{
 	echo '
-  <div class="chat_list">
+
+	<div class="chat_list">
 	  <div class="chat_people">
 		<div class="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
-    <div class="chat_ib">
-      <h5>'.$row['first_name'].'<span class="chat_date">Dec 25</span></h5>
+		<div class="chat_ib">
+		  <h5>'.$row['first_name'].'<span class="chat_date">Dec 25</span></h5>
 		  <p>Test, which is a new approach to have all solutions 
 			astrology under one roof.</p>
 		</div>
@@ -274,50 +279,3 @@ img{ max-width:100%;}
     </div></div>
     </body>
     </html>
-
-	<script>
-const sendMsg = () => {
-    var message = document.getElementById("msg").value;  
-    console.log(message)
-        date = new Date()
-    var pageURL = window.location.href;
-        url = new URL(pageURL);
-        projectId = 'company';
-        userId = 'company';
-        userName = 'company';
-    if (!message) {
-        console.log("No Message Found")
-    } else {
-        $.post("./src/php/main.php", {
-            company_id:"company",
-            userId: userId,
-            user: userName,
-            message: message,
-            date: date,
-            messageSend: true
-        }).then(() => {
-            console.log("Inserted!")
-        })
-    }
-   // clearTextArea() 
-}
-
-const clearTextArea = () => {
-    document.getElementById("message").value = ""
-    console.log("Cleared")
-}
-
-var pageURL = window.location.href;
-    url = new URL(pageURL);
-    projectId = url.searchParams.get("projectId");
-    userName = url.searchParams.get("userName");
-    userId = url.searchParams.get("userId");
-setInterval(() => {
-  $("#message-area").load("./src/php/main.php", {
-    projectId: projectId,
-    userId: userId,
-    userName: userName,
-    loadData: true
-  })
-}, 1000)
-</script>

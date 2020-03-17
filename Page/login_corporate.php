@@ -24,7 +24,7 @@
                     <input type="password" name="password" id="password" class="form-control mb-4" placeholder="Password">
                     <!-- Send button -->
 
-                    <input type="submit" name="login" id="login" value="login" class="btn btn-info btn-block" type="button">
+                    <input type="submit" name="login_c" id="login_c" value="login" class="btn btn-info btn-block" type="button">
                 </form>
                 </div>
             </div>

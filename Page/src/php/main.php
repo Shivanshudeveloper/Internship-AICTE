@@ -10,6 +10,7 @@ $username = $_POST['email'];
 $password = $_POST['password'];
 $dbusername = " ";
 $dbpassword = " ";
+$user=" ";
 $id=" ";
 $password=md5($password);
 
@@ -24,14 +25,16 @@ if ($username && $password) {
             $dbusername = $row['email'];
             $dbpassword = $row['password'];
             $id=$row['uid'];
+            $user=$row['first_name'];
         }
         if($username == $dbusername && $password == $dbpassword) 
         {
             $_SESSION['email'] = $username;
             $_SESSION['login']=1;
             $_SESSION['id']=$id;
+            $_SESSION['user']=$user;
             $_SESSION['loggedIn']=1;
-            header("location: ../../../Dashboard/index.php"); //another file to send request to the next page if values are correct.
+            header("location: ../../chat_profile_student.php"); //another file to send request to the next page if values are correct.
         } 
         else{
              header("location: ../../login.php?error=WrongPassword");
@@ -47,17 +50,18 @@ else{
 }
 else
 {
-    echo"Error";
+    /* echo"Error"; */
 }
 
 if(isset($_POST['login_c']))
 {
-$username = $_POST['email'];
-$password = $_POST['password'];
-$dbusername = " ";
-$dbpassword = " ";
-$id=" ";
-$password=md5($password);
+    $username = $_POST['email'];
+    $password = $_POST['password'];
+    $dbusername = " ";
+    $dbpassword = " ";
+    $user=" ";
+    $id=" ";
+    $password=md5($password);
 
 if ($username && $password) {
      $query   = ("SELECT * FROM corporate_register WHERE email='$username'");
@@ -70,15 +74,16 @@ if ($username && $password) {
             $dbusername = $row['email'];
             $dbpassword = $row['password'];
             $id=$row['uid'];
+            $user=$row['first_name'];
         }
         if($username == $dbusername && $password == $dbpassword) 
         {
             $_SESSION['email'] = $username;
-            $_SESSION['password'] = $password;
             $_SESSION['login']=1;
-            $_SESSION['level']=2;
             $_SESSION['id']=$id;
-            header("location: ../../../Dashboard/index.php"); //another file to send request to the next page if values are correct.
+            $_SESSION['user']=$user;
+            $_SESSION['loggedIn']=1;
+            header("location: ../../chat_profile.php"); //another file to send request to the next page if values are correct.
             exit();
         } 
         else{
@@ -143,7 +148,7 @@ else{
 }
 else
 {
-    echo"Error";
+   /*  echo"Error"; */
 }
 //corporate register
 if (isset($_POST['corporate-register'])) {
@@ -233,5 +238,119 @@ $expiration_date=mysqli_real_escape_string($conn,$_POST['expiration_date']);
    {
     header("Location:../../post_internship.php?task=unsuccessful");
 }
+}
+if (isset($_POST['loadData'])) {
+    $projectId = mysqli_real_escape_string($conn, $_POST['company_id']);
+    $sql = "SELECT * FROM message ;";
+    $result = mysqli_query($conn, $sql);
+    $resultChk = mysqli_num_rows($result);
+    if ($resultChk < 1) {
+        echo '
+        <span class="">
+            <p class="h4 text-center" style="margin-top: 15%;">No Message Yet</p>
+            <!-- <img src="https://media1.giphy.com/media/eonIj5bw871io/source.gif" class="img-fluid w-50" alt="No Message" srcset=""> -->
+        </span>
+        ';
+    } else {
+        while ($row = mysqli_fetch_assoc($result)) {
+            echo '
+            <div class="incoming_msg">
+            <div class="incoming_msg_img"> <img src="https://ptetutorials.com/images/user-profile.png"
+                    alt="sunil"> 
+                    </div>
+                    '.$row['msg_from_name'].'
+            <div class="received_msg">
+                <div class="received_withd_msg">
+                    <p>'.$row['msg'].'</p>
+                    <span class="time_date"> 11:01 AM | Today</span>
+                </div>
+            </div>
+        </div>
+    </div>
+            ';
+        }
+    }
+}
+
+if (isset($_POST['loadDataCompany'])) {
+    $projectId = mysqli_real_escape_string($conn, $_POST['company_id']);
+    $sql = "SELECT * FROM message where company_id ='$projectId';";
+    $result = mysqli_query($conn, $sql);
+    $resultChk = mysqli_num_rows($result);
+    if ($resultChk < 1) {
+        echo '
+        <span class="">
+            <p class="h4 text-center" style="margin-top: 15%;">No Message Yet</p>
+            <!-- <img src="https://media1.giphy.com/media/eonIj5bw871io/source.gif" class="img-fluid w-50" alt="No Message" srcset=""> -->
+        </span>
+        ';
+    } else {
+        while ($row = mysqli_fetch_assoc($result)) {
+            echo '
+            <div class="chat_list">
+            <div class="chat_people">
+              <div class="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
+                    '.$row['msg_from_name'].'
+            <div class="received_msg">
+                <div class="received_withd_msg">
+                    <p>'.$row['msg'].'</p>
+                    <span class="time_date"> 11:01 AM | Today</span>
+                </div>
+            </div>
+        </div>
+    </div>
+            ';
+        }
+    }
+}
+
+if (isset($_POST['loadDataStudent'])) {
+    $projectId = mysqli_real_escape_string($conn, $_POST['company_id']);
+    $sql = "SELECT * FROM message ;";
+    $result = mysqli_query($conn, $sql);
+    $resultChk = mysqli_num_rows($result);
+    if ($resultChk < 1) {
+        echo '
+        <span class="">
+            <p class="h4 text-center" style="margin-top: 15%;">No Message Yet</p>
+            <!-- <img src="https://media1.giphy.com/media/eonIj5bw871io/source.gif" class="img-fluid w-50" alt="No Message" srcset=""> -->
+        </span>
+        ';
+    } else {
+        while ($row = mysqli_fetch_assoc($result)) {
+            echo '
+            <div class="incoming_msg">
+            <div class="incoming_msg_img"> <img src="https://ptetutorials.com/images/user-profile.png"
+                    alt="sunil"> 
+                    </div>
+                    '.$row['msg_from_name'].'
+            <div class="received_msg">
+                <div class="received_withd_msg">
+                    <p>'.$row['msg'].'</p>
+                    <span class="time_date"> 11:01 AM | Today</span>
+                </div>
+            </div>
+        </div>
+    </div>
+            ';
+        }
+    }
+}
+
+
+// @POST Request for sending Message
+if (isset($_POST['messageSend'])) {
+    $user = mysqli_real_escape_string($conn, $_POST['user']);
+    $message = mysqli_real_escape_string($conn, $_POST['message']);
+    $projectId = mysqli_real_escape_string($conn, $_POST['company_id']);
+    $userId = mysqli_real_escape_string($conn, $_POST['uid']);
+    $date = mysqli_real_escape_string($conn, $_POST['date']);
+    $sql = "INSERT INTO message (company_id, msg_from, msg_from_name, msg, msg_date) VALUES ('$projectId', '$userId', '$user', '$message', '$date');";
+$res = mysqli_query($conn, $sql);
+if($res)
+{
+    echo"Sucessful";
+}
+
 }
 ?>
