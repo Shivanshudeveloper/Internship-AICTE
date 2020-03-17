@@ -186,6 +186,15 @@
     </div>
     <div class="row row-space">
     <div class="col-sm-6 col-xs-12">
+
+    
+
+    <div class="form-group form-check">
+      <input type="checkbox" class="form-check-input" id="exampleCheck1">
+      <label class="form-check-label" for="exampleCheck1">Post as Requirements</label>
+    </div>
+
+
     <div class="input-group">
     <label class="label">Level</label>
     <div class="rs-select2 js-select-simple select--no-search">

@@ -71,7 +71,10 @@ if (isset($_POST['industryProblem_btn'])) {
     $uid = "PROBLEM_STATEMENT_".time().uniqid();
 >>>>>>> ffc377c3da50b4d93b79eb760f5288e90671f948
 
-    $sql = "INSERT INTO problem_statements (uid ,problem, description, location, research, category, solveby, studentResearcher, studentStream, studentExpertise, workResearch, duration, stipend, certificate, level) VALUES ('$uid' ,'$problem', '$description', '$location', '$research', '$category', '$solveby', '$studentResearcher', '$studentStream', '$studentExpertise', '$workResearch', '$duration', '$stipend', '$certificate', '$level');";
+    
+    $company_uid = "12345678";
+
+    $sql = "INSERT INTO problem_statements (uid , company_uid,problem, description, location, research, category, solveby, studentResearcher, studentStream, studentExpertise, workResearch, duration, stipend, certificate, level) VALUES ('$uid' , '$company_uid','$problem', '$description', '$location', '$research', '$category', '$solveby', '$studentResearcher', '$studentStream', '$studentExpertise', '$workResearch', '$duration', '$stipend', '$certificate', '$level');";
     mysqli_query($conn, $sql);
     header('Location: ../../solutions.php');
 }

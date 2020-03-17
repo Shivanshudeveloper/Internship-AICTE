@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 16, 2020 at 10:28 AM
+-- Generation Time: Mar 17, 2020 at 09:47 AM
 -- Server version: 10.1.29-MariaDB
 -- PHP Version: 7.1.12
 
@@ -175,6 +175,7 @@ CREATE TABLE `corporate_register` (
 CREATE TABLE `internhips` (
   `id` int(11) NOT NULL,
   `uid` text NOT NULL,
+  `company_id` text NOT NULL,
   `type` text NOT NULL,
   `title` text NOT NULL,
   `description` text NOT NULL,
@@ -204,9 +205,11 @@ CREATE TABLE `internhips` (
 -- Dumping data for table `internhips`
 --
 
-INSERT INTO `internhips` (`id`, `uid`, `type`, `title`, `description`, `locations`, `numberInternRequiried`, `keywords`, `email`, `phone`, `country`, `company`, `stipend`, `start`, `end`, `contract`, `whoCanApply`, `domain`, `eligibility`, `perks`, `certificaion`, `hours`, `languages`, `interview`, `attributes`) VALUES
-(4, 'INTERNSHIP_15843440765e6f2c0cefd7f', 'Full Time', 'jskad', 'asdaksdhk', 'hjads', 'hdkasj', 'hdasjkhd', 'mujikot@getnada.com', '9830921', 'uhsakd', 'sadas', '323432', 'jlkasj', 'kjdhkjas', '', 'jlkdjsalj', 'ljdlsajlk', 'jldjlasjl', 'jlkdjaslkd', 'ljdlasjd', '23', '5', 'Industry Rules', 'Communication Skills (Verbal & Writing),Presentation Skills,Sales Skills,Research Oriented,Digital Marketing,'),
-(5, 'INTERNSHIP_15843448545e6f2f168a633', 'Research', 'hkj', 'hkjh', 'kjh', '87789', 'gjhgkj', 'mujikot@getnada.com', '8979', 'hjkh', 'khk', '8988', 'hjgj', 'hjkhk', '', 'jhgj', 'hkjhjk', 'kjhkjhk', 'hkhk', 'jkhk', 'hkjhkj', '6', 'Introduction Module', 'Communication Skills (Verbal & Writing),Creative Skills');
+INSERT INTO `internhips` (`id`, `uid`, `company_id`, `type`, `title`, `description`, `locations`, `numberInternRequiried`, `keywords`, `email`, `phone`, `country`, `company`, `stipend`, `start`, `end`, `contract`, `whoCanApply`, `domain`, `eligibility`, `perks`, `certificaion`, `hours`, `languages`, `interview`, `attributes`) VALUES
+(6, 'INTERNSHIP_15843512775e6f482d59c76', '12345678', 'Part Time', 'das', 'das', 'dasd', '22', 'dasdas', 'developer.shivanshu@gmail.com', '9219559823', 'dasd', 'dasd', '22222', '2020-03-26', 'dasd', '', 'asdas', 'dsa', 'dasdasd', 'asdasd', 'asd', 'dsadas', '2', 'Cummunication Skills', 'Communication Skills (Verbal & Writing),Presentation Skills,Listning Skills,Management Skills,Entrepreneurial Skills,Planning Skills'),
+(7, 'INTERNSHIP_15843555895e6f59059f217', '12345678', 'Part Time', 'hsdyas', 'dasjhdk', 'haskjhdk', '8291', 'dhkjas', 'vendor@gmail.com', '899182', 'hdskajhd', 'hdkjasd', '82820', '2020-03-26', '2020-03-03', '', 'hdkjsad', 'daskhjh', 'djhaskjh', 'kjhdkasjhk', 'hdkjshakjd', 'hdkasj', '8920', 'Cummunication Skills', 'Communication Skills (Verbal & Writing),Creative Skills'),
+(8, 'INTERNSHIP_15843563155e6f5bdb75ea5', '12345678', 'Full Time', 'AICTE Internship', 'Big data is a field that treats ways to analyze, systematically extract information from, or otherwise deal with data sets that are too large or complex to be dealt with by traditional data-processing application software.', 'Delhi', '100', 'Python', 'mujikot@getnada.com', '9283739387', 'India', 'AICTE', '10000', '2020-03-13', '2020-03-26', '', 'Data Analytics', 'Goverment', 'Anyone', 'Anything', 'Anything', '9-5 Hours', '8833', 'Industry Rules', 'Communication Skills (Verbal & Writing),Presentation Skills,Listning Skills'),
+(9, 'INTERNSHIP_15843617655e6f7125096e9', '12345678', 'Part Time', 'Big Data', 'Microsoft Corporation is an American multinational technology company with headquarters in Redmond, Washington. It develops, manufactures, licenses, supports, and sells computer software, consumer electronics, personal computers, and related services.', 'Delhi, Mumbai', '100', 'Python', 'mujikot@getnada.com', '9829839889', 'India', 'AICTE', '10000', '2020-03-16', '2020-03-24', '', 'Data Analytics', 'Goverment', 'Python', 'Anything', 'Anything', '5-5 Hours', 'Hindi, English', 'Cummunication Skills', 'Communication Skills (Verbal & Writing),Presentation Skills,Listning Skills,Management Skills');
 
 -- --------------------------------------------------------
 
@@ -217,16 +220,54 @@ INSERT INTO `internhips` (`id`, `uid`, `type`, `title`, `description`, `location
 CREATE TABLE `internhip_apply` (
   `id` int(11) NOT NULL,
   `uid` text NOT NULL,
+  `company_id` text NOT NULL,
   `student_uid` text NOT NULL,
-  `internship_uid` text NOT NULL
+  `internship_uid` text NOT NULL,
+  `status` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `internhip_apply`
 --
 
-INSERT INTO `internhip_apply` (`id`, `uid`, `student_uid`, `internship_uid`) VALUES
-(1, 'APPLY_15843505905e6f457ebde96', 'STUDENT_JDHJKSH786', 'INTERNSHIP_15843440765e6f2c0cefd7f');
+INSERT INTO `internhip_apply` (`id`, `uid`, `company_id`, `student_uid`, `internship_uid`, `status`) VALUES
+(3, 'APPLY_15843514685e6f48ec86f9e', '12345678', 'STUDENT_JDHJKSH786', 'INTERNSHIP_15843512775e6f482d59c76', 'Interview Accepted'),
+(4, 'APPLY_15843556415e6f5939b5ecd', '12345678', 'STUDENT_JDHJKSH786', 'INTERNSHIP_15843555895e6f59059f217', 'Interview Accepted'),
+(5, 'APPLY_15843618685e6f718c7642f', '12345678', 'STUDENT_JDHJKSH786', 'INTERNSHIP_15843617655e6f7125096e9', 'Interview Accepted');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `internship_status`
+--
+
+CREATE TABLE `internship_status` (
+  `id` int(11) NOT NULL,
+  `status` text NOT NULL,
+  `internship_id` text NOT NULL,
+  `student_id` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `interviews_status`
+--
+
+CREATE TABLE `interviews_status` (
+  `id` int(11) NOT NULL,
+  `internship_uid` text NOT NULL,
+  `student_uid` text NOT NULL,
+  `status` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `interviews_status`
+--
+
+INSERT INTO `interviews_status` (`id`, `internship_uid`, `student_uid`, `status`) VALUES
+(1, 'INTERNSHIP_15843563155e6f5bdb75ea5', 'STUDENT_JDHJKSH786', 'Call for Interview'),
+(2, 'INTERNSHIP_15843617655e6f7125096e9', 'STUDENT_JDHJKSH786', 'Call for Interview');
 
 -- --------------------------------------------------------
 
@@ -260,6 +301,61 @@ CREATE TABLE `posted_internship` (
 
 INSERT INTO `posted_internship` (`id`, `url`, `title`, `content`, `city`, `country`, `company`, `salary`, `StartDate`, `contract`, `working_hours`, `experience`, `category`, `requirements`, `date`, `duration`, `expiration_date`) VALUES
 (0, '', 'Aicte Intern (23)', 'Senior Developer', 'Delhi', 'India', 'Aicte ', '60000', '', '6 months', '6 Hours', 'Fresher', 'Government', 'Btech', '', '2 months', '25/02/2020');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `problem_statements`
+--
+
+CREATE TABLE `problem_statements` (
+  `id` int(11) NOT NULL,
+  `uid` text NOT NULL,
+  `problem` text NOT NULL,
+  `description` text NOT NULL,
+  `location` text NOT NULL,
+  `research` text NOT NULL,
+  `category` text NOT NULL,
+  `solveby` text NOT NULL,
+  `studentResearcher` text NOT NULL,
+  `studentStream` text NOT NULL,
+  `studentExpertise` text NOT NULL,
+  `workResearch` text NOT NULL,
+  `duration` text NOT NULL,
+  `stipend` text NOT NULL,
+  `certificate` text NOT NULL,
+  `level` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `problem_statements`
+--
+
+INSERT INTO `problem_statements` (`id`, `uid`, `problem`, `description`, `location`, `research`, `category`, `solveby`, `studentResearcher`, `studentStream`, `studentExpertise`, `workResearch`, `duration`, `stipend`, `certificate`, `level`) VALUES
+(1, 'PROBLEM_STATEMENT_15844248305e70677e1e4c7', 'dasd', 'asdas', 'Location 1', 'YES', 'Category 2', 'Individual', 'Subject 2', 'Subject 2', 'das', 'das', 'dasd', 'on', 'on', '1 year');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `solutions`
+--
+
+CREATE TABLE `solutions` (
+  `id` int(11) NOT NULL,
+  `uid` text NOT NULL,
+  `problem_uid` text NOT NULL,
+  `student` text NOT NULL,
+  `qualification` text NOT NULL,
+  `skills` text NOT NULL,
+  `solutions` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `solutions`
+--
+
+INSERT INTO `solutions` (`id`, `uid`, `problem_uid`, `student`, `qualification`, `skills`, `solutions`) VALUES
+(2, 'SOLUTIONS_15844264505e706dd28a34e', 'PROBLEM_STATEMENT_15844248305e70677e1e4c7', 'dasd', 'asd', 'dasdas', 'asdas');
 
 -- --------------------------------------------------------
 
@@ -3820,9 +3916,33 @@ ALTER TABLE `internhip_apply`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `internship_status`
+--
+ALTER TABLE `internship_status`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `interviews_status`
+--
+ALTER TABLE `interviews_status`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `posted_internship`
 --
 ALTER TABLE `posted_internship`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `problem_statements`
+--
+ALTER TABLE `problem_statements`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `solutions`
+--
+ALTER TABLE `solutions`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -4181,13 +4301,37 @@ ALTER TABLE `college`
 -- AUTO_INCREMENT for table `internhips`
 --
 ALTER TABLE `internhips`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `internhip_apply`
 --
 ALTER TABLE `internhip_apply`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `internship_status`
+--
+ALTER TABLE `internship_status`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `interviews_status`
+--
+ALTER TABLE `interviews_status`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `problem_statements`
+--
+ALTER TABLE `problem_statements`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `solutions`
+--
+ALTER TABLE `solutions`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `student_register`

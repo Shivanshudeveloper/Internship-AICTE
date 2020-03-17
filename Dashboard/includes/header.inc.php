@@ -147,6 +147,15 @@
           </li>
 
           <li class="nav-item">
+            <a href="./comapny-solution.php" class="nav-link">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+                Company Solutions
+              </p>
+            </a>
+          </li>
+
+          <li class="nav-item">
             <a href="./solutions.php" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>

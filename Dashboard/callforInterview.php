@@ -88,7 +88,7 @@
                                         </p>
 
                                         <div class="alert alert-success m-2" role="alert">
-                                            Called for Interview
+                                            Student Successfully Called for Interview
                                         </div>
 
 
