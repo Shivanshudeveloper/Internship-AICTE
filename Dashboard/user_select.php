@@ -6,7 +6,7 @@
     }
     else
     {
-        include 'includes/header_student.inc.php';
+        include 'includes/header.inc.php';
 $uid=$_SESSION['id'];
     }
 ?>
@@ -257,6 +257,7 @@ img {
 </style>
 
 <body>
+<div class="content-wrapper">
     <div class="container">
         <h3 class=" text-center">Messaging</h3>
         <!-- <button type="button" class="btn btn-primary">create Thread</button> -->
@@ -307,7 +308,7 @@ img {
                                 </div>
                                 <div class="chat_ib">
                                     <h5>
-                                        <a href="user_select.php?company_id='.$row['uid'].'&uid='.$_SESSION['id'].'&user='.$_SESSION['user'].'">
+                                        <a href="user_select.php?company_id='.$row['uid'].'&uid='.$_SESSION['id'].'& user='.$_SESSION['user'].'">
                                             '.$row['organization'].'
                                         </a>
                                         <span class="chat_date"></span></h5>
@@ -388,6 +389,7 @@ img {
             </div>
 
         </div>
+    </div>
     </div>
     </div>
     <script>

@@ -66,6 +66,17 @@ else{
                                 <select onclick="reDirect();" class="form-control" name="type" id="type">
                                     <option value="Full Time">Full Time</option>
                                     <option value="Part Time">Part Time</option>
+                                  
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Internship Type</label>
+                                <select class="form-control" name="job_type" id="job_type">
+                                    <option value="Job">Job</option>
+                                    <option value="Internship">Internship</option>
+                                    <option value="Cooperative Education">Cooperative Education</option>
+                                    <option value="Experience Learning">Experience Learning</option>
+                                    <option value="On Campus Student Employement">On Campus Student Employement</option>
+                                    <option value="Fellowship">Fellowship</option>
                                     <option value="Research">Research</option>
                                     <option value="Industry Problems">Industry Problems</option>
                                 </select>
@@ -77,18 +88,6 @@ else{
                                     }
                                 }
                                 </script>
-                            </div>
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">Internship Type</label>
-                                <select class="form-control" name="job_type" id="job_type">
-                                    <option value="Job">Job</option>
-                                    <option value="Internship">Internship</option>
-                                    <option value="Cooperative Education">Cooperative Education</option>
-                                    <option value="Experience Learning">Experience Learning</option>
-                                    <option value="On Campus Student Employement">On Campus Student Employement</option>
-                                    <option value="Fellowship">Fellowship</option>
-                                    <option value="Graduate School">Graduate School</option>
-                                    <option value="Valuable">Valuable</option>
                                 </select>
                             </div>
                             <div class="form-group">

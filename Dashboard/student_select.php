@@ -1,9 +1,13 @@
 <!------ Include the above in your HEAD tag ---------->
 
 <?php 
+session_start();
 if(!isset($_SESSION['loggedIn']))
+{
+    header("location:login_corporate.php?task=PlseLogin");
+}
 
-include 'includes/header_corporate.inc.php';?>
+include 'includes/header.inc.php';?>
 
 <html>
 
@@ -246,21 +250,22 @@ img {
 </style>
 
 <body>
-    <div class="container">
-        <h3 class=" text-center">Messaging</h3>
+    <div class="content-wrapper">
+        <div class="container">
+            <h3 class=" text-center">Messaging</h3>
 
-        <div class="messaging">
-            <div class="inbox_msg">
-                <div class="inbox_people">
-                    <div class="headind_srch">
-                        <div class="recent_heading">
-                            <h4>Recent</h4>
+            <div class="messaging">
+                <div class="inbox_msg">
+                    <div class="inbox_people">
+                        <div class="headind_srch">
+                            <div class="recent_heading">
+                                <h4>Recent</h4>
+                            </div>
+                            <br>
                         </div>
-                        <br>
-                    </div>
 
-                    <div class="inbox_chat">
-                        <?php
+                        <div class="inbox_chat">
+                            <?php
             include './src/php/dbh.php';
             
             $id=$_GET['uid'];
@@ -286,33 +291,34 @@ img {
 	}
 }
 			?>
-                    </div>
-                </div>
-                <div class="mesgs">
-                    <div class="msg_history" id="message-area">
-                    </div>
-                    <div class="type_msg">
-                        <div class="input_msg_write">
-                            <input type="text" class="write_msg" id="msg" name="msg" placeholder="Type a message" />
-                            <button class="msg_send_btn" type="button"><i class="fa fa-paper-plane-o" aria-hidden="true"
-                                    name="submit" id="submit" onclick="sendMsg()"></i></button>
                         </div>
-                        <div class="row">
-                            <div class="col">
-                                <a href="#!">Job Title</a>
-                                <a href="#!">Location</a>
-                                <button class="btn btn-sm btn-primary">Hold</button>
-                                <button class="btn btn-sm btn-primary">Reject</button>
-                                <button class="btn btn-sm btn-primary">Call for Interview</button>
+                    </div>
+                    <div class="mesgs">
+                        <div class="msg_history" id="message-area">
+                        </div>
+                        <div class="type_msg">
+                            <div class="input_msg_write">
+                                <input type="text" class="write_msg" id="msg" name="msg" placeholder="Type a message" />
+                                <button class="msg_send_btn" type="button"><i class="fa fa-paper-plane-o"
+                                        aria-hidden="true" name="submit" id="submit" onclick="sendMsg()"></i></button>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <a href="#!">Job Title</a>
+                                    <a href="#!">Location</a>
+                                    <button class="btn btn-sm btn-primary" >Hold</button>
+                                    <button class="btn btn-sm btn-primary">Reject</button>
+                                    <button class="btn btn-sm btn-primary" href="./callforinterview.php">Call for Interview</button>
+                                </div>
                             </div>
                         </div>
+                        <button class="btn btn-sm btn-info" type="button"><i class="fa fa-camera-retro fa-lg"
+                                aria-hidden="true"></i></button>
+                        <button class="btn btn-sm btn-info" type="button"><i class="fa fa-file"
+                                aria-hidden="true"></i></button>
                     </div>
-                    <button class="btn btn-sm btn-info" type="button"><i class="fa fa-camera-retro fa-lg"
-                            aria-hidden="true"></i></button>
-                    <button class="btn btn-sm btn-info" type="button"><i class="fa fa-file"
-                            aria-hidden="true"></i></button>
+                    </form>
                 </div>
-                </form>
             </div>
         </div>
     </div>
