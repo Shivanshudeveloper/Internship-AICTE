@@ -1,249 +1,42 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>AdminLTE 3 | Log in</title>
-  <!-- Tell the browser to be responsive to screen width -->
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+<?php include 'includes/header1.inc.php'?>
 
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="./plugins/fontawesome-free/css/all.min.css">
-  <!-- Ionicons -->
-  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-  <!-- icheck bootstrap -->
-  <link rel="stylesheet" href="./plugins/icheck-bootstrap/icheck-bootstrap.min.css">
-  <!-- Theme style -->
-  <link rel="stylesheet" href="./dist/css/adminlte.min.css">
-  <!-- Google Font: Source Sans Pro -->
-  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
-</head>
-<body class="container">
-<div class="login-box">
-  <div class="login-logo">
-    <a href="#!"><b>AICTE</a>
-  </div>
-
-  <div class="row">
-      <div class="col">
-        <div class="card">
-            <div class="card-body">
-                <center>
-                      I AM CORPORATE
-                </center>
+<section class="hero-wrap hero-wrap-2" style="background-image: url('images/bg_1.jpg');">
+    <div class="container">
+        <div class="row no-gutters slider-text align-items-center justify-content-center">
+            <div class="col-md-9 ftco-animate text-center">
+                <h1 class="mb-2 bread">Login</h1>
+                <p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home <i
+                                class="ion-ios-arrow-forward"></i></a></span> <span>Login <i
+                            class="ion-ios-arrow-forward"></i></span> <span> Login <i
+                            class="ion-ios-arrow-forward"></i></span> 
+                </p>
             </div>
-            <a href="index.php" class="btn btn-primary">
-                Login
-            </a>
         </div>
-      </div>
-  </div>
+    </div>
+</section>
+<section class="ftco-section bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div id="student_form" class="w-100">
+                    <form method="post" class="text-center border border-light p-5" action="./src/php/main.php">
+                        <!-- Email -->
+                        <input type="email" name="email" id="email" class="form-control mb-4" placeholder="E-mail">
+                        <input type="password" name="password" id="password" class="form-control mb-4"
+                            placeholder="Password">
+                        <input type="submit" name="login" id="login" value="login" class="btn btn-info btn-block">
 
-  <div class="row">
-      <div class="col">
-        <div class="card">
-            <div class="card-body">
-                <center>
-                      I AM DISTRICT MAGISTRATE
-                </center>
+                    </form>
+                </div>
             </div>
-            <a href="index.php" class="btn btn-primary">
-                Login
-            </a>
         </div>
-      </div>
-  </div>
-
-  <div class="row">
-      <div class="col">
-        <div class="card">
-            <div class="card-body">
-                <center>
-                      I AM STUDENT
-                </center>
-            </div>
-            <a href="index.php" class="btn btn-primary">
-                Login
-            </a>
+        <div class="col">
+            <img style="margin-top: 20%; margin-left: 30%"
+                src="https://static.skillshare.com/uploads/project/08872f4476eda5c3322bff38bf2a3f4a/f8f48d7b"
+                alt="AICTE">
         </div>
-      </div>
-  </div>
+    </div>
 
-  <div class="row">
-      <div class="col">
-        <div class="card">
-            <div class="card-body">
-                <center>
-                      I AM FACULTY
-                </center>
-            </div>
-            <a href="index.php" class="btn btn-primary">
-                Login
-            </a>
-        </div>
-      </div>
-  </div>
-
-  <div class="row">
-      <div class="col">
-        <div class="card">
-            <div class="card-body">
-                <center>
-                      I AM INSTITUTE
-                </center>
-            </div>
-            <a href="index.php" class="btn btn-primary">
-                Login
-            </a>
-        </div>
-      </div>
-  </div>
-
-  <div class="row">
-      <div class="col">
-        <div class="card">
-            <div class="card-body">
-                <center>
-                      I AM PUBLIC SECTOR UNIT
-                </center>
-            </div>
-            <a href="index.php" class="btn btn-primary">
-                Login
-            </a>
-        </div>
-      </div>
-  </div>
-
-  <div class="row">
-      <div class="col">
-        <div class="card">
-            <div class="card-body">
-                <center>
-                      I AM AGGREGATOR
-                </center>
-            </div>
-            <a href="index.php" class="btn btn-primary">
-                Login
-            </a>
-        </div>
-      </div>
-  </div>
-
-  <div class="row">
-      <div class="col">
-        <div class="card">
-            <div class="card-body">
-                <center>
-                      I AM GOVERNMENT DEPARTMENT
-                </center>
-            </div>
-            <a href="index.php" class="btn btn-primary">
-                Login
-            </a>
-        </div>
-      </div>
-  </div>
-
-  <div class="row">
-      <div class="col">
-        <div class="card">
-            <div class="card-body">
-                <center>
-                      I AM NON GOVERNMENTAL ORGANISATION
-                </center>
-            </div>
-            <a href="index.php" class="btn btn-primary">
-                Login
-            </a>
-        </div>
-      </div>
-  </div>
-
-  <div class="row">
-      <div class="col">
-        <div class="card">
-            <div class="card-body">
-                <center>
-                      I AM SECTOR SKILL COUNCIL
-                </center>
-            </div>
-            <a href="index.php" class="btn btn-primary">
-                Login
-            </a>
-        </div>
-      </div>
-  </div>
-
-  <div class="row">
-      <div class="col">
-        <div class="card">
-            <div class="card-body">
-                <center>
-                      I AM ASSOCHAM
-                </center>
-            </div>
-            <a href="index.php" class="btn btn-primary">
-                Login
-            </a>
-        </div>
-      </div>
-  </div>
-
-  <div class="row">
-      <div class="col">
-        <div class="card">
-            <div class="card-body">
-                <center>
-                      I AM CII
-                </center>
-            </div>
-            <a href="index.php" class="btn btn-primary">
-                Login
-            </a>
-        </div>
-      </div>
-  </div>
-
-  <div class="row">
-      <div class="col">
-        <div class="card">
-            <div class="card-body">
-                <center>
-                      I AM FICCI
-                </center>
-            </div>
-            <a href="index.php" class="btn btn-primary">
-                Login
-            </a>
-        </div>
-      </div>
-  </div>
-
-  <div class="row">
-      <div class="col">
-        <div class="card">
-            <div class="card-body">
-                <center>
-                   I AM NASSCOM
-                </center>
-            </div>
-            <a href="index.php" class="btn btn-primary">
-                Login
-            </a>
-        </div>
-      </div>
-  </div>
-  
-
-</div>
-<!-- /.login-box -->
-
-<!-- jQuery -->
-<script src="./plugins/jquery/jquery.min.js"></script>
-<!-- Bootstrap 4 -->
-<script src="./plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-<!-- AdminLTE App -->
-<script src="./dist/js/adminlte.min.js"></script>
-
-</body>
-</html>
+    </div>
+</section>
+<?php include './includes/footer1.inc.php' ?>

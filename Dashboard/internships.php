@@ -1,4 +1,13 @@
-<?php include './includes/header.inc.php' ?>
+<?php 
+session_start();
+if(!isset($_SESSION['loggedIn']))
+{
+  header("location:login_corporate.php?task=PlseLogin");
+}
+else{
+  include './includes/header.inc.php';
+} 
+?>
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -53,8 +62,8 @@
                   <tbody>
                     <?php 
                       include './src/php/dbh.php';
-
-                      $sql = "SELECT * FROM internhips WHERE company_id = '12345678';";
+                      $id=$_SESSION['id'];
+                      $sql = "SELECT * FROM internhips WHERE company_id = '$id';";
                       $result = mysqli_query($conn, $sql);
                       while ($row = mysqli_fetch_assoc($result)) {
                         echo '

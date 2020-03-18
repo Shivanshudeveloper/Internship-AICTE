@@ -1,3 +1,9 @@
+<?php
+if(!isset($_SESSION['loggedIn']))
+{
+ header("location:login_corporate.php?task=PlseLogin");
+}
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -54,10 +60,14 @@
       </div>
     </form>
 
+    
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
       <!-- Messages Dropdown Menu -->
-      <!-- Notifications Dropdown Menu -->
+      <div class="form-group"style="margin-right:10px;margin-top:7px">
+    <a href="logout.php">logout</a>
+    </div>
+        <!-- Notifications Dropdown Menu -->
       <li class="nav-item dropdown">
         <a class="nav-link" data-toggle="dropdown" href="#">
           <i class="far fa-bell"></i>
@@ -94,7 +104,37 @@
   <!-- /.navbar -->
 
   <!-- Main Sidebar Container -->
-  <aside class="main-sidebar sidebar-dark-primary elevation-4">
+ <!--  <aside class="main-sidebar sidebar-dark-primary elevation-4"> -->
+    <!-- Brand Logo -->
+    <!-- <a href="./index.php" class="brand-link"> -->
+      <!-- <img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
+           style="opacity: .8"> -->
+     <!--  <span class="brand-text font-weight-light">AICTE Internship</span>
+    </a> -->
+
+    <!-- Sidebar -->
+   <!--  <div class="sidebar"> -->
+      <!-- Sidebar user panel (optional) -->
+     <!--  <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+        <div class="image">
+          <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+        </div>
+        <div class="info">
+          <a href="./user_profile.php" class="d-block">
+            <?php /* echo $_SESSION['user'];  */ ?>
+            </br>
+          <?php /*  echo $_SESSION['email'];  */ ?>  
+          </a>
+         
+        </div>
+      </div> -->
+
+      
+<?php 
+if($_SESSION['login_level']==1)
+{  
+?>
+<aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="./index.php" class="brand-link">
       <!-- <img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
@@ -111,13 +151,93 @@
         </div>
         <div class="info">
           <a href="./user_profile.php" class="d-block">
-            Test User
+            <?php echo $_SESSION['user'];  ?>
+            </br>
+          <?php echo $_SESSION['email'];  ?>  
           </a>
+         
+        </div>
+      </div>
+      <!-- Sidebar Menu -->
+      <nav class="mt-2">
+        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+          <!-- Add icons to the links using the .nav-icon class
+               with font-awesome or any other icon font library -->
+          <li class="nav-item">
+                <a href="./index.php" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Dashboard</p>
+                </a>
+          </li>
+          
+          <li class="nav-item">
+            <a href="./user_profile.php" class="nav-link">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+                Profile
+              </p>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a href="./comapny-solution.php" class="nav-link">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+                Company Solutions
+              </p>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a href="./solutions.php" class="nav-link">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+                Solutions
+              </p>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a href="./interview_student.php" class="nav-link">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+                   Available Internships
+              </p>
+            </a>
+          </li>
+          
+<?php 
+} 
+if($_SESSION['login_level']>1)
+{
+?>
+ <aside class="main-sidebar sidebar-dark-primary elevation-4">
+    <!-- Brand Logo -->
+    <a href="./index.php" class="brand-link">
+      <!-- <img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
+           style="opacity: .8"> -->
+      <span class="brand-text font-weight-light">AICTE Internship</span>
+    </a>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <!-- Sidebar user panel (optional) -->
+      <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+        <div class="image">
+          <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+        </div>
+        <div class="info">
+          <a href="./user_profile.php" class="d-block">
+            <?php echo $_SESSION['user'];  ?>
+            </br>
+          <?php echo $_SESSION['email'];  ?>  
+          </a>
+         
         </div>
       </div>
 
-      <!-- Sidebar Menu -->
-      <nav class="mt-2">
+
+<nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
@@ -165,16 +285,6 @@
           </li>
 
           <li class="nav-item">
-            <a href="./interview_student.php" class="nav-link">
-              <i class="nav-icon fas fa-th"></i>
-              <p>
-                Internships for Student
-              </p>
-            </a>
-          </li>
-          
-
-          <li class="nav-item">
             <a href="./internships.php" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>
@@ -192,14 +302,6 @@
             </a>
           </li>
 
-          <!-- <li class="nav-item">
-            <a href="./interviews.php" class="nav-link">
-              <i class="nav-icon fas fa-th"></i>
-              <p>
-                Interviews
-              </p>
-            </a>
-          </li> -->
 
           <li class="nav-item">
             <a href="./interview_management.php" class="nav-link">
@@ -216,15 +318,13 @@
             <a href="./projects.php" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p style="font-size: 16px;">
-                Internship Management
+                Internship Management System
               </p>
-              <br>
-              System
             </a>
           </li>
 
           <li class="nav-item">
-            <a href="http://internship2.aicte-india.org/chat_profile_student.php?uid=STU5e50561c759e61582323228%20&class=" class="nav-link">
+            <a href="./chat_profile.php" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>
                 Messaging (187)
@@ -268,7 +368,10 @@
               </p>
             </a>
           </li>
+<?php 
 
+}
+?>
 
 
           <!-- <li class="nav-item has-treeview">

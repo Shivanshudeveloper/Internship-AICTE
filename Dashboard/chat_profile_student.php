@@ -2,14 +2,15 @@
     session_start(); 
     if(!isset($_SESSION['id']))
     {
-        header("location:login.php?task=PlseLogin");
+        header("location:login.php?tak=PlseLogin");
     }
     else
     {
-        include 'includes/header_student.inc.php';
+  include 'includes/header_student.inc.php';      
 $uid=$_SESSION['id'];
     }
 ?>
+
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -272,20 +273,17 @@ img {
                             <div class="stylish-input-group">
                                 <input type="text" class="search-bar" placeholder="Search">
                                 <span class="input-group-addon">
-                                    <button type="button" onclick="sendMsg()"> <i class="fa fa-search" aria-hidden="true"></i> </button>
+                                    <button type="button"> <i class="fa fa-search" aria-hidden="true"></i> </button>
                                 </span> </div>
                         </div>
                     </div>
-                    <div class="form-group">
-                        <div class="row">
-                            <div class="col">
-                                <select name="status" id="status">
-                                    <option value="Hold">Hold</option>
-                                    <option value="Reject">Reject</option>
-                                    <option value="Applied">Applied</option>
-                                </select>
-                            </div>
-                        </div>
+                    <div class="dropdown">
+                        <form method="POST">
+                            <select class="form-control" name="id1" id="id1">
+                                <option value="Hold">Hold</option>
+                                <option value="Reject">Reject</option>
+                                <option value="Accept">Accept</option>
+                            </select>
                     </div>
 
 
@@ -322,82 +320,23 @@ img {
                         ?>
                     </div>
                 </div>
-                <div class="mesgs">
-                    <div class="msg_history" id="message-area">
-                        <div class="incoming_msg">
-                            <div class="incoming_msg_img"> <img src="https://ptetutorials.com/images/user-profile.png"
-                                    alt="sunil"> </div>
-                            <div class="received_msg">
-                                <div class="received_withd_msg">
-                                    <p>Test which is a new approach to have all
-                                        solutions</p>
-                                    <span class="time_date"> 11:01 AM | June 9</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="outgoing_msg">
-                            <div class="sent_msg">
-                                <p>Test which is a new approach to have all
-                                    solutions</p>
-                                <span class="time_date"> 11:01 AM | June 9</span>
-                            </div>
-                        </div>
-                        <div class="incoming_msg">
-                            <div class="incoming_msg_img"> <img src="https://ptetutorials.com/images/user-profile.png"
-                                    alt="sunil"> </div>
-                            <div class="received_msg">
-                                <div class="received_withd_msg">
-                                    <p>Test, which is a new approach to have</p>
-                                    <span class="time_date"> 11:01 AM | Yesterday</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="outgoing_msg">
-                            <div class="sent_msg">
-                                <p>Apollo University, Delhi, India Test</p>
-                                <span class="time_date"> 11:01 AM | Today</span>
-                            </div>
-                        </div>
-                        <div class="incoming_msg">
-                            <div class="incoming_msg_img"> <img src="https://ptetutorials.com/images/user-profile.png"
-                                    alt="sunil"> </div>
-                            <div class="received_msg">
-                                <div class="received_withd_msg">
-                                    <p>We work directly with our designers and suppliers,
-                                        and sell direct to you, which means quality, exclusive
-                                        products, at a price anyone can afford.</p>
-                                    <span class="time_date"> 11:01 AM | Today</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="type_msg">
-                        <div class="input_msg_write">
-                            <input type="text" class="write_msg" id="message" name="message" placeholder="Type a message" />
-                            <button class="msg_send_btn" onclick=" sendMsg()" type="button"><i
-                                    class="fa fa-paper-plane-o" aria-hidden="true"></i></button>
-                        </div>
-                    </div>
-                    <input type="file" id="file" name="file" style="display:none">
-                    <button class="btn btn-sm btn-info" id="id5" onclick="new1()" type="button"><i
-                            class="fa fa-camera-retro fa-lg" aria-hidden="true"></i></button>
-                    <button class="btn btn-sm btn-info" onclick="new1()" type="button"><i class="fa fa-file"
-                            aria-hidden="true"></i></button>
-                </div>
-            </div>
-
         </div>
     </div>
     </div>
+
+
     <script>
-  const sendMsg = () => {
+    function new1()
+    {
+        $("#file").click();
+    }
+    const sendMsg = () => {
         var message = $("#message").val();
         date = new Date();
         var pageURL = window.location.href;
         url = new URL(pageURL);
         company_id = url.searchParams.get("company_id");
-        userId = url.searchParams.get("uid");
+        uid = url.searchParams.get("uid");
         userName = url.searchParams.get("user");
         console.log(userName)
         if (!message) {
@@ -407,18 +346,18 @@ img {
                 user: userName,
                 message: message,
                 company_id: company_id,
-                userId: userId,
+                uid: uid,
                 date: date,
-                messageSendByStudent: true
+                messageSend: true
             }).then(() => {
                 console.log("Inserted!")
             })
         }
-       // clearTextArea()
-    } 
+        clearTextArea()
+    }
 
     const clearTextArea = () => {
-        document.getElementById("message").value = " "
+        document.getElementById("message").value = ""
         console.log("Cleared")
     }
 
@@ -428,16 +367,13 @@ img {
     userName = url.searchParams.get("user");
     userId = url.searchParams.get("uid");
     setInterval(() => {
-$("#message-area").load("./src/php/main.php", {
+        $("#message-area").load("./src/php/main.php", {
             company_id: company_id,
             userId: userId,
             userName: userName,
-            loadDataCompany: true
-        })        
-    }, 1000) 
-
-
-
+            loadData: true
+        })
+    }, 1000)
     </script>
 </body>
 

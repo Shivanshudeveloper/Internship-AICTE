@@ -1,7 +1,7 @@
 <?php
 
 include './dbh.php';
-
+session_start();
 if (isset($_POST['internship_post'])) {
     $type = mysqli_real_escape_string($conn, $_POST['type']);
     $title = mysqli_real_escape_string($conn, $_POST['title']);
@@ -31,7 +31,8 @@ if (isset($_POST['internship_post'])) {
     $internshipId = "INTERNSHIP_".time().uniqid();
 
 
-    $companyId = "12345678";
+    $companyId = $_SESSION['id'];
+    
 
     $attributes = '';
 
@@ -68,65 +69,207 @@ if (isset($_POST['industryProblem_btn'])) {
     
 
     
-    $company_uid = "12345678";
+    $company_uid = $_SESSION['id'];
+    echo $_SESSION['id'];
 
     $sql = "INSERT INTO problem_statements (uid , company_uid,problem, description, location, research, category, solveby, studentResearcher, studentStream, studentExpertise, workResearch, duration, stipend, certificate, level) VALUES ('$uid' , '$company_uid','$problem', '$description', '$location', '$research', '$category', '$solveby', '$studentResearcher', '$studentStream', '$studentExpertise', '$workResearch', '$duration', '$stipend', '$certificate', '$level');";
     mysqli_query($conn, $sql);
     header('Location: ../../solutions.php');
 }
-
-if (isset($_POST['messageSend'])) {
-    $uid=mysqli_real_escape_string($conn,$_POST['userId']);
-    $user = mysqli_real_escape_string($conn, $_POST['user']);
-    $message = mysqli_real_escape_string($conn, $_POST['message']);
-    $company_id = mysqli_real_escape_string($conn, $_POST['company_id']);
-    $uid = mysqli_real_escape_string($conn, $_POST['uid']);
-    $date = mysqli_real_escape_string($conn, $_POST['date']);
-    $msg_from=mysqli_real_escape_string($conn,$_POST['']);
-    $msg_from_name="";
-    $sql = "INSERT INTO `message`(`id`,`company_id`, `uid`, `msg_from`, `msg_from_name`, `msg`, `msg_date`) VALUES ('$company_id', '$uid', '$user','$msg_from','$msg_from_name', '$message', '$date');";
-    $res=mysqli_query($conn,$sql);
-}
-
-if(isset($_POST['loadData']))
+if(isset($_POST['login']))
 {
-$sql1="SELECT * FROM message";
-$res1=mysqli_query($conn,$sql1);
-while($row=mysqli_fetch_assoc($res1))
-{
-echo '
-<div class="incoming_msg">
 
-<div class="incoming_msg_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> 
-</div>
-'.$row['uid'].'
-<div class="received_msg">
-  <div class="received_withd_msg">
-    <p>'.$row['msg'].'</p>
-    <span class="time_date"> 11:01 AM    |    Today</span></div>
-</div>
-</div>
-';
+$username = $_POST['email'];
+$password = $_POST['password'];
+$dbusername = " ";
+$dbpassword = " ";
+$user=" ";
+$id=" ";
+$password=md5($password);
+
+if ($username && $password) {
+    $query   = ("SELECT * FROM student_register WHERE email='$username'");
+    $result  = mysqli_query($conn, $query);
+    $numrows = mysqli_num_rows($result);
+
+    if ($numrows>0) {
+        while ($row = mysqli_fetch_assoc($result)) 
+   {
+            $dbusername = $row['email'];
+            $dbpassword = $row['password'];
+            $id=$row['uid'];
+            $user=$row['first_name'];
+        }
+        if($username == $dbusername && $password == $dbpassword) 
+        {
+            $_SESSION['email'] = $username;
+            $_SESSION['login_level']=1;
+            $_SESSION['id']=$id;
+            $_SESSION['user']=$user;
+            $_SESSION['loggedIn']=1;
+            header("location: ../../index.php"); //another file to send request to the next page if values are correct.
+        } 
+        else{
+             header("location: ../../login.php?error=WrongPassword");
+            }
+        }
+        else {
+            header("location: ../../login.php?error=UserNotExist");
+            }
 }
+else{
+    header("location: ../../login.php?error=PlseEnterUsernameorPassword");
+    }
+}
+if(isset($_POST['login_c']))
+{
+    $username = $_POST['email'];
+    $password = $_POST['password'];
+    $dbusername = " ";
+    $dbpassword = " ";
+    $user=" ";
+    $id=" ";
+    $password=md5($password);
+
+if ($username && $password) {
+     $query   = ("SELECT * FROM corporate_register WHERE email='$username'");
+    $result  = mysqli_query($conn, $query);
+    $numrows = mysqli_num_rows($result);
+
+    if ($numrows != 0) {
+        while ($row = mysqli_fetch_assoc($result)) 
+        {
+            $dbusername = $row['email'];
+            $dbpassword = $row['password'];
+            $id=$row['uid'];
+            $user=$row['first_name'];
+        }
+        if($username == $dbusername && $password == $dbpassword) 
+        {
+            $_SESSION['email'] = $username;
+            $_SESSION['id']=$id;
+            $_SESSION['login_level']=2;
+            $_SESSION['user']=$user;
+            $_SESSION['loggedIn']=1;
+            header("location: ../../index.php"); //another file to send request to the next page if values are correct.
+            exit();
+        } 
+        else{
+            
+            header("location: ../../login_corporate.php?error=WrongPassword");
+            }
+        }
+        else {
+            header("location: ../../login_corporate.php?error=UserNotExist");
+            }
+}
+else{
+    header("location: ../../login_corporate.php?error=PlseEnterUsernameorPassword");
+    }
 }
 
-if(isset($_POST['loadData_company']))
+if(isset($_POST['login_dm']))
 {
-$sql1="SELECT `msg` FROM message";
-$res1=mysqli_query($conn,$sql1);
-while($row=mysqli_fetch_assoc($res1))
-{
-echo '
-<div class="incoming_msg">
-<div class="incoming_msg_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
-<div class="received_msg">
-  <div class="received_withd_msg">
-    <p>'.$row['msg'].'</p>
-    <span class="time_date"> 11:01 AM    |    Today</span></div>
-</div>
-</div>
-';
+session_start();
+$username = $_POST['email'];
+$password = $_POST['password'];
+$dbusername = " ";
+$dbpassword = " ";
+$password=md5($password);
+
+if ($username && $password) {
+    mysqli_select_db($conn, "internal") or die ("Could'nt find database");
+    
+    $query   = ("SELECT * FROM corporate_register WHERE email='$username'");
+    $result  = mysqli_query($conn, $query);
+    $numrows = mysqli_num_rows($result);
+
+    if ($numrows != 0) {
+        while ($row = mysqli_fetch_assoc($result)) 
+        {
+            $dbusername = $row['email'];
+            $dbpassword = $row['password'];
+            $id=$row['uid'];
+        }
+        if($username == $dbusername && $password == $dbpassword) 
+        {
+            $_SESSION['email'] = $username;
+            $_SESSION['password'] = $password;
+            $_SESSION['loggedIn']=1;
+            $_SESSION['login_level']=3;
+            $_SESSION['id']=$id;
+            header("location: ../../../Dashboard/index.php"); //another file to send request to the next page if values are correct.
+            exit();
+        } 
+        else{
+            
+            header("location: ../../login.php?error=WrongPassword");
+            }
+        }
+        else {
+            header("location: ../../login.php?error=UserNotExist");
+            }
 }
+else{
+    header("location: ../../login.php?error=PlseEnterUsernameorPassword");
+    }
+}
+//corporate register
+if (isset($_POST['corporate-register'])) {
+    $fname = mysqli_real_escape_string($conn, $_POST['fname']);
+    $lname = mysqli_real_escape_string($conn, $_POST['lname']);
+    $contactnum = mysqli_real_escape_string($conn, $_POST['contactnum']);
+    $email = mysqli_real_escape_string($conn, $_POST['email']);
+    $password = mysqli_real_escape_string($conn, $_POST['password']);
+    $corporatelist = mysqli_real_escape_string($conn, $_POST['corporatelist']);
+    $idnumber = mysqli_real_escape_string($conn, $_POST['idnumber']);
+    $organization = mysqli_real_escape_string($conn, $_POST['organization']);
+    $uid = "CORPORATE".uniqid().time();
+
+    // Hashning the password
+    $hash_pwd = md5($password);
+
+    $sql = "INSERT INTO corporate_register(uid ,first_name, last_name, email, contact, corporate_list, id_number, organization, password) VALUES('$uid', '$fname', '$lname', '$email', '$contactnum', '$corporatelist', '$idnumber', '$organization', '$hash_pwd')";
+    mysqli_query($conn, $sql);
 }
 
+//student register
+if (isset($_POST['student-register'])) {
+    $fname = mysqli_real_escape_string($conn, $_POST['fname']);
+    $lname = mysqli_real_escape_string($conn, $_POST['lname']);
+    $contactnum = mysqli_real_escape_string($conn, $_POST['contactnum']);
+    $email = mysqli_real_escape_string($conn, $_POST['email']);
+    $password = mysqli_real_escape_string($conn, $_POST['password']);
+    $institute = mysqli_real_escape_string($conn, $_POST['institute']);
+
+    // Hashning the password
+    $hash_pwd = md5($password);
+
+    // Generating a unique id
+    $uid = "STU".uniqid().time();
+
+    $sql = "INSERT INTO student_register(uid, first_name, last_name, email, contact, institute, password) VALUES('$uid', '$fname', '$lname', '$email', '$contactnum', '$institute', '$hash_pwd')";
+    mysqli_query($conn, $sql);
+}
+
+if (isset($_POST['dm-register'])) {
+    $fname = mysqli_real_escape_string($conn, $_POST['fname']);
+    $lname = mysqli_real_escape_string($conn, $_POST['lname']);
+    $contactnum = mysqli_real_escape_string($conn, $_POST['contactnum']);
+    $email = mysqli_real_escape_string($conn, $_POST['email']);
+    $password = mysqli_real_escape_string($conn, $_POST['password']);
+    $institute = mysqli_real_escape_string($conn, $_POST['institute']);
+    $state = mysqli_real_escape_string($conn, $_POST['state']);
+    $district = mysqli_real_escape_string($conn, $_POST['district']);
+
+
+    // Hashning the password
+    $hash_pwd = md5($password);
+
+    // Generating a unique id
+    $uid = "STU".uniqid().time();
+
+    $sql = "INSERT INTO corporate(uid, first_name, last_name, email, contact, institute, password,state,district) VALUES('$uid', '$fname', '$lname', '$email', '$contactnum', '$institute', '$hash_pwd,$state,$district)";
+    mysqli_query($conn, $sql);
+}
 ?>

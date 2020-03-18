@@ -1,4 +1,14 @@
-<?php include './includes/header.inc.php' ?>
+<?php
+session_start();
+if(!isset($_SESSION['loggedIn']))
+{
+  header("location:login_coporate.php?task=PlseLogin");
+} 
+else
+{
+include './includes/header.inc.php';
+} 
+?>
 <link href="css/style.css" rel="stylesheet">
 <link href="css/bootstrap.min.css" rel="stylesheet">
 <link href="css/custom.css" rel="stylesheet">
@@ -60,7 +70,7 @@ div.card {
 
         <div class="row">
         <div class="col-md-9">
-          <h2 style="font-size:38px"><strong>Test User</strong></h2>
+          <h2 style="font-size:38px"><strong><?php echo $_SESSION['user'];  ?></strong></h2>
         </div>
         <div class="col-md-3">
           <div class="button edtBtnDiv">

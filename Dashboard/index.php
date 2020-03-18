@@ -1,11 +1,13 @@
 <?php
 session_start();
-if(!isset($_SESSION))
+if(!isset($_SESSION['loggedIn']))
 {
-  header("location:Page/login.php");
+  header("location:./login_corporate.php");
 }
 else
-include './includes/header.inc.php' 
+{
+include './includes/header.inc.php';
+} 
 ?>
 
   <!-- Content Wrapper. Contains page content -->
