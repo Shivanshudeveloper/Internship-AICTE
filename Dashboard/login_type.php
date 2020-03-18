@@ -10,7 +10,7 @@
               <div class="h1 text-primary">
               <i class="fas fa-user-tie"></i>
               </div>
-                <h3 class="heading"><a href="#">I AM A ORGANIZATION!</a></h3>
+                <h3 class="heading"><a href="#">UNIVERSITY/COLLEGE</a></h3>
                 <div class="d-flex align-items-center mt-4">
 	                <p class="mb-0"><a href="./login_corporate.php" class="btn btn-primary">Login</a></p>
                 </div>
@@ -24,7 +24,7 @@
               <div class="h1 text-primary">
               <i class="fas fa-user-tie"></i>
               </div>
-                <h3 class="heading"><a href="#">I AM A DISTRICT MEGISTRATE!</a></h3>
+                <h3 class="heading"><a href="#">EMPLOYER</a></h3>
                 <div class="d-flex align-items-center mt-4">
 	                <p class="mb-0"><a href="./login_corporate.php" class="btn btn-primary">Login</a></p>
                 </div>
@@ -38,7 +38,7 @@
               <div class="h1 text-primary">
               <i class="fas fa-user-tie"></i>
               </div>
-                <h3 class="heading"><a href="#">I AM STUDENT!</a></h3>
+                <h3 class="heading"><a href="#">STUDENT</a></h3>
                 <div class="d-flex align-items-center mt-4">
 	                <p class="mb-0"><a href="./login.php" class="btn btn-primary">login</a></p>
                 </div>
