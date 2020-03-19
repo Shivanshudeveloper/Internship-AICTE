@@ -4,9 +4,13 @@ if(!isset($_SESSION['loggedIn']))
 {
     header("location:login.php?task=PlseLogin");
 }
+else if($_SESSION['login_level']==1)
+{
+include './includes/header_students.php'; 
+}
 else
 {
-include './includes/header.inc.php'; 
+    include './includes/header_students.php'; 
 }
 ?>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">

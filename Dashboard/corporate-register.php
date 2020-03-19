@@ -20,9 +20,9 @@
     <div class="container">
         <div id="coporate_form" class="w-50">
 
-            <label for="meetingPlace">Meeting place: </label>
-            <select class="form-group" id="meetingPlace">
-                <option value="Corporate">Corporate</option>
+            <label for="meetingPlace">Type of Employer: </label>
+            <select class="form-group" id="type">
+                <option value="Corporate" selected>Corporate</option>
                 <option value="District Megistrate">District Megistrate</option>
                 <option value="NASCOM">NASCOM</option>
                 <option value="AGGREGATOR">AGGREGATOR</option>
@@ -34,7 +34,7 @@
                 <option value="CII">CII</option>
                 <option value="FICCI">FICCI</option>
             </select>
-            <form class="text-center border border-light p-5" action="#!">
+            <form class="text-center border border-light p-5" action="#!" id="form_corporate" >
                 <input type="text" name="fname" id="fname" class="form-control mb-4" placeholder="First Name">
                 <input type="text" name="lname" id="lname" class="form-control mb-4" placeholder="Last Name">
                 <input type="text" name="contactnum" id="contactnum" class="form-control mb-4"
@@ -58,17 +58,38 @@
                     type="button">Register</button>
 
             </form>
+
+            <form class="text-center border border-light p-5" action="#!"id="dm" style="display:none">
+                    <!-- Name -->
+                    <input type="text" name="fname" id="fname" class="form-control mb-4" placeholder="First Name">
+                    <input type="text" name="lname" id="lname" class="form-control mb-4" placeholder="Last Name">
+                    <input type="text" name="contactnum" id="contactnum" class="form-control mb-4" placeholder="Contact Number">
+                    <input type="text" name="fname" id="fname" class="form-control mb-4" placeholder="State">
+                    <input type="text" name="lname" id="lname" class="form-control mb-4" placeholder="District">
+
+                    <!-- Email -->
+                    <input type="email" name="email" id="email" class="form-control mb-4" placeholder="E-mail">
+                    <input type="password" name="pswrd" id="pswrd" class="form-control mb-4" placeholder="Password">
+
+                   
+
+                    <button name="dm-register" id="dm-register" class="btn btn-info btn-block" type="button">
+                    Register  <i class="ml-2 fas fa-sign-out-alt"></i></button>
+                </form>
         </div>
     </div>
 </section>
 
 <script>
 $(document).ready(function() {
-    $("#add_fields_placeholder").change(function() {
-        if ($(this).val() == "Other") {
-            $("#add_fields_placeholderValue").show();
-        } else {
-            $("#add_fields_placeholderValue").hide();
+    $("#type").change(function() {
+        value = $(this).val()
+        if (value == "District Megistrate") {
+            $("#form_corporate").hide();
+            $("#dm").show();
+        } else if(value=="Corporate"||value="NASCOM"||value="AGGREGATOR"||value="SECTOR SKILL COUNCIL"||value="ASSOCHAM"||value="PUBLIC SECTOR UNIT"){
+            $("#dm").hide();
+            $("#form_corporate").show();
         }
     });
 });

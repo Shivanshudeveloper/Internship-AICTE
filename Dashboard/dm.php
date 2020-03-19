@@ -6,7 +6,7 @@
       <div class="container">
         <div class="row no-gutters slider-text align-items-center justify-content-center">
           <div class="col-md-9 ftco-animate text-center">
-            <h1 class="mb-2 bread">STUDENT REGISTRATION</h1>
+            <h1 class="mb-2 bread">DISTRICT MEGISTRATE REGISTRATION</h1>
             <p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home <i class="ion-ios-arrow-forward"></i></a></span> <span>Register <i class="ion-ios-arrow-forward"></i></span> <span> Student Register <i class="ion-ios-arrow-forward"></i></span> </p>
           </div>
         </div>
@@ -24,10 +24,8 @@
                     <input type="text" name="fname" id="fname" class="form-control mb-4" placeholder="First Name">
                     <input type="text" name="lname" id="lname" class="form-control mb-4" placeholder="Last Name">
                     <input type="text" name="contactnum" id="contactnum" class="form-control mb-4" placeholder="Contact Number">
-                    
-                    <?php include './includes/search_institutes.php' ?>
-
-
+                    <input type="text" name="fname" id="fname" class="form-control mb-4" placeholder="State">
+                    <input type="text" name="lname" id="lname" class="form-control mb-4" placeholder="District">
 
                     <!-- Email -->
                     <input type="email" name="email" id="email" class="form-control mb-4" placeholder="E-mail">
@@ -35,7 +33,7 @@
 
                    
 
-                    <button name="student-register" id="student-register" class="btn btn-info btn-block" type="button">
+                    <button name="dm-register" id="dm-register" class="btn btn-info btn-block" type="button">
                     Register  <i class="ml-2 fas fa-sign-out-alt"></i></button>
                 </form>
                 </div>
@@ -47,6 +45,3 @@
         
         </div>
 		</section>
-
-
-<?php include './includes/footer.inc.php' ?>

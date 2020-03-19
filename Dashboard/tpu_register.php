@@ -1,4 +1,4 @@
-<?php include './includes/header1.inc.php' ?>
+<?php include './includes/header.inc.php' ?>
     
     <section class="hero-wrap hero-wrap-2" style="background-image: url('images/bg_1.jpg');">
       <div class="overlay"></div>
@@ -25,6 +25,9 @@
                 <!-- Email -->
                 <input type="email" name="email" id="email" class="form-control mb-4" placeholder="E-mail">
                 <input type="password" name="pswrd" id="pswrd" class="form-control mb-4" placeholder="Password">
+
+                <?php include './includes/search_institutes.php' ?>
+
                 <input type="text" name="idnum" id="idnum" class="form-control mb-4" placeholder="ID Number">
                 <input type="text" name="organization" id="organization" class="form-control mb-4" placeholder="Organisation">
 
@@ -38,4 +41,4 @@
 		</section>
 
 
-<?php include './includes/footer1.inc.php' ?>
+<?php include './includes/footer.inc.php' ?>

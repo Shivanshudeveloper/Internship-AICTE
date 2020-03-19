@@ -4,9 +4,12 @@ if(!isset($_SESSION['loggedIn']))
 {
   header("location:./login_corporate.php");
 }
-else
+else if($_SESSION['login_level']==1)
 {
-include './includes/header.inc.php';
+include './includes/header_students.php';
+}
+else{
+  include './includes/header.inc.php';
 } 
 ?>
 

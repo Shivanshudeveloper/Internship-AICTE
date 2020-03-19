@@ -1,4 +1,6 @@
-<?php include './includes/header.inc.php' ?>
+<?php
+session_start(); 
+include './includes/header_students.php' ?>
 
 <section>
 <div class="content-wrapper">

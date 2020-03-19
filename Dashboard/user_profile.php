@@ -1,13 +1,17 @@
-<?php
+<?php 
 session_start();
 if(!isset($_SESSION['loggedIn']))
 {
-  header("location:login_coporate.php?task=PlseLogin");
-} 
+    header("location:login.php?task=PlseLogin");
+}
+else if($_SESSION['login_level']==1)
+{
+include './includes/header_students.php'; 
+}
 else
 {
-include './includes/header.inc.php';
-} 
+    include './includes/header_students.php'; 
+}
 ?>
 <link href="css/style.css" rel="stylesheet">
 <link href="css/bootstrap.min.css" rel="stylesheet">

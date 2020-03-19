@@ -6,7 +6,7 @@
     }
     else
     {
-  include 'includes/header_student.inc.php';      
+  include 'includes/header_students.php';      
 $uid=$_SESSION['id'];
     }
 ?>
@@ -258,6 +258,7 @@ img {
 </style>
 
 <body>
+    <div class="content-wrapper">
     <div class="container">
         <h3 class=" text-center">Messaging</h3>
         <!-- <button type="button" class="btn btn-primary">create Thread</button> -->
