@@ -10,7 +10,7 @@ else{
 ?>
 
 <!-- Content Wrapper. Contains page content -->
-<div class="content-wrapper">
+    <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <div class="container-fluid">
@@ -61,15 +61,8 @@ else{
 
                     <form action="./src/php/main.php" method="POST">
                         <div class="card-body">
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">Internship Type</label>
-                                <select onclick="reDirect();" class="form-control" name="type" id="type">
-                                    <option value="Full Time">Full Time</option>
-                                    <option value="Part Time">Part Time</option>
-                                  
-                            </div>
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">Internship Type</label>
+                        <div class="form-group">
+                                <label for="exampleInputEmail1">Job Type</label>
                                 <select class="form-control" name="job_type" id="job_type">
                                     <option value="Job">Job</option>
                                     <option value="Internship">Internship</option>
@@ -90,6 +83,14 @@ else{
                                 </script>
                                 </select>
                             </div>
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Internship Type</label>
+                                <select onclick="reDirect();" class="form-control" name="type" id="type">
+                                    <option value="Full Time">Full Time</option>
+                                    <option value="Part Time">Part Time</option>
+                                </select>
+                            </div>
+                           
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Internship Title</label>
                                 <input type="text" class="form-control" name="title" id="title" placeholder="Title">

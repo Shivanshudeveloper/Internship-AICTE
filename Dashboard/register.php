@@ -12,7 +12,7 @@
                         </div>
                         <h3 class="heading"><a href="#">UNIVERSITIY/COLLEGE</a></h3>
                         <div class="d-flex align-items-center mt-4">
-                            <p class="mb-0"><a href="./" class="btn btn-primary">Register</a></p>
+                            <p class="mb-0"><a href="tpu_register.php" class="btn btn-primary">Register</a></p>
                         </div>
                     </div>
                 </div>
@@ -23,7 +23,7 @@
                         <div class="h1 text-primary">
                             <i class="fas fa-user-tie"></i>
                         </div>
-                        <h3 class="heading"><a href="#">EMPLOYER</a></h3>
+                        <h3 class="heading"><a href="#">EMPLOYER(DM,PSU,OTHER)</a></h3>
                         <div class="d-flex align-items-center mt-4">
                             <p class="mb-0"><a href="./corporate-register.php" class="btn btn-primary">Register</a></p>
                         </div>

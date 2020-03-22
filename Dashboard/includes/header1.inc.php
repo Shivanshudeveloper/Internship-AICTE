@@ -21,6 +21,9 @@
     <link rel="stylesheet" href="css/flaticon1.css">
     <link rel="stylesheet" href="css/icomoon1.css">
     <link rel="stylesheet" href="css/style1.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
 
 	<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
@@ -54,7 +57,7 @@
                     </div>
 					
 					<div class="col lgnBtnOne _2">
-                        <a href="./index.php" class="btn py-2 px-3 btn-primary d-flex align-items-center justify-content-center">
+                        <a href="./login_type.php" class="btn py-2 px-3 btn-primary d-flex align-items-center justify-content-center">
 							<span class="ml-2">Home</span>
 					    </a>
                     </div>
@@ -68,26 +71,6 @@
 					
                 </div>
                 </div>
-                
-                
-	    		<!-- <div class="col-lg-8 d-block mt-4">
-
-		    		<div class="row d-flex">
-					    <div class="col-md topper d-flex align-items-center justify-content-end">
-					    	
-					    		
-					    	
-					    </div>
-						<div class="col-md topper d-flex align-items-center justify-content-end">
-					    	
-					    		<a href="./login.php" class="btn py-2 px-3 btn-primary d-flex align-items-center justify-content-center">
-					    			<span>Login Now</span>
-					    		</a>
-					    	
-
-					    </div>
-				    </div>
-			    </div> -->
 		    </div>
 		  </div>
     </div>

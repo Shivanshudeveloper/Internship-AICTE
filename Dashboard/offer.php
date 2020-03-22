@@ -1,4 +1,6 @@
-<?php include './includes/header.inc.php' ?>
+<?php 
+session_start();
+include './includes/header.inc.php' ?>
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
@@ -67,7 +69,7 @@
                     <tbody>
                     <tr>
                       <td>1</td>
-                      <td>Test User 1</td>
+                      <td><?php echo $_SESSION['user']; ?></td>
                       <td>Big Data Analysis</td>
                       <td>
                           <button class="btn btn-sm btn-info">
@@ -117,7 +119,7 @@
                     <tr>
                       <td>2</td>
                       <td>Test User 2</td>
-                      <td>Big Data Analysis</td>
+                      <td>Frond End Development</td>
                       <td>
                           <button class="btn btn-sm btn-info">
                               View Offer Letter

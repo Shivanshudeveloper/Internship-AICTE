@@ -64,6 +64,13 @@
     <ul class="navbar-nav ml-auto">
       <!-- Messages Dropdown Menu -->
       <div class="form-group"style="margin-right:10px;margin-top:7px">
+    <label>Welcome: <?php echo $_SESSION['user']; ?></label>
+    </div>
+    <div class="form-group"style="margin-right:10px;margin-top:7px">
+    <a href="#">help</a>
+    </div>
+
+      <div class="form-group"style="margin-right:10px;margin-top:7px">
     <a href="logout.php">logout</a>
     </div>
         <!-- Notifications Dropdown Menu -->
@@ -226,7 +233,7 @@ if($_SESSION['login_level']>1)
           <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="./user_profile.php" class="d-block">
+          <a href="./company_profile.php" class="d-block">
             <?php echo $_SESSION['user'];  ?>
             </br>
           <?php echo $_SESSION['email'];  ?>  
@@ -241,7 +248,7 @@ if($_SESSION['login_level']>1)
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item">
-                <a href="./index.php" class="nav-link">
+                <a href="./index_dashboard.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Dashboard</p>
                 </a>

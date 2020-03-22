@@ -20,11 +20,10 @@ include './includes/header.inc.php' ?>
             <?php 
                 include './src/php/dbh.php';
                 $p_uid = $_GET['uid'];
-                $name = $_GET['name'];
                 $sql = "SELECT * FROM solutions WHERE problem_uid = '$p_uid';";
                 $result = mysqli_query($conn, $sql);
                     echo '
-                    <h2 class="title">'.$name.'</h2>
+                    <h2 class="title">'."Submitted Solutions".'</h2>
                     <div class="row row-space solutionsDivLst">
                     <div class="col-xs-12">
                         <div class="list-group">

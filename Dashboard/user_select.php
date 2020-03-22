@@ -293,7 +293,8 @@ img {
                     <div class="inbox_chat">
                         <?php
                     include './src/php/dbh.php';
-                    $sql = "select * from corporate_register";
+                    $uid=$_GET['company_id'];
+                    $sql = "SELECT * FROM corporate_register WHERE uid='$uid' ";
                     $res= mysqli_query($conn,$sql);
                 if($res)
                 {

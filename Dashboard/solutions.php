@@ -37,7 +37,7 @@ include './includes/header.inc.php' ?>
                     } else {
                         while ($row = mysqli_fetch_assoc($result)) {
                             echo '
-                            <a href="solutions-details.php?uid='.$row['uid'].'" class="list-group-item list-group-item-action flex-column align-items-start">
+                            <a href="solutions-details-sbmt.php?uid='.$row['uid'].'" class="list-group-item list-group-item-action flex-column align-items-start">
                                 <div class="d-flex w-100 justify-content-between listItemDiv">
                                 <h5 class="mb-1">'.$row['problem'].'</h5>
                                 <small class="list-group-item-success solBtn">12 Student Submited Solutions</small>

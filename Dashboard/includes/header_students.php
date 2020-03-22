@@ -64,6 +64,12 @@
             <ul class="navbar-nav ml-auto">
                 <!-- Messages Dropdown Menu -->
                 <div class="form-group" style="margin-right:10px;margin-top:7px">
+                    <label>Welcome: <?php echo $_SESSION['user']; ?></label>
+                </div>
+                <div class="form-group" style="margin-right:10px;margin-top:7px">
+                    <a href="#">help</a>
+                </div>
+                <div class="form-group" style="margin-right:10px;margin-top:7px">
                     <a href="logout.php">logout</a>
                 </div>
                 <!-- Notifications Dropdown Menu -->
@@ -147,6 +153,15 @@ if($_SESSION['login_level']==1)
                         </li>
 
                         <li class="nav-item">
+                            <a href="./offer.php" class="nav-link">
+                                <i class="nav-icon fas fa-th"></i>
+                                <p>
+                                    View Offer
+                                </p>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
                             <a href="./interview_student.php" class="nav-link">
                                 <i class="nav-icon fas fa-th"></i>
                                 <p>
@@ -156,10 +171,10 @@ if($_SESSION['login_level']==1)
                         </li>
 
                         <li class="nav-item">
-                            <a href="./comapny-solution.php" class="nav-link">
+                            <a href="./solutions.php" class="nav-link">
                                 <i class="nav-icon fas fa-th"></i>
                                 <p>
-                                    Company Solutions
+                                    All Problem Statements
                                 </p>
                             </a>
                         </li>

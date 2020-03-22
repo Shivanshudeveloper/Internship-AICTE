@@ -41,13 +41,13 @@
                 <div class="col-md-5 rgtHmBtnNewDiv">
                 <div class="row mt-4 registerbtnTp">
                     <div class="col-md-6 col-xs-6 float-right">
-                        <a href="./register.php" class="btn py-2 px-3 btn-primary d-flex align-items-center justify-content-center">
+                        <a href="../Dashboard/register.php" class="btn py-2 px-3 btn-primary d-flex align-items-center justify-content-center">
 							<i class="fas fa-user-plus"></i>	
 							<span class="ml-2">Register now</span>
 					    </a>
                     </div>
                     <div class="col-md-6 col-xs-6 float-right lgnBtnTp">
-                        <a href="./login_type.php" class="btn py-2 px-3 btn-primary d-flex align-items-center justify-content-center">
+                        <a href="../Dashboard/login_type.php" class="btn py-2 px-3 btn-primary d-flex align-items-center justify-content-center">
 							<i class="fas fa-sign-in-alt"></i>	
 							<span class="ml-2">Login Now</span>
 					    </a>

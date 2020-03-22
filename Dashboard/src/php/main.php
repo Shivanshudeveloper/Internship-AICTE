@@ -108,7 +108,7 @@ if ($username && $password) {
             $_SESSION['id']=$id;
             $_SESSION['user']=$user;
             $_SESSION['loggedIn']=1;
-            header("location: ../../index.php"); //another file to send request to the next page if values are correct.
+            header("location: ../../index_dashboard.php"); //another file to send request to the next page if values are correct.
         } 
         else{
              header("location: ../../login.php?error=WrongPassword");
@@ -152,7 +152,7 @@ if ($username && $password) {
             $_SESSION['login_level']=2;
             $_SESSION['user']=$user;
             $_SESSION['loggedIn']=1;
-            header("location: ../../index.php"); //another file to send request to the next page if values are correct.
+            header("location: ../../index_dashboard.php"); //another file to send request to the next page if values are correct.
             exit();
         } 
         else{
@@ -199,7 +199,7 @@ if ($username && $password) {
             $_SESSION['loggedIn']=1;
             $_SESSION['login_level']=3;
             $_SESSION['id']=$id;
-            header("location: ../../../Dashboard/index.php"); //another file to send request to the next page if values are correct.
+            header("location: ../../../Dashboard/index_dashboard.php"); //another file to send request to the next page if values are correct.
             exit();
         } 
         else{
@@ -231,7 +231,11 @@ if (isset($_POST['corporate-register'])) {
     $hash_pwd = md5($password);
 
     $sql = "INSERT INTO corporate_register(uid ,first_name, last_name, email, contact, corporate_list, id_number, organization, password) VALUES('$uid', '$fname', '$lname', '$email', '$contactnum', '$corporatelist', '$idnumber', '$organization', '$hash_pwd')";
-    mysqli_query($conn, $sql);
+    $res=mysqli_query($conn, $sql);
+    if($res)
+    {
+        header("location:../../login_corporate.php?task=RegisteredSuccessfully");
+    }
 }
 
 //student register
@@ -241,43 +245,77 @@ if (isset($_POST['student-register'])) {
     $contactnum = mysqli_real_escape_string($conn, $_POST['contactnum']);
     $email = mysqli_real_escape_string($conn, $_POST['email']);
     $password = mysqli_real_escape_string($conn, $_POST['password']);
-    $institute = mysqli_real_escape_string($conn, $_POST['institute']);
-
+    $languages=" ";
+    $technical=" ";
+    $skills=" ";
     // Hashning the password
     $hash_pwd = md5($password);
 
     // Generating a unique id
     $uid = "STU".uniqid().time();
 
-    $sql = "INSERT INTO student_register(uid, first_name, last_name, email, contact, institute, password) VALUES('$uid', '$fname', '$lname', '$email', '$contactnum', '$institute', '$hash_pwd')";
-    mysqli_query($conn, $sql);
+    $sql = "INSERT INTO `student_register`(`uid`, `first_name`, `last_name`, `email`, `contact`, `languages`, `technical`, `skills`, `password`) VALUES ('$uid', '$fname', '$lname', '$email', '$contactnum', '$languages','$technical','$skills', '$hash_pwd')";
+    $res=mysqli_query($conn, $sql);
+    if($res)
+    {
+        header("location:../../login.php?task=RegisteredSuccessfully");
+    }
 }
 
+if (isset($_POST['common-register'])) {
+    $fname = mysqli_real_escape_string($conn, $_POST['fname']);
+    $lname = mysqli_real_escape_string($conn, $_POST['lname']);
+    $contactnum = mysqli_real_escape_string($conn, $_POST['contactnum']);
+    $email = mysqli_real_escape_string($conn, $_POST['email']);
+    $password = mysqli_real_escape_string($conn, $_POST['password']);
+    $idnumber=" ";
+    $organization=" ";
+    $hash_pwd=" ";
+    $corporatelist=" ";
+    // Hashning the password
+    $hash_pwd = md5($password);
+
+    // Generating a unique id
+    $uid = "TPO".uniqid().time();
+
+    $sql = "INSERT INTO corporate_register(uid ,first_name, last_name, email, contact, corporate_list, id_number, organization, password) VALUES('$uid', '$fname', '$lname', '$email', '$contactnum', '$corporatelist', '$idnumber', '$organization', '$hash_pwd')";
+    $res=mysqli_query($conn, $sql);
+    if($res)
+    {
+        header("location:../../login_corporate.php?task=RegisteredSuccessfully");
+    }
+}
 if (isset($_POST['dm-register'])) {
     $fname = mysqli_real_escape_string($conn, $_POST['fname']);
     $lname = mysqli_real_escape_string($conn, $_POST['lname']);
     $contactnum = mysqli_real_escape_string($conn, $_POST['contactnum']);
     $email = mysqli_real_escape_string($conn, $_POST['email']);
     $password = mysqli_real_escape_string($conn, $_POST['password']);
-    $institute = mysqli_real_escape_string($conn, $_POST['institute']);
     $state = mysqli_real_escape_string($conn, $_POST['state']);
     $district = mysqli_real_escape_string($conn, $_POST['district']);
 
 
     // Hashning the password
     $hash_pwd = md5($password);
-
+    $corporate_list=" ";
+    $id_number=" ";
+    $organization=" ";
+    $user_level=2;
     // Generating a unique id
-    $uid = "STU".uniqid().time();
+    $uid = "DM".uniqid().time();
 
-    $sql = "INSERT INTO corporate(uid, first_name, last_name, email, contact, institute, password,state,district) VALUES('$uid', '$fname', '$lname', '$email', '$contactnum', '$institute', '$hash_pwd,$state,$district)";
-    mysqli_query($conn, $sql);
+    $sql = "INSERT INTO `corporate_register`(`uid`, `first_name`, `last_name`, `email`, `contact`, `corporate_list`, `id_number`, `organization`, `password`, `state`, `district`, `user_level`) VALUES('$uid', '$fname', '$lname', '$email', '$contactnum', '$corporate_list','$id_number','$organization','$hash_pwd','$state','$district','$user_level')";
+    $res=mysqli_query($conn, $sql);
+    if($res)
+    {
+        header("location:../../login_corporate.php?task=RegisteredSuccessfully");
+    }
 }
 
 if (isset($_POST['loadDataCompany'])) {
     $projectId = mysqli_real_escape_string($conn, $_POST['company_id']);
     $userId=    mysqli_real_escape_string($conn, $_POST['userId']);
-    $sql = "SELECT * FROM message where msg_from ='$projectId' or msg_to='$userId'ORDER BY msg_date ASC;";
+    $sql = "SELECT * FROM message where msg_from ='$projectId' and msg_to='$userId' or msg_to='$projectId' and msg_from='$userId'  ORDER BY msg_date ASC;";
     $result = mysqli_query($conn, $sql);
     $resultChk = mysqli_num_rows($result);
     if ($resultChk < 1) {
@@ -311,10 +349,10 @@ if (isset($_POST['loadDataCompany'])) {
 if (isset($_POST['loadDataStudent'])) {
     $projectId = mysqli_real_escape_string($conn, $_POST['student_id']);
     $userId = mysqli_real_escape_string($conn, $_POST['userId']);
-    $sql = "SELECT * FROM message where msg_from='$userId' or msg_to='$projectId' ORDER BY msg_date ASC ;";
+    $sql = "SELECT * FROM message where msg_from ='$projectId' and msg_to='$userId' or msg_to='$projectId' and msg_from='$userId'  ORDER BY msg_date ASC;";
     $result = mysqli_query($conn, $sql);
     $resultChk = mysqli_num_rows($result);
-    if ($resultChk < 1) {
+    if (($resultChk)< 1) {
         echo '
         <span class="">
             <p class="h4 text-center" style="margin-top: 15%;">No Message Yet</p>

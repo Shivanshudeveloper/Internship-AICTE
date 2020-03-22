@@ -2,10 +2,13 @@
 
 </div>
 <?php include './includes/header1.inc.php'?>
+
+
+
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>InternShip</title>
+<title>Internship</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" />
@@ -31,7 +34,7 @@
   background-color: #555;
 }
 </style>
-<body class="newBgRptr">
+<body>
 <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
 
 <script>
@@ -55,17 +58,23 @@ function topFunction() {
   document.documentElement.scrollTop = 0;
 }
 </script>
-<div class="mainHomeCntDiv">
-  <div class="container">
-<div class="mr-4 newDivMainDivCntDiv">
+
+
+
+
+<div class="mr-4 ml-4">
+
+
+
 <!-- <center>
 <img class="img img-fluid" src="./images/All_India_Council_for_Technical_Education_logo2.png" width="14%" height = "14%">
 
 </center>
 
 <h2 align="center">Internship</h2><br/> -->
-<div class="indexMainHdrDiv">
-<div class="form-group formGrpFrmDiv">
+<div class="form-group" style="margin-top: 1px !important;">
+
+
 <div class="modal fade bd-example-modal-lg" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
@@ -133,30 +142,25 @@ function topFunction() {
 
 
 <div class="input-group">
-<input type="text" name="search_text" id="search_text" placeholder="Search by Job Title, Company Name, Location, Category" class="form-control mainIndxTxt" />
+<input type="text" name="search_text" id="search_text" placeholder="Search by Job Title, Company Name, Location, Category" class="form-control" />
 </div>
-<center class="btncenteRDiv">
-<button onclick="window.scrollTo(0, 700);" class="btn btn-success">
+</div>
+<center>
+<button onclick="window.scrollTo(0, 500);" class="btn btn-success">
 <i class="fas fa-search"></i>
 <span class="ml-1">Find Internships</span> 
 </button>
 </center>
-</div>
-</div>
 
-
-
-<div class="row">
-  <div class="container">
-    <div class="homeCateDivNew">
-    <div class="col-6 float-left">
+<div class="row mt-4 mb-4">
+    <div class="col float-left">
         <a href="#!" data-toggle="modal" data-target="#exampleModal1">Internship by Company</a>
         <br>
         <a href="#!" >Online Internship</a>
         <br>
         <a href="#!" data-toggle="modal" data-target="#exampleModal">Internship by Category</a>
         <br>
-        <a href="./all_jobs.php?jobs=jnk" >Internships in JnK</a>
+        <a href="./all_jobs.php?jobs=dnk" >Internships in JnK</a>
         <br>
         <a href="./all_jobs.php?jobs=dm" >Internships in District Majestrate</a>
      </div>
@@ -175,15 +179,14 @@ function topFunction() {
 
      </div>
 </div>
-</div>
-</div>
+
 
 
 <div class="card">
   <div class="card-body">
     <h4 class="font-weight-bold text-center card-title">For Employers Post Internships</h4>
     <center>
-    <a href="../Dashboard/register.php" class="btn w-50 btn-primary">Post Internships</a>
+    <a href="./register.php" class="btn w-50 btn-primary">Post Internships</a>
     </center>
   </div>
 </div>
@@ -196,19 +199,62 @@ function topFunction() {
 </select>
     </p> -->
 </div>
-</div>
-</div>
-<div class="hmIntLstDivTp">
+<br />
+
 <div class="row">
-  <div class="container">
-    <div class="hmIntLstDiv">
     <div class="col">
-      <div class="mr-5 ml-5" id="result"></div>
+      <div class="mr-5 ml-5" id="result">
+
+            
+
+<?php
+//fetch.php
+$connect = mysqli_connect("localhost", "root", "", "internal");
+$output = '';
+
+$query = "SELECT * FROM tblipinternshala WHERE women = 1;";
+
+
+$result = mysqli_query($connect, $query);
+if(mysqli_num_rows($result) > 0)
+{
+while( $records = mysqli_fetch_assoc($result) ) {
+?>
+  <div class="card mt-2">
+      <div class="card-body">
+      <h5 class="mb-2 text-success float-right"><?php echo $records['salary'];?>.</h5>
+          <a class="card-title h2"><?php echo $records["title"];?></a>
+          <p class="mt-2 mb-2 card-text">
+            <?php echo $records['content'];?>
+          </p>
+          <br>
+          <h4 class="mt-2 mb-2"><span class="font-weight-bold">Requirements:</span> <span class="text-info"><?php echo $records['requirements'];?></span></h4>
+          <br>
+          <h5 class="mb-2"><?php echo $records['category'];?></h5>
+          <h5 class="mb-2"><b>City:</b> <?php echo $records['city'];?></h5>
+          <h5 class="mb-2"><b>Duration:</b><?php echo $records['duration'];?>.</h5>
+          <h5 class="mb-2"><b>Start Date:</b><?php echo $records['date'];?>.</h5>
+          <h5 class="mb-2"><b>Working Hours:</b><?php echo $records['working_hours'];?>.</h5>
+          
+          <br>
+          <center>
+            <a href=<?php echo $records['url'];?> class="btn w-50 btn-primary">Apply</a>
+          </center>
+      </div>
+  </div>
+<?php
+}
+}
+else
+{
+    echo 'No Result Found';
+}
+?>
+
+      </div>
     </div>
 </div>
-</div>
-</div>
-</div>
+
 
 </div>
 </body>
@@ -216,21 +262,28 @@ function topFunction() {
 
 
 <script>
+    var pageURL = window.location.href,
+        url = new URL(pageURL),
+        company = url.searchParams.get("company");
 $(document).ready(function()
 {
 
   // Handler for .ready() called.
-  
-  
+  $('html, body').animate({
+        scrollTop: $('#result').offset().top
+  }, 'slow');
 
- load_data();
+//  load_data();
 
  function load_data(query)
  {
    $.ajax({
    url:"fetch.php",
    method:"POST",
-   data:{query:query},
+   data:{
+       query:query,
+       company:company
+    },
    success:function(data)
    {
     $('#result').html(data);

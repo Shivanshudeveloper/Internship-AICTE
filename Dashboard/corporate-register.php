@@ -21,7 +21,7 @@
         <div id="coporate_form" class="w-50">
 
             <label for="meetingPlace">Type of Employer: </label>
-            <select class="form-group" id="type">
+            <select class="form-control" id="type">
                 <option value="Corporate" selected>Corporate</option>
                 <option value="District Megistrate">District Megistrate</option>
                 <option value="NASCOM">NASCOM</option>
@@ -34,13 +34,16 @@
                 <option value="CII">CII</option>
                 <option value="FICCI">FICCI</option>
             </select>
-            <form class="text-center border border-light p-5" action="#!" id="form_corporate" >
+            <form method="post" class="text-center border border-light p-5" action="./src/php/main.php" id="form_corporate">
+            <input type="text" name="organization" id="organization" class="form-control mb-4"
+                    placeholder="Organisation">
                 <input type="text" name="fname" id="fname" class="form-control mb-4" placeholder="First Name">
                 <input type="text" name="lname" id="lname" class="form-control mb-4" placeholder="Last Name">
-                <input type="text" name="contactnum" id="contactnum" class="form-control mb-4"
+
+                <input type="number" name="contactnum" id="contactnum" class="form-control mb-4"
                     placeholder="Contact Number">
                 <input type="email" name="email" id="email" class="form-control mb-4" placeholder="E-mail">
-                <input type="password" name="pswrd" id="pswrd" class="form-control mb-4" placeholder="Password">
+                <input type="password" name="password" id="password" class="form-control mb-4" placeholder="Password">
                 <select name="corporatelist" id="corporatelist" class="browser-default custom-select mb-4">
                     <option value="" selected>Select</option>
                     <option value="TIN" selected>TIN</option>
@@ -51,31 +54,29 @@
 
                 </select>
                 <input type="text" name="idnum" id="idnum" class="form-control mb-4" placeholder="ID Number">
-                <input type="text" name="organization" id="organization" class="form-control mb-4"
-                    placeholder="Organisation">
-                    <!-- Send button -->
+                <!-- Send button -->
                 <button name="corporate-register" id="corporate-register" class="btn btn-info btn-block"
-                    type="button">Register</button>
+                    type="submit">Register</button>
+              </form>
 
+            <form method="post" class="text-center border border-light p-5" action="./src/php/main.php" id="dm" style="display:none">
+                <!-- Name -->
+                <input type="text" name="fname" id="fname" class="form-control mb-4" placeholder="First Name">
+                <input type="text" name="lname" id="lname" class="form-control mb-4" placeholder="Last Name">
+                <input type="number" name="contactnum" id="contactnum" class="form-control mb-4"
+                    placeholder="Contact Number">
+                <input type="text" name="state" id="state" class="form-control mb-4" placeholder="State">
+                <input type="text" name="district" id="district" class="form-control mb-4" placeholder="District">
+
+                <!-- Email -->
+                <input type="email" name="email" id="email" class="form-control mb-4" placeholder="E-mail">
+                <input type="password" name="password" id="password" class="form-control mb-4" placeholder="Password">
+
+
+
+                <button name="dm-register" id="dm-register" class="btn btn-info btn-block" type="Submit">
+                    Register <i class="ml-2 fas fa-sign-out-alt"></i></button>
             </form>
-
-            <form class="text-center border border-light p-5" action="#!"id="dm" style="display:none">
-                    <!-- Name -->
-                    <input type="text" name="fname" id="fname" class="form-control mb-4" placeholder="First Name">
-                    <input type="text" name="lname" id="lname" class="form-control mb-4" placeholder="Last Name">
-                    <input type="text" name="contactnum" id="contactnum" class="form-control mb-4" placeholder="Contact Number">
-                    <input type="text" name="fname" id="fname" class="form-control mb-4" placeholder="State">
-                    <input type="text" name="lname" id="lname" class="form-control mb-4" placeholder="District">
-
-                    <!-- Email -->
-                    <input type="email" name="email" id="email" class="form-control mb-4" placeholder="E-mail">
-                    <input type="password" name="pswrd" id="pswrd" class="form-control mb-4" placeholder="Password">
-
-                   
-
-                    <button name="dm-register" id="dm-register" class="btn btn-info btn-block" type="button">
-                    Register  <i class="ml-2 fas fa-sign-out-alt"></i></button>
-                </form>
         </div>
     </div>
 </section>
@@ -83,11 +84,13 @@
 <script>
 $(document).ready(function() {
     $("#type").change(function() {
-        value = $(this).val()
-        if (value == "District Megistrate") {
+        if ($(this).val() == "District Megistrate") {
+            console.log($(this).val())
             $("#form_corporate").hide();
             $("#dm").show();
-        } else if(value=="Corporate"||value="NASCOM"||value="AGGREGATOR"||value="SECTOR SKILL COUNCIL"||value="ASSOCHAM"||value="PUBLIC SECTOR UNIT"){
+        } else if ($(this).val() == "Corporate" || $(this).val() == "NASCOM" || $(this).val() ==
+            "AGGREGATOR" || $(this).val() == "SECTOR SKILL COUNCIL" || $(this).val() == "ASSOCHAM" || $(
+                this).val() == "PUBLIC SECTOR UNIT") {
             $("#dm").hide();
             $("#form_corporate").show();
         }

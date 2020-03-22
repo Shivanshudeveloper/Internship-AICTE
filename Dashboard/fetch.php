@@ -2,11 +2,11 @@
 
 <?php
 //fetch.php
-$connect = mysqli_connect("localhost", "root", "", "internal");
+include './src/php/dbh.php';
 $output = '';
 if(isset($_POST["query"]))
 {
- $search = mysqli_real_escape_string($connect, $_POST["query"]);
+ $search = mysqli_real_escape_string($conn, $_POST["query"]);
  $query ="SELECT * FROM tblipinternshala 
  WHERE city REGEXP '".$search."' 
  OR country REGEXP '".$search."' 
@@ -15,6 +15,7 @@ if(isset($_POST["query"]))
  OR duration REGEXP '".$search."' 
  OR requirements REGEXP '".$search."' 
  OR salary REGEXP '".$search."' 
+ OR title REGEXP '".$search."' 
  ";
 
 }
@@ -22,7 +23,7 @@ else
 {
  $query = "SELECT * FROM tblipinternshala ORDER BY id";
 }
-$result = mysqli_query($connect, $query);
+$result = mysqli_query($conn, $query);
 if(mysqli_num_rows($result) > 0)
 {
 while( $records = mysqli_fetch_assoc($result) ) {
@@ -56,7 +57,7 @@ while( $records = mysqli_fetch_assoc($result) ) {
 else
 {
   $query = "SELECT * FROM tblipinternshala;";
-  $result2 = mysqli_query($connect, $query);
+  $result2 = mysqli_query($conn, $query);
   while( $records2 = mysqli_fetch_assoc($result2) ) {
     ?>
     <div class="card mt-2">
@@ -87,18 +88,19 @@ else
 ?>
 
 <?php 
- //$search = mysqli_real_escape_string($connect, $_POST["query"]);
-/*  $query ="SELECT * FROM tblipinternshala3 
+ $search = mysqli_real_escape_string($connect, $_POST["query"]);
+ $query ="SELECT * FROM tblipinternshala3 
  WHERE city REGEXP '".$search."' 
  OR country REGEXP '".$search."' 
  OR category REGEXP '".$search."' 
  OR experience REGEXP '".$search."' 
  OR duration REGEXP '".$search."' 
  OR requirements REGEXP '".$search."' 
- OR salary REGEXP '".$search."' 
- "; */
+ OR salary REGEXP '".$search."'
+ OR title REGEXP '".$search."'  
+ "; 
 $query2 = "SELECT * FROM internhips ORDER BY id";
-$result2 = mysqli_query($connect, $query2);
+$result2 = mysqli_query($conn, $query2);
 while( $records2 = mysqli_fetch_assoc($result2)) {
 
 ?>

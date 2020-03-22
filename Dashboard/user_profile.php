@@ -98,7 +98,7 @@ div.card {
         <div class="col-md-3 text-center rgtDivCnt btnSndDiv"> <!-- Phone & Social -->
           <span class="number">Phone: <strong>+8801732226402</strong></span>
           <div class="button" >
-            <a href="mailto:ahmkctg@yahoo.com" class="btn btn-outline-success btn-block btnSndBtn">Send Email</a>
+            <a href="mailto:<?php echo $_SESSION['email'];?>" class="btn btn-outline-success btn-block btnSndBtn">Send Email</a>
           </div>
           <div class="social-icons socialBtnBtm">
             <a href="#">

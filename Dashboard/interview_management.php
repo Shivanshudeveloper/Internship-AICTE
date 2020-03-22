@@ -48,6 +48,8 @@ include './includes/header.inc.php';
                 Redirect
             </a>
         </div>
+        <br>
+        <br>
     
         
         
@@ -82,9 +84,16 @@ include './includes/header.inc.php';
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
+                    <?php 
+                      include './src/php/dbh.php';
+                      $id=$_SESSION['id'];
+                      $sql = "SELECT * FROM applied_internship;";
+                      $result = mysqli_query($conn, $sql);
+                      while ($row = mysqli_fetch_assoc($result)) {
+                        echo '
+                        <tr>
                       <td>1</td>
-                      <td>Test User 1</td>
+                      <td>'.$row['stident_firstname'].'</td>
                       <td>Big Data Analysis</td>
                       <td>
                           <button class="btn btn-sm btn-info">
@@ -131,63 +140,13 @@ include './includes/header.inc.php';
                             </div>
                         </div>
                     </tr>
-                    <tr>
-                      <td>2</td>
-                      <td>Test User 2</td>
-                      <td>Big Data Analysis</td>
-                      <td>
-                          <button class="btn btn-sm btn-info">
-                              Release Offer Letter
-                          </button>
-                          <button class="btn btn-sm btn-danger">
-                              Reject the Candidate
-                          </button>
-                          <button class="btn btn-sm btn-info">
-                              Hold the Candidate
-                          </button>
-                          <button data-toggle="modal" data-target="#exampleModal" class="btn btn-sm btn-info">
-                              Refer for other Internships
-                          </button>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>3</td>
-                      <td>Test User 3</td>
-                      <td>Big Data Analysis</td>
-                      <td>
-                          <button class="btn btn-sm btn-info">
-                              Release Offer Letter
-                          </button>
-                          <button class="btn btn-sm btn-danger">
-                              Reject the Candidate
-                          </button>
-                          <button class="btn btn-sm btn-info">
-                              Hold the Candidate
-                          </button>
-                          <button data-toggle="modal" data-target="#exampleModal" class="btn btn-sm btn-info">
-                              Refer for other Internships
-                          </button>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>4</td>
-                      <td>Test User 4</td>
-                      <td>Big Data Analysis</td>
-                      <td>
-                          <button class="btn btn-sm btn-info">
-                              Release Offer Letter
-                          </button>
-                          <button class="btn btn-sm btn-danger">
-                              Reject the Candidate
-                          </button>
-                          <button class="btn btn-sm btn-info">
-                              Hold the Candidate
-                          </button>
-                          <button data-toggle="modal" data-target="#exampleModal" class="btn btn-sm btn-info">
-                              Refer for other Internships
-                          </button>
-                      </td>
-                    </tr>
+                        
+                        ';
+                      }
+                    
+                    ?>
+
+
                     </tbody>
               </table>
               </div>

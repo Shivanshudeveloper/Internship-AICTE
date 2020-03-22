@@ -183,7 +183,7 @@ function topFunction() {
   <div class="card-body">
     <h4 class="font-weight-bold text-center card-title">For Employers Post Internships</h4>
     <center>
-    <a href="./register.php" class="btn w-50 btn-primary">Post Internships</a>
+    <a href="../Dashboard/register.php" class="btn w-50 btn-primary">Post Internships</a>
     </center>
   </div>
 </div>

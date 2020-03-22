@@ -1,4 +1,6 @@
-<?php include './includes/header.inc.php' ?>
+<?php 
+session_start();
+include './includes/header.inc.php' ?>
 <style>
 .oval {
   height: 50px;

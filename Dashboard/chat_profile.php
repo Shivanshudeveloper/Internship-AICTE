@@ -278,9 +278,11 @@ img {
                             <?php
 if(isset($_POST['submit_search']))
 {
-			include './src/php/dbh.php';
+            include './src/php/dbh.php';
+$query = mysqli_real_escape_string($conn,$_POST['id2']);
+$query_status = mysqli_real_escape_string($conn,$_POST['id1']);
 
-				$sql="SELECT * FROM student_register";
+				$sql="SELECT * FROM student_register where ";
 				$res = mysqli_query($conn,$sql);
 				if($res)
 				{
