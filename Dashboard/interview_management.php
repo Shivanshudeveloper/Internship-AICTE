@@ -96,7 +96,7 @@ include './includes/header.inc.php';
                       <td>'.$row['stident_firstname'].'</td>
                       <td>Big Data Analysis</td>
                       <td>
-                          <button class="btn btn-sm btn-info">
+                          <button class="btn btn-sm btn-info" onclick="statuschange('.$row['student_id'].')">
                               Release Offer Letter
                           </button>
                           <button class="btn btn-sm btn-danger">
@@ -160,4 +160,13 @@ include './includes/header.inc.php';
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
+  <script>
+  function statuschange(id){
+    load("./src/php/main.php", {
+      student_id:id,
+      changestatus:true
+    )}
+  }
+  </script>
   <?php include './includes/footer.inc.php' ?>
+

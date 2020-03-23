@@ -46,14 +46,15 @@ include './includes/header_students.php' ?>
         <?php
             include './src/php/dbh.php';
             $uid = $_GET['uid'];
+            $student_id=$_SESSION['id'];
 
-            $sql = "SELECT * FROM internhip_apply WHERE student_uid = 'STUDENT_JDHJKSH786' AND  internship_uid = '$uid';";
+            $sql = "SELECT * FROM internhip_apply WHERE student_uid = '$student_id' AND  internship_uid = '$uid';";
             $result = mysqli_query($conn, $sql);
             $resultChk = mysqli_num_rows($result);
-            $company_id = "12345678";
+            $company_id = $_SESSION['id'];
             if ($resultChk < 1) {
                 $applyId = "APPLY_".time().uniqid();
-                $sql = "INSERT INTO internhip_apply (uid, company_id, student_uid, internship_uid, status) VALUES ('$applyId', '$company_id', 'STUDENT_JDHJKSH786', '$uid', 'No');";
+                $sql = "INSERT INTO internhip_apply (uid, company_id, student_uid, internship_uid, status) VALUES ('$applyId', '$company_id', '$student_id', '$uid', 'no');";
                 mysqli_query($conn, $sql);
 
                 $sql = "SELECT * FROM internhips WHERE uid = '$uid';";

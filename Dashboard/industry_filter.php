@@ -149,7 +149,7 @@ $res = mysqli_query($conn,$sql);
                 <div class="col-xs-12 col-sm-4 emphasis">
                     <h2><strong>245</strong></h2>                    
                     <p><small>Following</small></p>
-                    <button class="btn btn-info btn-block"><span href="./company-profile.php" class="fa fa-user"></span> View Profile </button>
+                    <button onclick="window.location='./company_profile.php'" class="btn btn-info btn-block"><span class="fa fa-user"></span> View Profile </button>
                 </div>
                 <div class="col-xs-12 col-sm-4 emphasis">
                     <h2><strong>43</strong></h2>                    

@@ -400,4 +400,8 @@ if (isset($_POST['messageSendByStudent'])) {
     $sql = "INSERT INTO message (msg_to, msg_from, msg_from_name, msg, msg_date) VALUES ('$projectId', '$userId', '$user', '$message','$date');";
 $res = mysqli_query($conn, $sql);
 }
+if(isset($_POST['changestatus'])){
+    $company_id=$_SESSION['id'];
+    $sql="INSERT INTO Reject_list VALUES(rejected_by='$company_id',rejected_to=''";
+}
 ?>

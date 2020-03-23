@@ -9,11 +9,11 @@ include './includes/header_students.php' ?>
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Interview Page Students</h1>
+            <h1>Available Internships</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item"><a href="interview_student.php">Home</a></li>
               <li class="breadcrumb-item active">All Interviews</li>
             </ol>
           </div>
@@ -88,8 +88,8 @@ include './includes/header_students.php' ?>
                                 <p class="card-text mt-2">
                                     '.$row['description'].'
                                 </p>
-                                <a href="./apply.php?uid='.$row['uid'].'" class="btn btn-primary">Accept</a>
-                                <a href="#" class="btn btn-danger">Reject</a>
+                                <a href="./apply.php?uid='.$row['uid'].'" class="btn btn-primary">Apply</a>
+                                <a href="./interview_student.php?uid='.$row['uid'].'" class="btn btn-danger">Reject</a>
                             </div>
                             </div>
                         </div>
@@ -113,5 +113,10 @@ include './includes/header_students.php' ?>
     <!-- /.content -->
   </div>
 </section>
+<script>
+
+
+</script>
+
 
 <?php include './includes/footer.inc.php' ?>
