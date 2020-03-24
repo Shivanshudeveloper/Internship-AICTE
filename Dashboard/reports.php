@@ -1,12 +1,7 @@
-<?php 
-session_start();
-if(!isset($_SESSION['loggedIn']))
-{
-  header("location:login_corporate.php?task=PlseLogin");
-}
-else{
+<?php
+include './includes/auth.php'; 
   include './includes/header.inc.php';
-} 
+ 
 
 ?>
 

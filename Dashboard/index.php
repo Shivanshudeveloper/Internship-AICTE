@@ -1,6 +1,3 @@
-<div id="mobile">
-
-</div>
 <?php include './includes/header1.inc.php'?>
 <html>
 

@@ -1,5 +1,5 @@
 <?php 
-session_start();
+include './includes/auth.php';
 include './includes/header_students.php' ?>
 
 <section>

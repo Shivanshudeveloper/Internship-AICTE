@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-<?php include 'auth.php'; ?>
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -137,7 +136,7 @@ if($_SESSION['login_level']==1)
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                         data-accordion="false">
                         <li class="nav-item">
-                            <a href="./index.php" class="nav-link">
+                            <a href="./index_dashboard.php" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Dashboard</p>
                             </a>

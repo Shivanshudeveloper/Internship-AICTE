@@ -1,13 +1,9 @@
 <!------ Include the above in your HEAD tag ---------->
 
 <?php 
-session_start();
-if(!isset($_SESSION['loggedIn']))
-{
-    header("location:login_corporate.php?task=PlseLogin");
-}
-
-include 'includes/header.inc.php';?>
+include './includes/auth.php';
+include 'includes/header.inc.php';
+?>
 
 <html>
 

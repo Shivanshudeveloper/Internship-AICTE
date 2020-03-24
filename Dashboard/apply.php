@@ -1,6 +1,7 @@
 <?php
-session_start(); 
-include './includes/header_students.php' ?>
+include './includes/auth.php';
+include './includes/header_students.php' 
+?>
 
 <section>
 <div class="content-wrapper">

@@ -1,6 +1,8 @@
 <!------ Include the above in your HEAD tag ---------->
 <?php
-include 'includes/header.inc.php';?>
+include './includes/auth.php';
+include 'includes/header.inc.php';
+?>
 <html>
 
 <head>

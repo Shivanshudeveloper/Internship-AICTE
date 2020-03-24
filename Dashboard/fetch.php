@@ -1,5 +1,3 @@
-
-
 <?php
 //fetch.php
 include './src/php/dbh.php';

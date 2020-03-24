@@ -1,12 +1,6 @@
 <?php 
-session_start();
-if(!isset($_SESSION['loggedIn']))
-{
-  header("location:login_corporate.php?task=PlseLogin");
-}
-else{
-  include './includes/header.inc.php';
-} 
+  include './includes/auth.php';
+  include './includes/header.inc.php'; 
 ?>
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">

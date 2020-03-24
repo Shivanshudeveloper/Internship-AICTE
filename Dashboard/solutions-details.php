@@ -1,5 +1,5 @@
 <?php
-session_start(); 
+include './includes/auth.php';
 include './includes/header.inc.php' ?>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" media="all">

@@ -1,14 +1,7 @@
 <?php
-    session_start(); 
-    if(!isset($_SESSION['id']))
-    {
-        header("location:login.php?task=PlseLogin");
-    }
-    else
-    {
-        include 'includes/header.inc.php';
+include './includes/auth.php';
+include 'includes/header.inc.php';
 $uid=$_SESSION['id'];
-    }
 ?>
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>

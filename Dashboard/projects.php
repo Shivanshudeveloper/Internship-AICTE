@@ -1,5 +1,5 @@
 <?php 
-session_start();
+include './includes/auth.php';
 include './includes/header.inc.php'; ?>
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">

@@ -2,10 +2,10 @@
 session_start();
 if(!isset($_SESSION['loggedIn']))
 {
-  header("location:login_corporate.php?task=PlseLogin");
+    include './includes/header1.inc.php';
 }
 else{
-  include './includes/header1.inc.php';
+  include './includes/header.inc.php';
 }
 ?>
 <link href="css/bootstrap.min.css" rel="stylesheet">

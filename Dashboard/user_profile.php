@@ -1,16 +1,11 @@
 <?php 
-session_start();
-if(!isset($_SESSION['loggedIn']))
-{
-    header("location:login.php?task=PlseLogin");
-}
-else if($_SESSION['login_level']==1)
-{
-include './includes/header_students.php'; 
+include './includes/auth.php';
+if($_SESSION['login_level']==1){
+include './includes/header_students.php';
 }
 else
 {
-    include './includes/header_students.php'; 
+    include './includes/header.inc.php'; 
 }
 ?>
 <link href="css/style.css" rel="stylesheet">
@@ -19,9 +14,7 @@ else
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto'>
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-
 <style>
   html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
 div.card {

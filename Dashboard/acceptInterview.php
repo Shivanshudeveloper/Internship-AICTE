@@ -1,4 +1,7 @@
-<?php include './includes/header.inc.php' ?>
+<?php
+include './includes/auth.php'; 
+include './includes/header.inc.php'; 
+?>
 
 <section>
 <div class="content-wrapper">

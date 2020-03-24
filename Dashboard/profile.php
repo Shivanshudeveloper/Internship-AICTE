@@ -1,6 +1,5 @@
 <?php 
-session_start();
-if(isset($_SESSION['']))
+include './includes/auth.php';
 include './includes/header.inc.php' ?>
 <style>
 .oval {

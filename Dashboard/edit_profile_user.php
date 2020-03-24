@@ -1,13 +1,6 @@
 <?php 
-session_start();
-if(!isset($_SESSION['loggedIn']))
-{
-    header("location:login.php?task=PlseLogin");
-}
-else
-{
+include './inlcudes/auth.php';
 include './includes/header.inc.php'; 
-}
 ?>
 <link href="css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="js/bootstrap.min.js"></script>

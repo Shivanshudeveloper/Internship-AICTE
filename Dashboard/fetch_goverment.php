@@ -1,10 +1,4 @@
-<div id="mobile">
-
-</div>
 <?php include './includes/header1.inc.php'?>
-
-
-
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />

@@ -2,7 +2,7 @@
 
 <?php
 //fetch.php
-$connect = mysqli_connect("localhost", "root", "", "internal");
+include './src/php/dbh.php';
 $output = '';
 if(isset($_POST["query"]))
 {

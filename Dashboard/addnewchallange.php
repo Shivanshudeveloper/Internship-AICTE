@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<?php include './includes/header.inc.php' ?>
+<?php
+include './includes/header.inc.php'; 
+?>
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->

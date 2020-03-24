@@ -1,10 +1,6 @@
 <?php
-session_start();
-if(!isset($_SESSION['loggedIn']))
-{
-  header("location:./login_corporate.php");
-}
-
+include './src/php/dbh.php';
+include './includes/auth.php';
 if($_SESSION['login_level']==1)
 {
     include './includes/header_students.php';

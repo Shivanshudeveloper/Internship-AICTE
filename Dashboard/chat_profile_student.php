@@ -1,14 +1,7 @@
 <?php
-    session_start(); 
-    if(!isset($_SESSION['id']))
-    {
-        header("location:login.php?tak=PlseLogin");
-    }
-    else
-    {
+include './includes/auth.php';
   include 'includes/header_students.php';      
 $uid=$_SESSION['id'];
-    }
 ?>
 
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
@@ -19,8 +12,6 @@ $uid=$_SESSION['id'];
 
 <head>
 
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" type="text/css"
-        rel="stylesheet">
 
 </head>
 
