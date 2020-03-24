@@ -92,20 +92,8 @@
 				<center>
 				<a href="index.php" class="text-light nav-link pl-0">AICTE HELPS STUDENT FIND WORK THEY LOVE & ORGANIZATIONS FIND BEST INTERNS ON PAN INDIA BASIS</a></li>
 				</center>	
-	        	<!-- <li class="nav-item"><a href="about.html" class="nav-link">About</a></li> -->
-				<!-- <li class="nav-item"><a href="courses.html" class="nav-link">Courses</a></li> -->
-				<!-- <li class="nav-item"><a href="./fetch1.php" class="nav-link">Search</a></li> -->
-	        	<!-- <li class="nav-item"><a target="_blank" href="http://mhrd.gov.in/" class="nav-link">MHRD</a></li> -->
-	        	<!-- <li class="nav-item"><a target="_blank" href="http://www.aicte-india.org" class="nav-link">AICTE</a></li> -->
-	          <!-- <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li> -->
 			  <li class="nav-item">
 				  <a>
-			    <!-- <form action="fetch1.php"class="searchform order-lg-last">
-                    <div class="form-group d-flex">
-                        <input type="text" name="search" id="search" class="form-control pl-3" placeholder="Search">
-                        <button type="submit" placeholder="" class="form-control search"><span class="ion-ios-search"></span></button>
-                    </div>
-			    </form> -->
 			</a>
 			</li>
 	        </ul>

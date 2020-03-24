@@ -400,8 +400,11 @@ if (isset($_POST['messageSendByStudent'])) {
     $sql = "INSERT INTO message (msg_to, msg_from, msg_from_name, msg, msg_date) VALUES ('$projectId', '$userId', '$user', '$message','$date');";
 $res = mysqli_query($conn, $sql);
 }
-if(isset($_POST['changestatus'])){
+if(isset($_POST['offerrelease'])){
     $company_id=$_SESSION['id'];
-    $sql="INSERT INTO Reject_list VALUES(rejected_by='$company_id',rejected_to=''";
+    $offer="OFFER".uique().time();
+    $sql="INSERT INTO offer_list(uid,offer_id,company_id,student_id,time_stamp)VALUES('','$offer','$company_id','$student_id','');";
+    $res = mysqli_query($conn,$sql);
+    
 }
 ?>

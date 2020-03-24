@@ -5,7 +5,7 @@ if(!isset($_SESSION['loggedIn']))
   header("location:login_corporate.php?task=PlseLogin");
 }
 else{
-  include './includes/header.inc.php';
+  include './includes/header1.inc.php';
 }
 ?>
 <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -230,4 +230,4 @@ else{
   <!-- /.content-wrapper -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <script src="js/bootstrap.min.js"></script>
-<?php include './includes/footer.inc.php' ?>
+<?php include './includes/footer1.inc.php' ?>

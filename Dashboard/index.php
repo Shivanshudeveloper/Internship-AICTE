@@ -63,12 +63,6 @@
         <div class="mainHomeCntDiv">
             <div class="container">
                 <div class="mr-4 newDivMainDivCntDiv">
-                    <!-- <center>
-<img class="img img-fluid" src="./images/All_India_Council_for_Technical_Education_logo2.png" width="14%" height = "14%">
-
-</center>
-
-<h2 align="center">Internship</h2><br/> -->
                     <div class="indexMainHdrDiv">
                         <div class="form-group formGrpFrmDiv">
                             <div class="modal fade bd-example-modal-lg" id="exampleModal" tabindex="-1" role="dialog"
@@ -156,7 +150,7 @@
                     </div>
 
 
-
+<center>
                     <div class="row">
                         <div class="container">
                             <div class="homeCateDivNew">
@@ -191,10 +185,9 @@
                         </div>
                     </div>
 
-
+                    </center>
                     <div class="card">
                         <div class="card-body">
-                            <h4 class="font-weight-bold text-center card-title">For Employers Post Internships</h4>
                             <center>
                                 <a href="../Dashboard/register.php" class="btn w-50 btn-primary">Post Internships</a>
                             </center>
@@ -222,7 +215,7 @@
                 </div>
             </div>
         </div>
-          </div>
+</div>
 </div>
 </body>
 

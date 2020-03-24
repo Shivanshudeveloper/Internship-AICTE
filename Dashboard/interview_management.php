@@ -10,30 +10,30 @@ include './includes/header.inc.php';
 }
 ?>
 
-  <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <div class="content-header">
-      <div class="container-fluid">
-        <div class="row mb-2">
-          <div class="col-sm-6">
-            <h1 class="m-0 text-dark">Interview Management</h1>
-          </div><!-- /.col -->
-          <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Reports</li>
-            </ol>
-          </div><!-- /.col -->
-        </div><!-- /.row -->
-      </div><!-- /.container-fluid -->
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1 class="m-0 text-dark">Interview Management</h1>
+                </div><!-- /.col -->
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item active">Reports</li>
+                    </ol>
+                </div><!-- /.col -->
+            </div><!-- /.row -->
+        </div><!-- /.container-fluid -->
     </div>
     <!-- /.content-header -->
 
 
     <!-- Main content -->
     <section class="content">
-        
+
         <div class="float-right mb-2">
             <a href="#!" class="btn btn-primary">
                 Interview in Progress
@@ -50,59 +50,63 @@ include './includes/header.inc.php';
         </div>
         <br>
         <br>
-    
-        
-        
-        
-        
-        
-      <div class="container-fluid">
-        <div class="row">
-        <div class="col-12">
-            <div class="card">
-              <div class="card-header">
-                <h3 class="card-title">Internships</h3>
 
-                <div class="card-tools">
-                  <div class="input-group input-group-sm" style="width: 150px;">
-                    <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
 
-                    <div class="input-group-append">
-                      <button type="submit" class="btn btn-default"><i class="fas fa-search"></i></button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="card-body table-responsive p-0">
-              <table class="table table-striped">
-                    <thead>
-                    <tr>
-                      <th>#</th>
-                      <th>Interns Name</th>
-                      <th>Internship Name</th>
-                      <th>Action</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <?php 
+
+
+
+
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Internships</h3>
+
+                            <div class="card-tools">
+                                <div class="input-group input-group-sm" style="width: 150px;">
+                                    <input type="text" name="table_search" class="form-control float-right"
+                                        placeholder="Search">
+
+                                    <div class="input-group-append">
+                                        <button type="submit" class="btn btn-default"><i
+                                                class="fas fa-search"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body table-responsive p-0">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Interns Name</th>
+                                        <th>Internship Name</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php 
                       include './src/php/dbh.php';
                       $id=$_SESSION['id'];
-                      $sql = "SELECT * FROM applied_internship;";
+                      $sql = "SELECT * FROM internhip_apply where company_id='$id';";
                       $result = mysqli_query($conn, $sql);
-                      while ($row = mysqli_fetch_assoc($result)) {
-                        echo '
+                      while ($row = mysqli_fetch_assoc($result)) 
+                      {
+  ?>
                         <tr>
                       <td>1</td>
-                      <td>'.$row['stident_firstname'].'</td>
+                      <td>Akash</td>
                       <td>Big Data Analysis</td>
                       <td>
-                          <button class="btn btn-sm btn-info" onclick="statuschange('.$row['student_id'].')">
+                      <input type="hidden" name="id1" id="id1" value=$row[uid]>
+                          <button type="submit" id="submit" name="submit" class="btn btn-sm btn-info" onclick="sendoffer()">
                               Release Offer Letter
                           </button>
-                          <button class="btn btn-sm btn-danger">
+                          <button class="btn btn-sm btn-danger" onclick="send()">
                               Reject the Candidate
                           </button>
-                          <button class="btn btn-sm btn-info">
+                          <button class="btn btn-sm btn-info" onclick="send()">
                               Hold the Candidate
                           </button>
                           <button data-toggle="modal" data-target="#exampleModal" class="btn btn-sm btn-info">
@@ -141,32 +145,37 @@ include './includes/header.inc.php';
                         </div>
                     </tr>
                         
-                        ';
+                    <?php
                       }
                     
                     ?>
 
 
-                    </tbody>
-              </table>
-              </div>
-              </div>
-            <!-- /.card -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <!-- /.card -->
 
-          </div>
-        </div>
-      </div><!-- /.container-fluid -->
+                </div>
+            </div>
+        </div><!-- /.container-fluid -->
     </section>
     <!-- /.content -->
-  </div>
-  <!-- /.content-wrapper -->
-  <script>
-  function statuschange(id){
-    load("./src/php/main.php", {
-      student_id:id,
-      changestatus:true
-    )}
+</div>
+<!-- /.content-wrapper -->
+<script>
+  function send(){
+    alert("hi");
   }
-  </script>
-  <?php include './includes/footer.inc.php' ?>
-
+function sendoffer() {
+        student_id = $("#id1").val();
+         $.post("./src/php/main.php", {
+            student_id: student_id,
+            offerrelease: true
+        }).then(() => {
+            console.log("Inserted!")
+        })
+    }
+</script>
+<?php include './includes/footer.inc.php'; ?>

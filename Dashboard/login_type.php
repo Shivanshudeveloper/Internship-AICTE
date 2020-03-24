@@ -2,6 +2,7 @@
 
 
 <section class="ftco-section bg-light mt-4">
+    <div class="wrapper-content">
     <div class="container">
         <div class="row">
         <div class="col-md-7 col-lg-4 ftco-animate">
@@ -59,5 +60,6 @@
     </div>
     </div>
     </div>
+</div>
 </section>
 <?php include './includes/footer1.inc.php' ?>

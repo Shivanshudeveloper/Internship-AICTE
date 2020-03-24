@@ -306,9 +306,10 @@ img {
                                 <div class="col">
                                     <a href="#!">Job Title</a>
                                     <a href="#!">Location</a>
-                                    <button class="btn btn-sm btn-primary" >Hold</button>
+                                    <button class="btn btn-sm btn-primary">Hold</button>
                                     <button class="btn btn-sm btn-primary">Reject</button>
-                                    <button class="btn btn-sm btn-primary" href="./callforinterview.php">Call for Interview</button>
+                                    <button class="btn btn-sm btn-primary" href="./callforinterview.php">Call for
+                                        Interview</button>
                                 </div>
                             </div>
                         </div>

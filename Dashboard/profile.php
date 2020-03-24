@@ -1,5 +1,6 @@
 <?php 
 session_start();
+if(isset($_SESSION['']))
 include './includes/header.inc.php' ?>
 <style>
 .oval {
@@ -111,14 +112,21 @@ include './includes/header.inc.php' ?>
                     <div class="card">
                         <div class="card-header p-2">
                             <ul class="nav nav-pills">
+                            <li class="nav-item"><a class="nav-link" href="#basicsetting" data-toggle="tab">Basic Settings</a>
+                                </li>
+                                <li class="nav-item"><a class="nav-link" href="#nature" data-toggle="tab">
+                                    Nature of work/Business
+                                </a>
+                                </li>
+                                <li class="nav-item"><a class="nav-link" href="#type" data-toggle="tab">Type Of Employs Needed</a>
+                                </li>
+                               
                                 <li class="nav-item"><a class="nav-link active" href="#activity"
                                         data-toggle="tab">Activity</a></li>
                                 <li class="nav-item"><a class="nav-link" href="#timeline" data-toggle="tab">Timeline</a>
                                 </li>
-                                <li class="nav-item"><a class="nav-link" href="#settings" data-toggle="tab">Settings</a>
-                                </li>
-                                <li class="nav-item"><a class="nav-link" href="#type" data-toggle="tab">Type Of Employs Needed</a>
-                                </li>
+                               
+    
                             </ul>
                         </div><!-- /.card-header -->
                         <div class="card-body">
@@ -356,7 +364,7 @@ include './includes/header.inc.php' ?>
                                 </div>
                                 <!-- /.tab-pane -->
 
-                                <div class="tab-pane" id="settings">
+                                <div class="tab-pane" id="basicsetting">
                                     <form class="form-horizontal">
                                         <div class="form-group row">
                                             <label for="inputName" class="col-sm-2 col-form-label">Name</label>
@@ -379,21 +387,36 @@ include './includes/header.inc.php' ?>
                                                     placeholder="Name">
                                             </div>
                                         </div>
-                                        <div class="form-group row">
+                                     <!--    <div class="form-group row">
                                             <label for="inputExperience"
-                                                class="col-sm-2 col-form-label">Experience</label>
+                                                class="col-sm-2 col-form-label">Category</label>
                                             <div class="col-sm-10">
-                                                <textarea class="form-control" id="inputExperience"
+                                                <input type="text" class="form-control" id="inputExperience"
                                                     placeholder="Experience"></textarea>
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label for="inputSkills" class="col-sm-2 col-form-label">Skills</label>
+                                            <label for="inputSkills" class="col-sm-2 col-form-label">Sub category</label>
                                             <div class="col-sm-10">
                                                 <input type="text" class="form-control" id="inputSkills"
                                                     placeholder="Skills">
                                             </div>
+                                        </div> -->
+                                       <!--  <div class="form-group row">
+                                            <label for="inputExperience"
+                                                class="col-sm-2 col-form-label">Experience</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control" id="inputExperience"
+                                                    placeholder="Experience"></textarea>
+                                            </div>
                                         </div>
+                                        <div class="form-group row">
+                                            <label for="inputSkills" class="col-sm-2 col-form-label">Sub category</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control" id="inputSkills"
+                                                    placeholder="Skills">
+                                            </div>
+                                        </div> -->
                                         <div class="form-group row">
                                             <label for="inputSkills" class="col-sm-2 col-form-label">Upload a
                                                 Video</label>
@@ -421,8 +444,7 @@ include './includes/header.inc.php' ?>
                                         <div class="form-group row">
                                             <label for="inputSkills" class="col-sm-2 col-form-label">Description</label>
                                             <div class="col-sm-10">
-                                                <input type="text" class="form-control" id="inputSkills"
-                                                    placeholder="Description">
+                                                <textarea name="inputSkills" id="inputSkills" cols="69" rows="3"></textarea>
                                             </div>
                                         </div>
                                         <div class="form-group row">
@@ -433,6 +455,47 @@ include './includes/header.inc.php' ?>
                                     </form>
                                 </div>
                                 <!-- /.tab-pane -->
+                                <!-- tab pane -->
+                                <div class="tab-pane" id="nature">
+                                    <form class="form-horizontal">
+                                        <div class="form-group row">
+                                            <label for="inputExperience"
+                                                class="col-sm-2 col-form-label">Category</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control" id="inputExperience"
+                                                    placeholder="Experience"></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="inputSkills" class="col-sm-2 col-form-label">Sub category</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control" id="inputSkills"
+                                                    placeholder="Skills">
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="inputExperience"
+                                                class="col-sm-2 col-form-label">Experience</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control" id="inputExperience"
+                                                    placeholder="Experience"></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="inputSkills" class="col-sm-2 col-form-label">Skills</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control" id="inputSkills"
+                                                    placeholder="Skills">
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <div class="offset-sm-2 col-sm-10">
+                                                <button type="submit" class="btn btn-danger">Submit</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                                <!-- tap pane end -->
                                 <div class="tab-pane" id="type">
                                     <form class="form-horizontal">
                                         <div class="form-group">
