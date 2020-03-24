@@ -1,6 +1,5 @@
 <!------ Include the above in your HEAD tag ---------->
-<?php 
-session_start();
+<?php
 include 'includes/header.inc.php';?>
 <html>
 

@@ -58,7 +58,6 @@ else{
                     </div>
                     <!-- /.card-header -->
                     <!-- form start -->
-
                     <form action="./src/php/main.php" method="POST">
                         <div class="card-body">
                         <div class="form-group">

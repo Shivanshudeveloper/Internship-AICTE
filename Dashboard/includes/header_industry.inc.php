@@ -47,12 +47,16 @@
         <div class="row">
             <div class="col">
                 <select class="form-control w-40" name="sel" id="sel">
-                    <option value="industry Catgory">Industry Catgory</option>
-                    <option value="industry Catgory">Industry Catgory</option>
-                    <option value="industry Catgory">Industry Catgory</option>
-                    <option value="industry Catgory">Industry Catgory</option>
-                    <option value="industry Catgory">Industry Catgory</option>
-                    <option value="industry Catgory">Industry Catgory</option>
+                <?php 
+                    include '../src/php/dbh.php';
+                    $sql="SELECT * FROM `industry category`;";
+                      $res = mysqli_query($conn,$sql);
+                      echo $sql;
+                      while($row=mysqli_fetch_assoc($res))
+                      {
+                    ?> 
+                    <option value="<?php echo $row['name'];?>"><?php echo $row['name'];?></option>
+                      <?php }?>
                 </select>
             </div>
             <div class="col">
