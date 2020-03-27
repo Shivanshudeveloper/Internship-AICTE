@@ -1,4 +1,5 @@
 <?php
+  include './includes/auth.php';
   include './includes/header.inc.php';
 ?>
   <!-- Content Wrapper. Contains page content -->

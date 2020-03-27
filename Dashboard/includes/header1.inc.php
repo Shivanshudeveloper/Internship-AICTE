@@ -28,16 +28,10 @@
 
 	<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
  
-	<script src="https://www.gstatic.com/firebasejs/7.7.0/firebase-app.js"></script>
 
-	<script src="https://www.gstatic.com/firebasejs/7.7.0/firebase-analytics.js"></script>
-
-	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-
-	<script src="https://www.gstatic.com/firebasejs/7.7.0/firebase-auth.js"></script>
 
   </head>
-  <body class="newBgRptr">
+  <body>
 	  <div class="bg-top navbar-light topBgNewDiv">
     	<div class="container">
     		<div class="row no-gutters d-flex align-items-center align-items-stretch">
@@ -57,7 +51,7 @@
                     </div>
 					
 					<div class="col lgnBtnOne _2">
-                        <a href="./login_type.php" class="btn py-2 px-3 btn-primary d-flex align-items-center justify-content-center">
+                        <a href="./index.php" class="btn py-2 px-3 btn-primary d-flex align-items-center justify-content-center">
 							<span class="ml-2">Home</span>
 					    </a>
                     </div>

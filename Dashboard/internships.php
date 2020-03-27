@@ -41,6 +41,10 @@
                 </div>
               </div>
               <!-- /.card-header -->
+             <?php 
+             if($_SESSION['login_level']>2)
+             {
+              ?> 
               <div class="card-body p-0">
                 <table class="table">
                   <thead>
@@ -57,7 +61,7 @@
                     <?php 
                       include './src/php/dbh.php';
                       $id=$_SESSION['id'];
-                      $sql = "SELECT * FROM internhips WHERE company_id = '$id';";
+                      $sql = "SELECT * FROM posted_internship_government WHERE company_id = '$id';";
                       $result = mysqli_query($conn, $sql);
                       while ($row = mysqli_fetch_assoc($result)) {
                         echo '
@@ -91,8 +95,7 @@
                         </tr>
                         
                         ';
-                      }
-                    
+                      }       
                     ?>
 
 
@@ -102,8 +105,65 @@
                 </table>
               </div>
               <!-- /.card-body -->
+                    <?php }else
+                    {
+                      ?>
+                    <div class="card-body p-0">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th style="width: 10px">#</th>
+                      <th>Title</th>
+                      <th>Assign Role</th>
+                      <th>Workspace</th>
+                      <th>Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <?php 
+                      include './src/php/dbh.php';
+                      $id=$_SESSION['id'];
+                      $sql = "SELECT * FROM `post_internship_government` WHERE company_id='$id';";
+                      $result = mysqli_query($conn, $sql);
+                      while ($row = mysqli_fetch_assoc($result)) {
+                        echo '
+                        <tr>
+                          <td>'.$row['id'].'</td>
+                          <td>
+                              <a href="./interviews.php?uid='.$row['uid'].'">
+                              '.$row['title'].'
+                              </a>
+                          </td>
+                          <td>
+                              <button class="btn btn-sm btn-info">
+                                  Assign Role
+                              </button>
+                          </td>
+                          <td>
+                              <a href="./workspace.php" class="btn btn-sm btn-success">
+                                  Go to Workspace
+                              </a>
+                          </td>
+                          <td>
+                              <button class="btn btn-sm btn-danger">
+                                  Delete
+                              </button>
+                          </td>
+                        </tr>
+                        
+                        ';
+                      }       
+                    ?>
+
+
+                    
+                    
+                  </tbody>
+                </table>
+              </div>
+                    <?php }?>  
             </div>
-            <!-- /.card -->
+            <!--card -->
 
             <!-- /.card -->
           </div>

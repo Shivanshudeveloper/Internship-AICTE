@@ -115,12 +115,12 @@ function topFunction() {
       <div class="modal-body">
           <?php
             include './src/php/dbh.php';
-            $sql = "SELECT * FROM tblipinternshala";
+            $sql = "SELECT * FROM post_internship_government";
             $result = mysqli_query($conn, $sql);
 
             while ($row = mysqli_fetch_assoc($result)) {
               echo '
-                <a href="fetch_company.php?c='.$row['company'].'" class="mr-2 h4 text-primary ml-2" href="">'.$row['company'].'</a> <br>
+                <a href="fetch_company.php?c='.$row['organisation'].'" class="mr-2 h4 text-primary ml-2" href="">'.$row['company'].'</a> <br>
               ';
             }
           
@@ -203,36 +203,37 @@ function topFunction() {
 
 <?php
 //fetch.php
-$connect = mysqli_connect("localhost", "root", "", "internal");
+include './src/php/dbh.php';
 $output = '';
 
-$query = "SELECT * FROM tblipinternshala WHERE goverment = 1;";
+$query = "SELECT * FROM post_internship_government";
 
 
-$result = mysqli_query($connect, $query);
+$result = mysqli_query($conn, $query);
 if(mysqli_num_rows($result) > 0)
 {
 while( $records = mysqli_fetch_assoc($result) ) {
 ?>
   <div class="card mt-2">
       <div class="card-body">
-          <h5 class="mb-2 text-success float-right"><?php echo $records['salary'];?>.</h5>
+          <h5 class="mb-2 text-success float-right"><?php echo $records['stiphen'];?>.</h5>
           <a class="card-title h2"><?php echo $records["title"];?></a>
           <p class="mt-2 mb-2 card-text">
-            <?php echo $records['content'];?>
+            <?php echo $records['description'];?>
           </p>
           <br>
-          <h4 class="mt-2 mb-2"><span class="font-weight-bold">Requirements:</span> <span class="text-info"><?php echo $records['requirements'];?></span></h4>
+         <h4 class="mt-2 mb-2"><span class="font-weight-bold">Requirements:</span> <span class="text-info"><?php echo $records['eligibility'];?></span></h4> 
           <br>
-          <h5 class="mb-2"><?php echo $records['category'];?></h5>
-          <h5 class="mb-2"><b>City:</b> <?php echo $records['city'];?></h5>
+          <h5 class="mb-2"><b>Posted By:</b> <?php echo $records['department'];?></h5>
+          <h5 class="mb-2"><b>City:</b> <?php echo $records['locations'];?></h5>
           <h5 class="mb-2"><b>Duration:</b><?php echo $records['duration'];?>.</h5>
-          <h5 class="mb-2"><b>Start Date:</b><?php echo $records['date'];?>.</h5>
-          <h5 class="mb-2"><b>Working Hours:</b><?php echo $records['working_hours'];?>.</h5>
+          <h5 class="mb-2"><b>Registration Fees:</b><?php echo $records['fees'];?>.</h5>
+          <h5 class="mb-2"><b>Reservation Given To:</b><?php echo $records['reservation'];?>.</h5>
           
           <br>
           <center>
-            <a href=<?php echo $records['url'];?> class="btn w-50 btn-primary">Apply</a>
+            <a href="./login_type.php" class="btn w-50 btn-primary">Apply</a>
+            <a href="./Detail_profile.php" class="btn w-50 btn-success">View Detail</a>
           </center>
       </div>
   </div>

@@ -1,17 +1,18 @@
 <?php 
-session_start();
-if(!isset($_SESSION['loggedIn']))
-{
-  header("location:login_corporate.php?task=PlseLogin");
-}
-else{
-  include './includes/header.inc.php';
-} 
+  include './includes/auth.php';
+  include './includes/header.inc.php'; 
 
 ?>
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
+    <?php 
+    include './src/php/dbh.php';
+    $id = $_SESSION['id'];
+    $sql = "select * from student_register s inner join internhip_apply m on m.student_uid = s.student_uid inner join post_internship_government g on g.company_id = m.company_id ";
+    $result = mysqli_query($conn,$sql);
+    while($row=mysqli_fetch_assoc($result)){
+    ?>
     <section class="content-header">
       <div class="container-fluid">
         <div class="row mb-2">
@@ -21,7 +22,7 @@ else{
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Machine Learning Internship(Hyd)</li>
+              <li class="breadcrumb-item active"><?php echo $row[''] ?></li>
             </ol>
           </div>
         </div>

@@ -42,7 +42,7 @@
 
 html {
   font-family: sans-serif;
-  line-height: 1.15;
+  line-height: 1;
   -webkit-text-size-adjust: 100%;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0); }
 
@@ -8996,7 +8996,7 @@ h1, h2, h3, h4, h5,
         display: none; } }
 
 .form-control {
-  height: 52px !important;
+  height: 30px !important;
   background: #fff !important;
   color: #000000 !important;
   font-size: 18px;
@@ -9021,13 +9021,13 @@ textarea.form-control {
   font-size: 24px; }
 
 .ftco-section {
-  padding: 7em 0;
+  padding:2em;
   position: relative; }
 
 .ftco-no-pt {
   padding-top: 0; }
 
-.ftco-no-pb {
+.ftco-no-pb { 
   padding-bottom: 0; }
 
 .ftco-bg-dark {
@@ -9035,8 +9035,7 @@ textarea.form-control {
 
 .ftco-footer {
   font-size: 14px;
-  background: #232323;
-  padding: 6em 0; }
+  background: #232323;}
   .ftco-footer .ftco-footer-widget {
     width: 100%;
     display: block; }

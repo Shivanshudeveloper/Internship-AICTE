@@ -1,6 +1,4 @@
 <?php include './includes/header1.inc.php' ?>
-
-
 <section class="ftco-section bg-light mt-4">
     <div class="wrapper-content">
         <div class="container">
@@ -48,7 +46,7 @@
                                 </div>
                                 <h3 class="heading">UBL</h3>
                                 <div class="d-flex align-items-center mt-4">
-                                    <p class="mb-0"><a href="./login_corporate.php" class="btn btn-primary">Login</a>
+                                    <p class="mb-0"><a href="./login_government.php" class="btn btn-primary">Login</a>
                                     </p>
                                 </div>
                             </div>

@@ -28,6 +28,9 @@
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.4.1.js"
         integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.13/js/bootstrap-multiselect.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.13/css/bootstrap-multiselect.css" />
+
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -161,10 +164,19 @@ if($_SESSION['login_level']==1)
                         </li>
 
                         <li class="nav-item">
-                            <a href="./interview_student.php" class="nav-link">
+                            <a href="./interview_student.php?id=1" class="nav-link">
                                 <i class="nav-icon fas fa-th"></i>
                                 <p>
-                                    Available Internships
+                                     Internships 
+                                </p>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="./interview_student.php?id=2" class="nav-link">
+                                <i class="nav-icon fas fa-th"></i>
+                                <p>
+                                Government Internships  
                                 </p>
                             </a>
                         </li>

@@ -39,7 +39,10 @@ include './includes/header_students.php' ?>
         </div>
 
         <?php
-            include './src/php/dbh.php';
+           include './src/php/dbh.php';
+            $level= $_GET['id'];
+            if($level == 1)
+            {
             $sql = "SELECT * FROM internhips;";
             $result = mysqli_query($conn, $sql);
             $resultChk = mysqli_num_rows($result);
@@ -98,8 +101,52 @@ include './includes/header_students.php' ?>
                 }
                 
             }
-
-            
+          }else
+          {
+            $sql = "SELECT * FROM post_internship_government INNER JOIN ubl_register ON post_internship_government.company_id=ubl_register.ubl_company_id;";
+            $result = mysqli_query($conn, $sql);
+            $resultChk = mysqli_num_rows($result);
+            if ($resultChk < 1) {
+                echo '
+                    <center>
+                        <h2>No Result Found</h2>
+                    </center>
+                ';
+            } else {
+                while ($row = mysqli_fetch_assoc($result)) {
+                    echo '
+                        <div class="card-body mt-2">
+                            <div class="card">
+                            <div class="card-body">
+                                <span class="float-right">
+                                    <p>
+                                        <a target="_blank" href="https://www.google.com/maps/@28.535427,77.155449,16z" class="btn ml-2 btn-sm btn-outline-success">
+                                            Google Maps
+                                        </a>
+                                    </p>
+                
+                                </span>
+                                <br />
+                                <h3 class="card-title">Title: '.$row['title'].'</h3>
+                                <br>
+                                <h6 class="mt-2 font-weight-bold text-success">Stipend: Rs. '.$row['stiphen'].'</h6>
+                                <h6 class="mt-2">Email: ' .$row['email'].'</h6>
+                                <h6 class="mt-2">Phone No: '.$row['phone'].'</h6>
+                                <br/>               
+                                <p class="card-text mt-2">
+                                    '.$row['description'].'
+                                </p>
+                                <a href="./apply.php?uid='.$row['uid'].'&company_id='.$row['company_id'].'&level=2" class="btn btn-primary">Apply</a>
+                                <a href="./interview_student.php?uid='.$row['uid'].'&id=2" class="btn btn-danger">Reject</a>
+                            </div>
+                            </div>
+                        </div>
+                        
+                        ';
+                }
+                
+            }
+          }
         
         ?>
 

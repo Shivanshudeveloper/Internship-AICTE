@@ -1,28 +1,26 @@
-<?php include 'includes/header1.inc.php'?>
-
-<section class="ftco-section bg-light">
+<?php
+include 'includes/header1.inc.php';
+?>
+<center>
+<section class="ftco-section bg-light" style="margin-top:70px">
     <div class="container">
-        <div class="row">
+        <div class="row"> 
             <div class="col">
-                <div id="student_form" class="w-100">
+                <div id="student_form" class="w-50">
                     <form method="post" class="text-center border border-light p-5" action="./src/php/main.php">
                         <!-- Email -->
                         <input type="email" name="email" id="email" class="form-control mb-4" placeholder="E-mail">
                         <input type="password" name="password" id="password" class="form-control mb-4"
                             placeholder="Password">
-                        <input type="submit" name="login" id="login" value="login" class="btn btn-info btn-block">
-
+                        <center>
+                            <input type="submit" name="login" id="login" value="Login"
+                                class="btn btn-info btn-block w-25" style="font-weight:bold;">
+                        </center>
                     </form>
                 </div>
             </div>
         </div>
-        <div class="col">
-            <img style="margin-top: 20%; margin-left: 30%"
-                src="https://static.skillshare.com/uploads/project/08872f4476eda5c3322bff38bf2a3f4a/f8f48d7b"
-                alt="AICTE">
-        </div>
     </div>
-
     </div>
 </section>
-<?php include './includes/footer1.inc.php' ?>
+</center>

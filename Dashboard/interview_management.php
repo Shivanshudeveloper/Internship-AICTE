@@ -56,17 +56,6 @@ include './includes/header.inc.php';
                         <div class="card-header">
                             <h3 class="card-title">Internships</h3>
 
-                            <div class="card-tools">
-                                <div class="input-group input-group-sm" style="width: 150px;">
-                                    <input type="text" name="table_search" class="form-control float-right"
-                                        placeholder="Search">
-
-                                    <div class="input-group-append">
-                                        <button type="submit" class="btn btn-default"><i
-                                                class="fas fa-search"></i></button>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
                         <div class="card-body table-responsive p-0">
                             <table class="table table-striped">
@@ -82,24 +71,24 @@ include './includes/header.inc.php';
                                     <?php 
                       include './src/php/dbh.php';
                       $id=$_SESSION['id'];
-                      $sql = "SELECT * FROM internhip_apply where company_id='$id';";
+                      $sql = "select * from student_register s inner join internhip_apply m on m.student_uid = s.student_uid inner join post_internship_government g on g.company_id = m.company_id";
                       $result = mysqli_query($conn, $sql);
                       while ($row = mysqli_fetch_assoc($result)) 
                       {
   ?>
                         <tr>
-                      <td>1</td>
-                      <td>Akash</td>
-                      <td>Big Data Analysis</td>
+                      <td><?php echo $row['id'] ?></td>
+                      <td><?php echo $row['student_first_name'];?></td>
+                      <td><?php echo $row['title']; ?></td>
                       <td>
-                      <input type="hidden" name="id1" id="id1" value=$row[uid]>
+                      <input type="hidden" name="id1" id="id1" value=<?php echo $row['student_uid']; ?>>
                           <button type="submit" id="submit" name="submit" class="btn btn-sm btn-info" onclick="sendoffer()">
                               Release Offer Letter
                           </button>
-                          <button class="btn btn-sm btn-danger" onclick="send()">
+                          <button class="btn btn-sm btn-danger">
                               Reject the Candidate
                           </button>
-                          <button class="btn btn-sm btn-info" onclick="send()">
+                          <button class="btn btn-sm btn-info">
                               Hold the Candidate
                           </button>
                           <button data-toggle="modal" data-target="#exampleModal" class="btn btn-sm btn-info">
@@ -158,9 +147,6 @@ include './includes/header.inc.php';
 </div>
 <!-- /.content-wrapper -->
 <script>
-  function send(){
-    alert("hi");
-  }
 function sendoffer() {
         student_id = $("#id1").val();
          $.post("./src/php/main.php", {

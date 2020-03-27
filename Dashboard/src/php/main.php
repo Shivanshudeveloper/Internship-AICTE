@@ -3,6 +3,65 @@
 include './dbh.php';
 session_start();
 if (isset($_POST['internship_post'])) {
+    $advertisement_id = mysqli_real_escape_string($conn, $_POST['adid']);
+    $job_type = mysqli_real_escape_string($conn, $_POST['job_type']);
+    $internship_type = mysqli_real_escape_string($conn, $_POST['internship__type']);
+    $locations = mysqli_real_escape_string($conn, $_POST['locations']);
+    $title = mysqli_real_escape_string($conn, $_POST['title']);
+    $role = mysqli_real_escape_string($conn, $_POST['role']);
+    $department =  " ";
+    if (!empty($_POST['department'])) {
+        foreach($_POST['department'] as $selected){
+            $department = $department.$selected.',';
+        }
+    }
+    $department = rtrim($department, ",");
+    $qualification = " ";
+    if (!empty($_POST['qualification'])) {
+        foreach($_POST['qualification'] as $selected){
+            $qualification = $qualification.$selected.',';
+        }
+    }
+    $qualification = rtrim($qualification, ",");
+    $specialisation =" ";
+    if (!empty($_POST['specialisation'])) {
+        foreach($_POST['specialisation'] as $selected){
+            $specialisation = $specialisation.$selected.',';
+        }
+    }
+    $specialisation = rtrim($specialisation, ",");
+    
+    $description=mysqli_real_escape_string($conn, $_POST['description']);
+    $stiphen = mysqli_real_escape_string($conn, $_POST['stiphen']);
+    $eligibility=mysqli_real_escape_string($conn,$_POST['eligibility']);
+    $terms_of_enagement=mysqli_real_escape_string($conn,$_POST['terms_of_enagement']);
+    $logistics=mysqli_real_escape_string($conn,$_POST['logistics']);
+    $guidelines=mysqli_real_escape_string($conn,$_POST['guidelines']);
+    $duration = mysqli_real_escape_string($conn, $_POST['duration']);
+    $email = mysqli_real_escape_string($conn, $_POST['email']);
+    $phone = mysqli_real_escape_string($conn, $_POST['phone']);
+    $fees = mysqli_real_escape_string($conn, $_POST['fees']);
+    $age=mysqli_real_escape_string($conn,$_POST['age']);
+    $id =" ";
+    $reservation=" ";
+    if (!empty($_POST['reserve'])) {
+        foreach($_POST['reserve'] as $selected){
+            $reservation = $reservation.$selected.',';
+        }
+    }
+    $reservation = rtrim($reservation, ",");
+    static $x=100000000;
+    $x++;
+    $year=date("Y");
+    $internshipId = "INTERNSHIPGOV_".$year.$x;
+    $companyId = $_SESSION['id'];
+    $sql = "INSERT INTO `post_internship_government`(`id`, `uid`,`company_id`, `advertisement_id`, `job_type`, `internship_type`, `locations`, `title`, `role`, `department`, `qualification`, `specialisation`, `description`, `stiphen`, `eligibility`, `terms_of_enagement`, `logistics`, `guidelines`, `duration`, `phone`, `email`, `fees`, `reservation`, `age`) VALUES ('$id','$internshipId','$companyId','$advertisement_id','$job_type','$internship_type','$locations','$title','$role','$department','$qualification','$specialisation','$description','$stiphen','$eligibility','$terms_of_enagement','$logistics','$guidelines','$duration','$phone','$email','$fees','$reservation','$age')";
+    mysqli_query($conn, $sql);
+    echo $sql;
+    header('Location: ../../internships.php?uid='.$internshipId);
+}
+
+if (isset($_POST[''])) {
     $type = mysqli_real_escape_string($conn, $_POST['type']);
     $title = mysqli_real_escape_string($conn, $_POST['title']);
     $description = mysqli_real_escape_string($conn, $_POST['description']);
@@ -89,17 +148,17 @@ $id=" ";
 $password=md5($password);
 
 if ($username && $password) {
-    $query   = ("SELECT * FROM student_register WHERE email='$username'");
+    $query   = ("SELECT * FROM student_register WHERE student_email='$username'");
     $result  = mysqli_query($conn, $query);
     $numrows = mysqli_num_rows($result);
 
     if ($numrows>0) {
         while ($row = mysqli_fetch_assoc($result)) 
    {
-            $dbusername = $row['email'];
-            $dbpassword = $row['password'];
-            $id=$row['uid'];
-            $user=$row['first_name'];
+            $dbusername = $row['student_email'];
+            $dbpassword = $row['student_password'];
+            $id=$row['student_uid'];
+            $user=$row['student_first_name'];
         }
         if($username == $dbusername && $password == $dbpassword) 
         {
@@ -122,6 +181,52 @@ else{
     header("location: ../../login.php?error=PlseEnterUsernameorPassword");
     }
 }
+
+if(isset($_POST['login_government']))
+{
+
+$username = $_POST['email'];
+$password = $_POST['password'];
+$dbusername = " ";
+$dbpassword = " ";
+$user=" ";
+$id=" ";
+$password=md5($password);
+
+if ($username && $password) {
+    $query   = ("SELECT * FROM ubl_register WHERE ubl_email='$username'");
+    $result  = mysqli_query($conn, $query);
+    $numrows = mysqli_num_rows($result);
+
+    if ($numrows>0) {
+        while ($row = mysqli_fetch_assoc($result)) 
+   {
+            $dbusername = $row['ubl_email'];
+            $dbpassword = $row['ubl_password'];
+            $id=$row['ubl_company_id'];
+            $user=$row['ubl_first_name'];
+        }
+        if($username == $dbusername && $password == $dbpassword) 
+        {
+            $_SESSION['email'] = $username;
+            $_SESSION['login_level']=2;
+            $_SESSION['id']=$id;
+            $_SESSION['user']=$user;
+            $_SESSION['loggedIn']=1;
+            header("location: ../../index_dashboard.php"); //another file to send request to the next page if values are correct.
+        } 
+        else{
+             header("location: ../../login_government.php?error=WrongPassword");
+            }
+        }
+        else {
+            header("location: ../../login_government.php?error=UserNotExist");
+            }
+}
+else{
+    header("location: ../../login.php?error=PlseEnterUsernameorPassword");
+    }
+}
 if(isset($_POST['login_c']))
 {
     $username = $_POST['email'];
@@ -133,17 +238,17 @@ if(isset($_POST['login_c']))
     $password=md5($password);
 
 if ($username && $password) {
-     $query   = ("SELECT * FROM corporate_register WHERE email='$username'");
+     $query   = ("SELECT * FROM corporate_register WHERE corporate_email='$username'");
     $result  = mysqli_query($conn, $query);
     $numrows = mysqli_num_rows($result);
 
     if ($numrows != 0) {
         while ($row = mysqli_fetch_assoc($result)) 
         {
-            $dbusername = $row['email'];
-            $dbpassword = $row['password'];
-            $id=$row['uid'];
-            $user=$row['first_name'];
+            $dbusername = $row['corporate_email'];
+            $dbpassword = $row['corporate_password'];
+            $id=$row['corporate_uid'];
+            $user=$row['corporate_first_name'];
         }
         if($username == $dbusername && $password == $dbpassword) 
         {
@@ -240,6 +345,7 @@ if (isset($_POST['corporate-register'])) {
 
 //student register
 if (isset($_POST['student-register'])) {
+    $id ='';
     $fname = mysqli_real_escape_string($conn, $_POST['fname']);
     $lname = mysqli_real_escape_string($conn, $_POST['lname']);
     $contactnum = mysqli_real_escape_string($conn, $_POST['contactnum']);
@@ -254,7 +360,7 @@ if (isset($_POST['student-register'])) {
     // Generating a unique id
     $uid = "STU".uniqid().time();
 
-    $sql = "INSERT INTO `student_register`(`uid`, `first_name`, `last_name`, `email`, `contact`, `languages`, `technical`, `skills`, `password`) VALUES ('$uid', '$fname', '$lname', '$email', '$contactnum', '$languages','$technical','$skills', '$hash_pwd')";
+    $sql = "INSERT INTO `student_register`(`id`, `student_uid`, `student_first_name`, `student_last_name`, `student_email`, `student_contact`, `student_languages`, `student_technical`, `student_skills`, `student_password`) VALUES ('$id','$uid', '$fname', '$lname', '$email', '$contactnum', '$languages','$technical','$skills', '$hash_pwd')";
     $res=mysqli_query($conn, $sql);
     if($res)
     {
@@ -262,7 +368,8 @@ if (isset($_POST['student-register'])) {
     }
 }
 
-if (isset($_POST['common-register'])) {
+if (isset($_POST['common-register'])) 
+{
     $fname = mysqli_real_escape_string($conn, $_POST['fname']);
     $lname = mysqli_real_escape_string($conn, $_POST['lname']);
     $contactnum = mysqli_real_escape_string($conn, $_POST['contactnum']);
@@ -278,13 +385,38 @@ if (isset($_POST['common-register'])) {
     // Generating a unique id
     $uid = "TPO".uniqid().time();
 
-    $sql = "INSERT INTO corporate_register(uid ,first_name, last_name, email, contact, corporate_list, id_number, organization, password) VALUES('$uid', '$fname', '$lname', '$email', '$contactnum', '$corporatelist', '$idnumber', '$organization', '$hash_pwd')";
+    $sql = "INSERT INTO `corporate_register`(`corporate_uid`, `corporate_first_name`, `corporate_last_name`, `corporate_email`, `corporate_contact`, `corporate_corporate_list`, `corporate_id_number`, `corporate_organization`, `corporate_password`, `corporate_state`, `corporate_district`, `corporate_user_level`, `corporate_category`) VALUES('$uid', '$fname', '$lname', '$email', '$contactnum', '$corporatelist', '$idnumber', '$organization', '$hash_pwd')";
     $res=mysqli_query($conn, $sql);
     if($res)
     {
         header("location:../../login_corporate.php?task=RegisteredSuccessfully");
     }
 }
+
+if (isset($_POST['ubl_register'])) 
+{
+    $fname = mysqli_real_escape_string($conn, $_POST['fname']);
+    $lname = mysqli_real_escape_string($conn, $_POST['lname']);
+    $contactnum = mysqli_real_escape_string($conn, $_POST['contactnum']);
+    $email = mysqli_real_escape_string($conn, $_POST['email']);
+    $password = mysqli_real_escape_string($conn, $_POST['password']);
+    $idnumber=" ";
+    $organization=mysqli_real_escape_string($conn, $_POST['organization']);
+    $authority=mysqli_real_escape_string($conn, $_POST['authority']);
+    // Hashning the password
+    $hash_pwd = md5($password);
+    $id=" ";
+    // Generating a unique id
+    $uid = "UBL".uniqid().time();
+
+    $sql = "INSERT INTO `ubl_register`(`ubl_id`, `ubl_company_id`, `ubl_organisaton`, `ubl_email`, `ubl_password`, `ubl_first_name`, `ubl_last_name`, `ubl_auhority_name`, `ubl_contact_num`) VALUES('$id','$uid','$organization','$email','$hash_pwd','$fname','$lname','$authority','$contactnum')";
+    $res=mysqli_query($conn, $sql);
+    if($res)
+    {
+        header("location:../../login_type.php?task=RegisteredSuccessfully");
+    }
+}
+
 if (isset($_POST['dm-register'])) {
     $fname = mysqli_real_escape_string($conn, $_POST['fname']);
     $lname = mysqli_real_escape_string($conn, $_POST['lname']);

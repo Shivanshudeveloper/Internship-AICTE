@@ -1,18 +1,5 @@
 <?php include './includes/header1.inc.php' ?>
-    
-    <section class="hero-wrap hero-wrap-2" style="background-image: url('images/bg_1.jpg');">
-      <div class="overlay"></div>
-      <div class="container">
-        <div class="row no-gutters slider-text align-items-center justify-content-center">
-          <div class="col-md-9 ftco-animate text-center">
-            <h1 class="mb-2 bread">REGISTRATION</h1>
-            <p class="breadcrumbs"><span class="mr-2"><a href="./index.html">Home <i class="ion-ios-arrow-forward"></i></a></span> <span>Register <i class="ion-ios-arrow-forward"></i></span> <span> College Register <i class="ion-ios-arrow-forward"></i></span></p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-		
+    	
 		<section class="ftco-section bg-light">
         <div class="container">
         <div id="coporate_form" class="w-50">
@@ -31,7 +18,7 @@
                 
 
                 <!-- Send button -->
-                <button name="common-register" id="common-register" class="btn btn-info btn-block" type="submit">Register</button>
+                <button name="common-register" id="common-register" class="btn btn-info btn-block w-25" style="font-weight:bold; font-family: Verdana" type="submit">Register</button>
 
             </form>
         </div>

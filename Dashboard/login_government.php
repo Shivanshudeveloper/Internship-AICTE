@@ -12,7 +12,7 @@
                                 placeholder="Password">
                             <!-- Send button -->
                             <center>
-                                <input type="submit" name="login_c" id="login_c" value="login"
+                                <input type="submit" name="login_government" id="login_government" value="login"
                                     class="btn btn-info btn-block w-25" style="font-weight:bold" type="button">
                             </center>
                         </form>

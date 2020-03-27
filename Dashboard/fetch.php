@@ -86,7 +86,7 @@ else
 ?>
 
 <?php 
- $search = mysqli_real_escape_string($connect, $_POST["query"]);
+ $search = mysqli_real_escape_string($conn, $_POST["query"]);
  $query ="SELECT * FROM tblipinternshala3 
  WHERE city REGEXP '".$search."' 
  OR country REGEXP '".$search."' 
